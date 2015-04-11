@@ -13,8 +13,10 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		//Parse.initialize(arg0);
+		Parse.initialize(this, "9Sejg1tgXT9qRkeS3uqoykI9E84kVb8DAlCPzsNi", "MtMjrzfToRzCGf7mzFtnPXlApnUFBAqEGPmty8bm");
 		ParseObject testObject = new ParseObject("test");
+		testObject.put("foo", "bar");
+		testObject.saveInBackground();
 	}
 
 	@Override
