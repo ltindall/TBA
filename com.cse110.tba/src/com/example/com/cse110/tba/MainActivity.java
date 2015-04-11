@@ -15,8 +15,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Parse.initialize(this, "9Sejg1tgXT9qRkeS3uqoykI9E84kVb8DAlCPzsNi", "MtMjrzfToRzCGf7mzFtnPXlApnUFBAqEGPmty8bm");
 		ParseObject testObject = new ParseObject("test");
-		testObject.put("foo", "bar");
-		testObject.saveInBackground();
+		//testObject.put("foo", "bar");
+		//testObject.saveInBackground();
 	}
 
 	@Override
