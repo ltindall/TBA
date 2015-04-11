@@ -10,19 +10,25 @@ import android.view.Menu;
 
 public class MainActivity extends Activity {
 
-	ParseObject testObject = new ParseObject("UserClass");
+	//ParseObject testObject = new ParseObject("UserClass");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Parse.initialize(this, "9Sejg1tgXT9qRkeS3uqoykI9E84kVb8DAlCPzsNi", "MtMjrzfToRzCGf7mzFtnPXlApnUFBAqEGPmty8bm");
+		/*
 		Parse.enableLocalDatastore(this);
 		initializeParse("9Sejg1tgXT9qRkeS3uqoykI9E84kVb8DAlCPzsNi",
 				"MtMjrzfToRzCGf7mzFtnPXlApnUFBAqEGPmty8bm");
-
+		
 		testObject.put("NameField", "Lamp");
 		testObject.saveInBackground();
+		*/
 		///push this 
+		ParseObject testObject = new ParseObject("TestObject");
+		testObject.put("foo", "bar");
+		testObject.saveInBackground();
 	}
 
 	@Override
