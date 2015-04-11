@@ -1,5 +1,8 @@
 package com.example.com.cse110.tba;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -10,6 +13,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		//Parse.initialize(arg0);
+		ParseObject testObject = new ParseObject("test");
 	}
 
 	@Override
