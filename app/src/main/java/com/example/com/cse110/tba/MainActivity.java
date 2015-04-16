@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
         testObject.add("commit", null);
         ParseLoginBuilder builder = new ParseLoginBuilder(this);
         startActivityForResult(builder.build(), 0);
+
 		//testObject.saveInBackground();
 		///push this
         //extra crap
