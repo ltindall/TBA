@@ -1,6 +1,7 @@
 package com.example.com.cse110.tba;
 
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -9,5 +10,9 @@ import java.util.List;
  */
 public interface DBAsync
 {
-    abstract void onGetBooksLoad(List<ParseObject> result);
+    abstract void onBuyListingsLoad(List<ParseObject> buyListings);
+
+    abstract void onSellListingsLoad(List<ParseObject> sellListings);
+
+    abstract void onUserLoad(List<ParseUser> userList);
 }
