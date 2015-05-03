@@ -2,6 +2,7 @@ package com.example.com.cse110.tba;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -20,30 +21,44 @@ public class DBManager
     }
 
     public void addBookListing(boolean isBuyOrder, String title, String author, int isbn, float price,
-                               int condition)
+                               int condition, int year, int edition, String comment, boolean isHardcover)
     {
         ParseUser currentUser = ParseUser.getCurrentUser();
         if(isBuyOrder)
         {
-            ParseObject book = new ParseObject("BuyListing");
+            ParseObject book = new ParseObject("CustomBook");
             book.add("Title", title);
             book.add("Author", author);
             book.add("ISBN", isbn);
-            book.add("Price", price);
-            book.add("Condition", condition);
-            book.add("User", currentUser.getEmail());
-            book.saveInBackground();
+            book.add("Year", year);
+            book.add("Edition", edition);
+
+            ParseObject bookListing = new ParseObject("BuyListing");
+            bookListing.add("Book", book);
+            bookListing.add("Price", price);
+            bookListing.add("Condition", condition);
+            bookListing.add("Comment", comment);
+            bookListing.add("HardCover", isHardcover);
+            bookListing.add("User", currentUser.getEmail());
+            bookListing.saveInBackground();
         }
         else
         {
-            ParseObject book = new ParseObject("SellListing");
+            ParseObject book = new ParseObject("CustomBook");
             book.add("Title", title);
             book.add("Author", author);
             book.add("ISBN", isbn);
-            book.add("Price", price);
-            book.add("Condition", condition);
-            book.add("User", currentUser.getEmail());
-            book.saveInBackground();
+            book.add("Year", year);
+            book.add("Edition", edition);
+
+            ParseObject bookListing = new ParseObject("SellListing");
+            bookListing.add("Book", book);
+            bookListing.add("Price", price);
+            bookListing.add("Condition", condition);
+            bookListing.add("Comment", comment);
+            bookListing.add("HardCover", isHardcover);
+            bookListing.add("User", currentUser.getEmail());
+            bookListing.saveInBackground();
         }
     }
 
@@ -132,5 +147,37 @@ public class DBManager
                 }
             }
         });
+    }
+
+    public void setUserSettings(int zipCode, String phone, String text)
+    {
+        ParseUser current = ParseUser.getCurrentUser();
+        if(zipCode != -1)
+        {
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("ZipcodeDB");
+            query.whereEqualTo("Zip", zipCode);
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> zip, ParseException e) {
+                    if (e == null) {
+                        ParseGeoPoint location = new ParseGeoPoint(zip.get(0).getDouble("Latitude"),
+                                zip.get(0).getDouble("Longitude"));
+                        ParseUser current = ParseUser.getCurrentUser();
+                        current.put("Location", location);
+                        current.saveInBackground();
+                    } else {
+                    }
+                }
+            });
+            current.put("Zipcode", zipCode);
+        }
+        if(phone != null)
+        {
+            current.put("Phone", phone);
+        }
+        if(text != null)
+        {
+            current.put("Text", text);
+        }
+        current.saveInBackground();
     }
 }
