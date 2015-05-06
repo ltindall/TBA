@@ -1,6 +1,7 @@
 package com.example.com.cse110.tba;
 
 import com.parse.ParseAnonymousUtils;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
@@ -10,7 +11,9 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+import java.util.List;
+
+public class MainActivity extends Activity implements  DBAsync{
 
     public static final int LOGIN_PAGE = 0;
 
@@ -38,6 +41,9 @@ public class MainActivity extends Activity {
                 Log.d("MainActivity", "Authentication Failed, Creating Anon user");
             }
         }
+        DBManager manager = new DBManager(this);
+        //manager.addBookListing(true,"Antigone","Sophocles",7616,9001,1,441,1,"Sample Text Please Ignore",true);
+        //manager.setUserSettings(92092,null,null);
     }
 
 	@Override
@@ -47,4 +53,19 @@ public class MainActivity extends Activity {
         menu.add("Logout");
 		return true;
 	}
+
+    @Override
+    public void onBuyListingsLoad(List<ParseObject> buyListings) {
+
+    }
+
+    @Override
+    public void onSellListingsLoad(List<ParseObject> sellListings) {
+
+    }
+
+    @Override
+    public void onUserLoad(List<ParseUser> userList) {
+
+    }
 }

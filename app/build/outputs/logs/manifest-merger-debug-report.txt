@@ -85,11 +85,17 @@ ADDED from AndroidManifest.xml:41:13
 		ADDED from AndroidManifest.xml:43:17
 	android:name
 		ADDED from AndroidManifest.xml:42:17
+meta-data#com.parse.ui.ParseLoginActivity.PARSE_SIGNUP_MIN_PASSWORD_LENGTH
+ADDED from AndroidManifest.xml:44:13
+	android:value
+		ADDED from AndroidManifest.xml:46:17
+	android:name
+		ADDED from AndroidManifest.xml:45:17
 uses-permission#android.permission.INTERNET
-ADDED from AndroidManifest.xml:47:5
+ADDED from AndroidManifest.xml:50:5
 	android:name
-		ADDED from AndroidManifest.xml:47:22
+		ADDED from AndroidManifest.xml:50:22
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from AndroidManifest.xml:48:2
+ADDED from AndroidManifest.xml:51:2
 	android:name
-		ADDED from AndroidManifest.xml:48:19
+		ADDED from AndroidManifest.xml:51:19

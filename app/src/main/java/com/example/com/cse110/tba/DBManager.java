@@ -27,37 +27,37 @@ public class DBManager
         if(isBuyOrder)
         {
             ParseObject book = new ParseObject("CustomBook");
-            book.add("Title", title);
-            book.add("Author", author);
-            book.add("ISBN", isbn);
-            book.add("Year", year);
-            book.add("Edition", edition);
+            book.put("Title", title);
+            book.put("Author", author);
+            book.put("ISBN", isbn);
+            book.put("Year", year);
+            book.put("Edition", edition);
 
             ParseObject bookListing = new ParseObject("BuyListing");
-            bookListing.add("Book", book);
-            bookListing.add("Price", price);
-            bookListing.add("Condition", condition);
-            bookListing.add("Comment", comment);
-            bookListing.add("HardCover", isHardcover);
-            bookListing.add("User", currentUser.getEmail());
+            bookListing.put("Book", book);
+            bookListing.put("Price", price);
+            bookListing.put("Condition", condition);
+            bookListing.put("Comment", comment);
+            bookListing.put("HardCover", isHardcover);
+            bookListing.put("User", currentUser.getEmail());
             bookListing.saveInBackground();
         }
         else
         {
             ParseObject book = new ParseObject("CustomBook");
-            book.add("Title", title);
-            book.add("Author", author);
-            book.add("ISBN", isbn);
-            book.add("Year", year);
-            book.add("Edition", edition);
+            book.put("Title", title);
+            book.put("Author", author);
+            book.put("ISBN", isbn);
+            book.put("Year", year);
+            book.put("Edition", edition);
 
             ParseObject bookListing = new ParseObject("SellListing");
-            bookListing.add("Book", book);
-            bookListing.add("Price", price);
-            bookListing.add("Condition", condition);
-            bookListing.add("Comment", comment);
-            bookListing.add("HardCover", isHardcover);
-            bookListing.add("User", currentUser.getEmail());
+            bookListing.put("Book", book);
+            bookListing.put("Price", price);
+            bookListing.put("Condition", condition);
+            bookListing.put("Comment", comment);
+            bookListing.put("HardCover", isHardcover);
+            bookListing.put("User", currentUser.getEmail());
             bookListing.saveInBackground();
         }
     }

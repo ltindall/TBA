@@ -13,7 +13,7 @@ public class ParseSorter
 {
     public List<ParseObject> sortListings(List<ParseObject> unsorted, String sortField, String type)
     {
-        List<ParseObject> finalList = new ArrayList<>();
+        List<ParseObject> finalList = new ArrayList<ParseObject>();
 
         if(sortField.equals("Date"))
         {
@@ -45,7 +45,7 @@ public class ParseSorter
             rank.put(sortField, 0);
             for(ParseObject d: unsorted)
             {
-                if((float)(d.get(sortField)) >= (float)(rank.get(sortField)))
+                if(d.getDouble(sortField) >= rank.getDouble(sortField))
                 {
                     rank.put(sortField, d);
                 }

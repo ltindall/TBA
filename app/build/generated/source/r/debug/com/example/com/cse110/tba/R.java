@@ -295,7 +295,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f020014;
         public static final int com_facebook_loginbutton_silver=0x7f020015;
         public static final int com_facebook_logo=0x7f020016;
-        public static final int com_facebook_picker_default_separator_color=0x7f020037;
+        public static final int com_facebook_picker_default_separator_color=0x7f020038;
         public static final int com_facebook_picker_item_background=0x7f020017;
         public static final int com_facebook_picker_list_focused=0x7f020018;
         public static final int com_facebook_picker_list_longpressed=0x7f020019;
@@ -327,7 +327,8 @@ containing a value of this type.
         public static final int com_parse_ui_twitter_login_button_background_selector=0x7f020033;
         public static final int com_parse_ui_twitter_login_logo=0x7f020034;
         public static final int havoclarge=0x7f020035;
-        public static final int ic_launcher=0x7f020036;
+        public static final int havocmedium=0x7f020036;
+        public static final int ic_launcher=0x7f020037;
     }
     public static final class id {
         public static final int action_settings=0x7f0a0039;
