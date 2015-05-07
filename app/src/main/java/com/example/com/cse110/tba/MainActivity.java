@@ -5,11 +5,14 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.SearchView;
 
 import java.util.List;
 
@@ -51,6 +54,16 @@ public class MainActivity extends Activity implements  DBAsync{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
         menu.add("Logout");
+
+        // Initialize search stuff
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+        // Inflate menu options
+        //getMenuInflater().inflate(R.menu.options_menu, menu);
 		return true;
 	}
 
