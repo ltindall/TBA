@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.widget.SearchView;
 
 import java.util.List;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class MainActivity extends Activity implements  DBAsync{
 
@@ -81,4 +83,14 @@ public class MainActivity extends Activity implements  DBAsync{
     public void onUserLoad(List<ParseUser> userList) {
 
     }
+
+    // need to replace R.id.spinner with our own spinner id?  How do?
+    Spinner spinner = (Spinner) findViewById(R.id.spinner);
+    // Create an ArrayAdapter using the string array and a default spinner layout
+    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+            R.array.search_spinner, android.R.layout.simple_spinner_item);
+    // Specify the layout to use when the list of choices appears
+    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    // Apply the adapter to the spinner
+    spinner.setAdapter(adapter);
 }
