@@ -26,6 +26,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".UserSettings"
+            android:label="User Settings"
+            />
+
         <!--Login activity that displays login screen and handles signup/password resets -->
         <activity
             android:name="com.parse.ui.ParseLoginActivity"

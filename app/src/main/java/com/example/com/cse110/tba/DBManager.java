@@ -149,11 +149,13 @@ public class DBManager
         });
     }
 
-    public void setUserSettings(int zipCode, String phone, String text)
+    public void setUserSettings(int zipCode, String call, String text)
     {
+        int validParamCount = 0;
         ParseUser current = ParseUser.getCurrentUser();
         if(zipCode != -1)
         {
+            ++validParamCount;
             ParseQuery<ParseObject> query = ParseQuery.getQuery("ZipcodeDB");
             query.whereEqualTo("Zip", zipCode);
             query.findInBackground(new FindCallback<ParseObject>() {
@@ -170,14 +172,19 @@ public class DBManager
             });
             current.put("Zipcode", zipCode);
         }
-        if(phone != null)
+        if(call != null)
         {
-            current.put("Phone", phone);
+            ++validParamCount;
+            current.put("Call", call);
         }
         if(text != null)
         {
+            ++validParamCount;
             current.put("Text", text);
         }
-        current.saveInBackground();
+        if(validParamCount > 0)
+        {
+            current.saveInBackground();
+        }
     }
 }

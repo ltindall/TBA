@@ -26,6 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.com.cse110.tba.UserSettings"
+            android:label="User Settings" />
 
         <!-- Login activity that displays login screen and handles signup/password resets -->
         <activity

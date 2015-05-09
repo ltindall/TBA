@@ -59,43 +59,49 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:23:17
 	android:name
 		ADDED from AndroidManifest.xml:23:27
-activity#com.parse.ui.ParseLoginActivity
-ADDED from AndroidManifest.xml:28:9
+activity#com.example.com.cse110.tba.UserSettings
+ADDED from AndroidManifest.xml:27:9
 	android:label
-		ADDED from AndroidManifest.xml:30:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:31:13
-	android:name
 		ADDED from AndroidManifest.xml:29:13
-meta-data#com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED
-ADDED from AndroidManifest.xml:32:13
-	android:value
-		ADDED from AndroidManifest.xml:34:17
 	android:name
-		ADDED from AndroidManifest.xml:33:17
-meta-data#com.parse.ui.ParseLoginActivity.APP_LOGO
+		ADDED from AndroidManifest.xml:28:13
+activity#com.parse.ui.ParseLoginActivity
+ADDED from AndroidManifest.xml:33:9
+	android:label
+		ADDED from AndroidManifest.xml:35:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:36:13
+	android:name
+		ADDED from AndroidManifest.xml:34:13
+meta-data#com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED
 ADDED from AndroidManifest.xml:37:13
-	android:resource
+	android:value
 		ADDED from AndroidManifest.xml:39:17
 	android:name
 		ADDED from AndroidManifest.xml:38:17
-meta-data#com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME
-ADDED from AndroidManifest.xml:41:13
-	android:value
+meta-data#com.parse.ui.ParseLoginActivity.APP_LOGO
+ADDED from AndroidManifest.xml:42:13
+	android:resource
+		ADDED from AndroidManifest.xml:44:17
+	android:name
 		ADDED from AndroidManifest.xml:43:17
-	android:name
-		ADDED from AndroidManifest.xml:42:17
-meta-data#com.parse.ui.ParseLoginActivity.PARSE_SIGNUP_MIN_PASSWORD_LENGTH
-ADDED from AndroidManifest.xml:44:13
+meta-data#com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME
+ADDED from AndroidManifest.xml:46:13
 	android:value
-		ADDED from AndroidManifest.xml:46:17
+		ADDED from AndroidManifest.xml:48:17
 	android:name
-		ADDED from AndroidManifest.xml:45:17
+		ADDED from AndroidManifest.xml:47:17
+meta-data#com.parse.ui.ParseLoginActivity.PARSE_SIGNUP_MIN_PASSWORD_LENGTH
+ADDED from AndroidManifest.xml:49:13
+	android:value
+		ADDED from AndroidManifest.xml:51:17
+	android:name
+		ADDED from AndroidManifest.xml:50:17
 uses-permission#android.permission.INTERNET
-ADDED from AndroidManifest.xml:50:5
+ADDED from AndroidManifest.xml:55:5
 	android:name
-		ADDED from AndroidManifest.xml:50:22
+		ADDED from AndroidManifest.xml:55:22
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from AndroidManifest.xml:51:2
+ADDED from AndroidManifest.xml:56:2
 	android:name
-		ADDED from AndroidManifest.xml:51:19
+		ADDED from AndroidManifest.xml:56:19

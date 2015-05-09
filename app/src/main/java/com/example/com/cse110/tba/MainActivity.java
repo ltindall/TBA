@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.SearchView;
 
 import java.util.List;
@@ -66,8 +67,21 @@ public class MainActivity extends Activity implements  DBAsync{
                 searchManager.getSearchableInfo(getComponentName()));
         // Inflate menu options
         //getMenuInflater().inflate(R.menu.options_menu, menu);
+        menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+        menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
 		return true;
 	}
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case 0:
+                Intent intent = new Intent(MainActivity.this, UserSettings.class);
+                startActivity(intent);
+                return true;
+        }
+        return true;
+    }
 
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
