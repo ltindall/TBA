@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- From: file:/C:/Users/Joshua%20Lynch/AndroidStudio%20Workspace/com.cse110.tba/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string-array name="search_spinner">
+        <item>Book Title</item>
+        <item>Author</item>
+        <item>ISBN</item>
+        <item>Order</item>
+    </string-array>
     <!-- From: file:/C:/Users/Joshua%20Lynch/AndroidStudio%20Workspace/com.cse110.tba/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.23.1/res/values/values.xml -->
     <eat-comment/>
     <color name="com_facebook_blue">#3B5998</color>
@@ -178,6 +186,8 @@
     <!-- From: file:/C:/Users/Joshua%20Lynch/AndroidStudio%20Workspace/com.cse110.tba/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="hello_world">Hello world!</string>
+    <string name="search_hint">Search Here</string>
+    <string name="search_title">Search</string>
     <string name="text_hint">Enter Text Number Here</string>
     <string name="user_settings_submit">Submit Changes</string>
     <string name="zip_hint">Enter Zip Code Here</string>
