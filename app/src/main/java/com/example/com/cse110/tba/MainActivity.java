@@ -1,6 +1,7 @@
 package com.example.com.cse110.tba;
 
 import com.parse.ParseAnonymousUtils;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
@@ -50,16 +51,24 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         {
             if(resultCode == Activity.RESULT_OK)
             {
+                // Associate the device with a user
+                ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                installation.put("user",ParseUser.getCurrentUser());
+                installation.saveInBackground();
                 Log.d("MainActivity", "User: " + ParseUser.getCurrentUser().getUsername() + " successfully authenticated");
             }
             else if(resultCode == Activity.RESULT_CANCELED)
             {
                 ParseAnonymousUtils.logInInBackground();
+                // Associate the device with a user
+                ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                installation.remove("user");
+                installation.saveInBackground();
                 Log.d("MainActivity", "Authentication Failed, Creating Anon user");
             }
         }
-        DBManager manager = new DBManager(this);
-        //manager.addBookListing(true,"Antigone","Sophocles",7616,9001,1,441,1,"Sample Text Please Ignore",true);
+        //DBManager manager = new DBManager(this);
+        //manager.addBookListing(false,"Antigone","Sophocles",7616,9002,1,441,1,"Sample Text Please Ignore",true);
         //manager.setUserSettings(92092,null,null);
     }
 
