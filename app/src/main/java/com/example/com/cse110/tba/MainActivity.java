@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             {
                 // Associate the device with a user
                 ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-                installation.put("user",ParseUser.getCurrentUser());
+                installation.put("user", ParseUser.getCurrentUser().get("email"));
                 installation.saveInBackground();
                 Log.d("MainActivity", "User: " + ParseUser.getCurrentUser().getUsername() + " successfully authenticated");
             }
