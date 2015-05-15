@@ -2,30 +2,42 @@ package com.example.com.cse110.tba;
 
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseObject;
+import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.SearchView;
 
 import java.util.List;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
 public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavigationListener{
 
     public static final int LOGIN_PAGE = 0;
-    private long currentSpinnerItem = 0;
+    //private long currentSpinnerItem = 0;
+    SearchResultsActivity SRA = new SearchResultsActivity();
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +47,12 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         ParseLoginBuilder builder = new ParseLoginBuilder(this);
         startActivityForResult(builder.build(), LOGIN_PAGE);
 
+        // Initialize Action Bar
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
-
 	}
 
     @Override
@@ -64,17 +76,38 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     }
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(final Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 
-        // Initialize search stuff
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.search).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
+        // Initialize Search Widget
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        ComponentName cn = new ComponentName(this, SearchResultsActivity.class);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(cn));
+
+        final Intent theIntent = new Intent(MainActivity.this, SearchResultsActivity.class);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                startActivity(theIntent);
+
+                //menu.findItem(R.id.menu_search).collapseActionView();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                Log.d("setOnQueryTextListener", "SEARCHING");
+                //listAdapter.getFilter().filter(query);
+                return false;
+            }
+
+        });
 
         // Inflate menu options
         menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
@@ -114,9 +147,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
 
     @Override
-    public boolean onNavigationItemSelected(int i, long l)
-    {
-        currentSpinnerItem = l;
+    public boolean onNavigationItemSelected(int i, long l) {
+        //currentSpinnerItem = l;
+        SRA.setCurrentSpinnerOption(l);
         return true;
     }
 }

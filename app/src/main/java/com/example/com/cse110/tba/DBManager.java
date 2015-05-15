@@ -1,5 +1,7 @@
 package com.example.com.cse110.tba;
 
+import android.util.Log;
+
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
@@ -101,6 +103,7 @@ public class DBManager
     public void getSellListings(String title, String author, int isbn,
                                String order)
     {
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("SellListing");
         if(title != null)
         {
