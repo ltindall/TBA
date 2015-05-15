@@ -20,4 +20,6 @@
         <item>Order</item>
     </string-array>
     <string name="title_activity_create_buying_listing">CreateBuyingListing</string>
+    <string name="title_activity_create_seeling_listing">CreateSeelingListing</string>
+    <string name="title_activity_create_selling_listing">CreateSellingListing</string>
 </resources>
