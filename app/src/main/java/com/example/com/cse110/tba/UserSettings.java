@@ -91,6 +91,7 @@ public class UserSettings extends Activity implements  DBAsync
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
 
+
     }
 
     @Override
