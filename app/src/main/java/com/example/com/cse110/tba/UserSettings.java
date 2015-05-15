@@ -22,23 +22,36 @@ public class UserSettings extends Activity implements  DBAsync
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //load the xml layout, must be called before programatic use of buttons
         setContentView(R.layout.user_settings);
+
+        //the zip code text field
         EditText zip = (EditText)findViewById(R.id.zip_code);
+
+        //the 'call' number text field
         EditText call = (EditText)findViewById(R.id.call_number);
+
+        //the 'text' number text field
         EditText text = (EditText)findViewById(R.id.text_number);
+
+        //get current parse user and their current zip code
         ParseUser current = ParseUser.getCurrentUser();
         currentZip = current.getInt("Zipcode");
 
+        //if they have a zip code, prepopulate the text box
         if(currentZip != 0)
         {
             zip.setText(Integer.toString(current.getInt("Zipcode")));
         }
 
+        //if they have a call number, prepopulate the field
         if(current.getString("Call") != null)
         {
             call.setText(current.getString("Call"));
         }
 
+        //if they have a text number, prepopulate the field
         if(current.getString("Text") != null)
         {
             text.setText(current.getString("Text"));
@@ -77,6 +90,7 @@ public class UserSettings extends Activity implements  DBAsync
 
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
+
 
     }
 

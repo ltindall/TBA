@@ -3,12 +3,16 @@ package com.example.com.cse110.tba;
 import android.util.Log;
 
 import com.parse.FindCallback;
+import com.parse.FunctionCallback;
+import com.parse.ParseACL;
+import com.parse.ParseCloud;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,12 +32,16 @@ public class DBManager
         ParseUser currentUser = ParseUser.getCurrentUser();
         if(isBuyOrder)
         {
+            ParseACL postACL = new ParseACL(ParseUser.getCurrentUser());
+            postACL.setPublicReadAccess(true);
+
             ParseObject book = new ParseObject("CustomBook");
             book.put("Title", title);
             book.put("Author", author);
             book.put("ISBN", isbn);
             book.put("Year", year);
             book.put("Edition", edition);
+            book.setACL(postACL);
 
             ParseObject bookListing = new ParseObject("BuyListing");
             bookListing.put("Book", book);
@@ -42,16 +50,28 @@ public class DBManager
             bookListing.put("Comment", comment);
             bookListing.put("HardCover", isHardcover);
             bookListing.put("User", currentUser.getEmail());
+            bookListing.setACL(postACL);
             bookListing.saveInBackground();
+
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            params.put("type", "BuyListing");
+            params.put("isbn", isbn);
+            params.put("price", price);
+
+            ParseCloud.callFunctionInBackground("detectMatches", params);
         }
         else
         {
+            ParseACL postACL = new ParseACL(ParseUser.getCurrentUser());
+            postACL.setPublicReadAccess(true);
+
             ParseObject book = new ParseObject("CustomBook");
             book.put("Title", title);
             book.put("Author", author);
             book.put("ISBN", isbn);
             book.put("Year", year);
             book.put("Edition", edition);
+            book.setACL(postACL);
 
             ParseObject bookListing = new ParseObject("SellListing");
             bookListing.put("Book", book);
@@ -60,7 +80,15 @@ public class DBManager
             bookListing.put("Comment", comment);
             bookListing.put("HardCover", isHardcover);
             bookListing.put("User", currentUser.getEmail());
+            bookListing.setACL(postACL);
             bookListing.saveInBackground();
+
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            params.put("type", "SellListing");
+            params.put("isbn", isbn);
+            params.put("price", price);
+
+            ParseCloud.callFunctionInBackground("detectMatches", params);
         }
     }
 

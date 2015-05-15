@@ -19,4 +19,5 @@
         <item>ISBN</item>
         <item>Order</item>
     </string-array>
+    <string name="title_activity_create_buying_listing">CreateBuyingListing</string>
 </resources>
