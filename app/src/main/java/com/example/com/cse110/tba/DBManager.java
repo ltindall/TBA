@@ -93,7 +93,7 @@ public class DBManager
     }
 
     public void getBuyListings(String title, String author, int isbn,
-                                String order)
+                                String order, int limit)
     {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("BuyListing");
         if(title != null)
@@ -117,6 +117,11 @@ public class DBManager
             }
         }
 
+        if(limit != -1)
+        {
+            query.setLimit(limit);
+        }
+
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> result, ParseException e) {
                 if (e == null) {
@@ -129,7 +134,7 @@ public class DBManager
     }
 
     public void getSellListings(String title, String author, int isbn,
-                               String order)
+                               String order, int limit)
     {
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("SellListing");
@@ -152,6 +157,11 @@ public class DBManager
             {
                 query.orderByAscending(order);
             }
+        }
+
+        if(limit != -1)
+        {
+            query.setLimit(limit);
         }
 
         query.findInBackground(new FindCallback<ParseObject>() {

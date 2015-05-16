@@ -22,6 +22,14 @@
 
     <uses-permission android:name="com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE" />
 
+    <android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
     <application
         android:name="com.example.com.cse110.tba.App"
         android:allowBackup="true"
@@ -86,7 +94,7 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-<!--                   IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name. -->
+                <!-- IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name. -->
                 <category android:name="com.example.com.cse110.tba" />
             </intent-filter>
         </receiver>
@@ -99,6 +107,19 @@
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name="com.example.com.cse110.tba.CreateBuyingListing"
+            android:label="@string/title_activity_create_buying_listing" >
+        </activity>
+        <activity
+            android:name="com.example.com.cse110.tba.CreateSeelingListing"
+            android:label="@string/title_activity_create_seeling_listing" >
+        </activity>
+        <activity
+            android:name="com.example.com.cse110.tba.CreateSellingListing"
+            android:label="@string/title_activity_create_selling_listing" >
+        </activity>
     </application>
 
 </manifest>

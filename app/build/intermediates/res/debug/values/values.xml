@@ -189,6 +189,9 @@
     <string name="search_hint">Search Here</string>
     <string name="search_title">Search</string>
     <string name="text_hint">Enter Text Number Here</string>
+    <string name="title_activity_create_buying_listing">CreateBuyingListing</string>
+    <string name="title_activity_create_seeling_listing">CreateSeelingListing</string>
+    <string name="title_activity_create_selling_listing">CreateSellingListing</string>
     <string name="user_settings_submit">Submit Changes</string>
     <string name="zip_hint">Enter Zip Code Here</string>
     <!-- From: file:/C:/Users/Joshua%20Lynch/AndroidStudio%20Workspace/com.cse110.tba/app/src/main/res/values/styles.xml -->
