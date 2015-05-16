@@ -7,6 +7,10 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseQueryAdapter;
+
 
 public class lisitingView extends Activity {
 
@@ -29,23 +33,20 @@ public class lisitingView extends Activity {
 
     private void populateListView()
     {
-        //gather the Listing objects
-          //get Listing objects from database
-
-          //grab the first 10 Listing object from the returned objects above
-
-          //store the 10 objects in an array of Listing objects
-
-          //get a String from each Listing object
-          String[] listingStrings = {"testListing1", "testListing2"};  // this is a stub
 
         //make an adapter containing a String from each Listing objects
-          ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(
-                                  this,         // a context for this activity
-                                  R.layout.activity_lisiting_view, // layout to use
-                                  listingStrings);  // objects to be dsplayed
+          ParseQueryAdapter<ParseObject> listAdapter = new ParseQueryAdapter<ParseObject>(
+                  this,         // a context for this activity
+                  new ParseQueryAdapter.QueryFactory<ParseObject>() {   // a Query generator that will call search function
+                      @Override
+                      public ParseQuery<ParseObject> create() {
+                          //call the search function that returns a query of ParseObjects
+                          // ParseQuery<ParseObject> query=
+                          return null;
+                      }
+                  });
 
-        // Use ParseQuerAdapter<Listing>.
+        // Use ParseQueryAdapter<Listing>.
         // Call a function to get the query and display it
         // Automatically load from database in a certain timeframe(1 week) and reload if an older search is done...
 
