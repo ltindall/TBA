@@ -91,7 +91,7 @@ public class CreateBuyingListing extends Activity {
                 String currentUserUsername = currentUser.getUsername();
 
                 ParseObject bookListing = new ParseObject("BuyListing");
-                bookListing.put("Book", book)
+                bookListing.put("Book", book);
                 bookListing.put("Price", bookPrice);
                 bookListing.put("Condition", bookCondition);
                 bookListing.put("Comment", bookComment);
@@ -114,22 +114,22 @@ public class CreateBuyingListing extends Activity {
                         if (e == null) {
                             // successfully storing everything
                             // create toast
-                            Toast.makeText(CreateBuyingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG.show());
+                            Toast.makeText(CreateBuyingListing.this, "Success Creating Listing", Toast.LENGTH_LONG);
 
                             // bring user to the next page later (INTENT)
                         }
 
                         else {
                             // there is problem in storing
-                            AlertDialog.Builder builder = new AlertDialog().Builder(CreateBuyingListing.this);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(CreateBuyingListing.this);
                             builder.setMessage(e.getMessage());
                             builder.setTitle("Ooops, something went wrong");
-                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener()) {
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     // close the dialogue message
                                     dialogInterface.dismiss();
                                 }
-                            }
+                            });
                             AlertDialog dialog = builder.create();
                             dialog.show();
                         }

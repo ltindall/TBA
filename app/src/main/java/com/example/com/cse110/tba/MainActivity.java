@@ -98,24 +98,19 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         final Intent theIntent = new Intent(MainActivity.this, SearchResultsActivity.class);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+            //@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
             @Override
             public boolean onQueryTextSubmit(String query) {
                 startActivity(theIntent);
-
                 //menu.findItem(R.id.menu_search).collapseActionView();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
-                Log.d("setOnQueryTextListener", "SEARCHING");
                 //listAdapter.getFilter().filter(query);
                 return false;
             }
-
         });
 
         // Inflate menu options

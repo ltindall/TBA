@@ -20,17 +20,17 @@ import java.util.Objects;
  * Code for running the search function by taking a query
  */
 public class SearchResultsActivity extends ListActivity implements DBAsync{
-    private DBAsync dba;
     public DBManager dbm;
     private long currentSpinnerOption;
 
     public SearchResultsActivity() {
-      dbm = new DBManager(dba);
+        Log.d("SearchResultsActivity", "An instance of SearchResultsActivity has been created.");
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dbm = new DBManager(this);
         Intent search = new Intent(Intent.ACTION_SEARCH);
         handleIntent(search);
     }
@@ -47,7 +47,6 @@ public class SearchResultsActivity extends ListActivity implements DBAsync{
             String query = intent.getStringExtra(SearchManager.QUERY);
             long searchBy = currentSpinnerOption;
             String s = String.valueOf(currentSpinnerOption);
-            Log.d("SearchFunction", "currentSpinnerOption:" + s);
             switch ((int)searchBy) {
                 case 0: dbm.getSellListings(query, null, -1, null);
                         break;
@@ -62,7 +61,7 @@ public class SearchResultsActivity extends ListActivity implements DBAsync{
         }
 
         else {
-            Log.d("SearchFunction", "ACTION_SEARCH does not equal intent.getAction()");
+            Log.d("SearchFunction","Current Intent = " + intent.getAction());
         }
     }
 
