@@ -20,10 +20,10 @@ import com.parse.SaveCallback;
 
 public class CreateSellingListing extends Activity {
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_selling_listing);
+        setContentView(R.layout.activity_create_selling_listing);*/
 
         // book information
         protected EditText wBookTitle;
