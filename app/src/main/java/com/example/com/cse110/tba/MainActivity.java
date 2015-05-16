@@ -12,15 +12,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
-import android.support.v4.view.MenuItemCompat;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 
 import java.util.List;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavigationListener{
@@ -70,6 +73,16 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         //DBManager manager = new DBManager(this);
         //manager.addBookListing(false,"Antigone","Sophocles",7616,9002,1,441,1,"Sample Text Please Ignore",true);
         //manager.setUserSettings(92092,null,null);
+    }
+
+    public void launchPopup(View v)
+    {
+        Log.d("MainActivity", "Button pressed");
+        ParseObject sampleListing = new ParseObject("BuyListing");
+        sampleListing.put("Title", "Antigone");
+        sampleListing.put("ISBN", 7616);
+        sampleListing.put("Price", 9002);
+        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v);
     }
 
 	@Override
