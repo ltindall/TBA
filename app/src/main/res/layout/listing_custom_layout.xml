@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Title: "
+        />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Title"
+            android:id="@+id/bookListingBookTitle"
+        />
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ISBN Number: "
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book ISBN"
+            android:id="@+id/bookListingBookISBN"
+            />
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Condition: "
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Condition"
+            android:id="@+id/bookListingBookCondition"
+            />
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price: "
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Title"
+            android:id="@+id/bookListingBookPrice"
+            />
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User: "
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Title"
+            android:id="@+id/bookListingBookOwner"
+            />
+    </TableRow>
+
+
+
+</TableLayout>
