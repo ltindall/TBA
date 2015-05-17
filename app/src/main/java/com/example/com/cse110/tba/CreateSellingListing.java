@@ -38,7 +38,7 @@ public class CreateSellingListing extends Activity {
         protected CheckBox wHardCover;
 
         // button information
-        protected Button wCreateBuyingListingButton;
+        protected Button wCreateSellingListingButton;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class CreateSellingListing extends Activity {
             wBookISBN = (EditText)findViewById(R.id.createListingISBNNumber);
             wBookYear = (EditText)findViewById(R.id.createListingBookYear);
             wBookEdition = (EditText)findViewById(R.id.createListingBookEdition);
-            wCreateBuyingListingButton = (Button)findViewById(R.id.createListingButton);
+            wCreateSellingListingButton = (Button)findViewById(R.id.createListingButton);
 
             wPrice = (EditText)findViewById(R.id.createListingBookPrice);
             wCondition = (EditText)findViewById(R.id.createListingBookCondition);
@@ -60,7 +60,7 @@ public class CreateSellingListing extends Activity {
 
 
             // create listener for the create button
-            wCreateBuyingListingButton.setOnClickListener(new View.OnClickListener() {
+            wCreateSellingListingButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     // get all the book information and convert them into string
