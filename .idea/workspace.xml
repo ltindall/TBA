@@ -18,10 +18,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="333ec007-0fcb-4d21-b736-f8e5cc61f81b" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Alexander\git\tba\tba.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/facebook/android/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/facebook/android/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/parse/ui/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/parse/ui/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="com.cse110.tba.iws" />
@@ -99,7 +95,7 @@
       <file leaf-file-name="SearchResultsActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SearchResultsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.6461825" vertical-offset="0" max-vertical-offset="2074">
+            <state vertical-scroll-proportion="1.5320624" vertical-offset="0" max-vertical-offset="2074">
               <caret line="52" column="67" selection-start-line="52" selection-start-column="67" selection-end-line="52" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -128,7 +124,7 @@
     <option name="myUpdateMethod" value="REBASE" />
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="REBASE" />
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -1131,7 +1127,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5723366005113" />
+        <entry key="$PROJECT_DIR$" value="5723366119388" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1517,20 +1513,6 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.cse110.tba" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -1594,23 +1576,10 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/outputFileStates.bin</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/gradle.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/bolts_android_1_1_4.xml</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/support_annotations_22_0_0.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/support_v4_22_0_0.xml</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/misc.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/modules.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/app.iml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/com/cse110/tba/R.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/generated/source/r/debug/com/facebook/android/R.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/generated/source/r/debug/com/parse/ui/R.java</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/classes/debug/com/facebook/android/R$layout.class</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/classes/debug/com/parse/ui/R$layout.class</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml</PATH>
@@ -1672,20 +1641,10 @@
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-v14/values.xml</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-xhdpi-v4/values.xml</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values/values.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/resources/resources-debug-androidTest.ap_</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/CreateBuyingListing.java</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/CreateSellingListing.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/DBManager.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SearchResultsActivity.java</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_create_buying_listing.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/menu/main.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/build/intermediates/model_data.bin</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/local.properties</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/settings.gradle</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
@@ -1715,10 +1674,6 @@
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/classes-e88808a19672b5e0bbd626eaa3090deea5c79ad1.jar</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-8f5f8a6de72b20cb13bd3dddbbab3031ed5d4c2f.jar</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-1c402a30a1bde36f445de39127c079bc71800e4d.jar</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SpinnerActivity.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/search.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/values/ids.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/tba.iml</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Restored" />
@@ -1748,8 +1703,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="MERGED_WITH_CONFLICTS" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/TBA.iml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/com.cse110.tba.iml</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Merged with tree conflicts" />
@@ -2089,24 +2042,28 @@
       <created>1431917461928</created>
       <updated>1431917461928</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="rebased stuff into other stuff, fixed seellisting and some xml garbage, you know who you are ( ͡° ͜ʖ ͡°)">
+      <created>1431918018651</created>
+      <updated>1431918018651</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37152392" sideWeight="0.4552239" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37152392" sideWeight="0.4552239" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37152392" sideWeight="0.54477614" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32703003" sideWeight="0.5063966" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.4632196" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32703003" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32703003" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.445629" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2555,7 +2512,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SearchResultsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6461825" vertical-offset="0" max-vertical-offset="2074">
+        <state vertical-scroll-proportion="1.5320624" vertical-offset="0" max-vertical-offset="2074">
           <caret line="52" column="67" selection-start-line="52" selection-start-column="67" selection-end-line="52" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
