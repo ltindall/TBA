@@ -17,20 +17,11 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.com.cse110.tba" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="333ec007-0fcb-4d21-b736-f8e5cc61f81b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/outputFileStates.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug-androidTest.ap_" />
+    <list default="true" id="333ec007-0fcb-4d21-b736-f8e5cc61f81b" name="Default" comment="rebased stuff into other stuff, fixed seellisting and some xml garbage, you know who you are ( ͡° ͜ʖ ͡°)">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/com/cse110/tba/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/com/cse110/tba/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/facebook/android/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/facebook/android/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/parse/ui/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/parse/ui/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SearchResultsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SearchResultsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="com.cse110.tba.iws" />
@@ -108,8 +99,8 @@
       <file leaf-file-name="SearchResultsActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SearchResultsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35355285" vertical-offset="0" max-vertical-offset="2074">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.6461825" vertical-offset="0" max-vertical-offset="2074">
+              <caret line="52" column="69" selection-start-line="52" selection-start-column="69" selection-end-line="52" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1137,7 +1128,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5723364355645" />
+        <entry key="$PROJECT_DIR$" value="5723365441188" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1469,6 +1460,7 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SearchResultsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -1510,6 +1502,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="com.cse110.tba" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.cse110.tba" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1559,6 +1561,230 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
+  </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/outputFileStates.bin</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/gradle.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/bolts_android_1_1_4.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/support_annotations_22_0_0.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/libraries/support_v4_22_0_0.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/misc.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/modules.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/app.iml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/com/cse110/tba/R.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/generated/source/r/debug/com/facebook/android/R.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/generated/source/r/debug/com/parse/ui/R.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/classes/debug/com/facebook/android/R$layout.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/classes/debug/com/parse/ui/R$layout.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/debug/merger.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/androidTest/debug/merger.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/debug/merger.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/color/com_parse_ui_parse_login_help_button_label_selector.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_button_blue.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_button_check.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_button_like.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_button_like_selected.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_loginbutton_silver.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_picker_item_background.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_picker_list_selector.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_picker_list_selector_background_transition.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_picker_top_button.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_top_background.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_top_button.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_facebook_usersettingsfragment_background_gradient.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_parse_ui_facebook_login_button_background_selector.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_parse_ui_parse_login_button_background_selector.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/com_parse_ui_twitter_login_button_background_selector.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout-land/com_parse_ui_parse_login_fragment.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout-land/com_parse_ui_parse_login_help_fragment.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout-land/com_parse_ui_parse_signup_fragment.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_main.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_friendpickerfragment.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_login_activity_layout.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_picker_activity_circle_row.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_picker_checkbox.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_picker_image.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_picker_list_row.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_picker_list_section_header.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_picker_search_box.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_picker_title_bar.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_picker_title_bar_stub.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_placepickerfragment.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_placepickerfragment_list_row.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_search_bar_layout.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_tooltip_bubble.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_facebook_usersettingsfragment.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_parse_ui_parse_login_app_logo.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_parse_ui_parse_login_form.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_parse_ui_parse_login_fragment.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_parse_ui_parse_login_help_form.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_parse_ui_parse_login_help_fragment.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_parse_ui_parse_login_third_party_section.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_parse_ui_parse_signup_form.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/layout/com_parse_ui_parse_signup_fragment.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/menu/main.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-es/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-hdpi-v4/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-he/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-iw/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-ldpi-v4/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-mdpi-v4/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-sw720dp-land-v13/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-v11/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-v14/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values-xhdpi-v4/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/res/debug/values/values.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/resources/resources-debug-androidTest.ap_</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/CreateBuyingListing.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/CreateSellingListing.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/DBManager.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SearchResultsActivity.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_create_buying_listing.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/menu/main.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/build/intermediates/model_data.bin</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/local.properties</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/settings.gradle</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/ListingAdapter.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/lisitingView.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_lisiting_view.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/listing_custom_layout.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/menu/menu_lisiting_view.xml</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/Parse-1.8.4-c212808c5bfffd95eacfa9badbb1c296483e6976.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/ParseCrashReporting-1.9.1-2ab10988befd921a4f6dc7161cd23811028dc756.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/ParseFacebookUtils-1.8.4-2ac247e16bc0584042a124173e2f468dd43c2503.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-0b1388f0403cd324bc1968d4a51f55e32e0a0163.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/classes-7d619ec401bd9488c4b929f0060d09f574635a46.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/classes-a68bf3ffaaa93d5ad74224a3a4c86b4665bc484f.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/classes-e88808a19672b5e0bbd626eaa3090deea5c79ad1.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-8f5f8a6de72b20cb13bd3dddbbab3031ed5d4c2f.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-1c402a30a1bde36f445de39127c079bc71800e4d.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SpinnerActivity.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/search.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/values/ids.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/tba.iml</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/TBA.iml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/com.cse110.tba.iml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
   </component>
   <component name="RunManager" selected="Android Application.app">
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -1834,7 +2060,11 @@
       <created>1431832480974</created>
       <updated>1431832480974</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="committing for rebase">
+      <created>1431916462836</created>
+      <updated>1431916462836</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1843,14 +2073,15 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37152392" sideWeight="0.4552239" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32703003" sideWeight="0.5063966" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37152392" sideWeight="0.54477614" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.4632196" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32703003" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32703003" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.445629" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1865,7 +2096,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37152392" sideWeight="0.4552239" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1918,8 +2148,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Login page customized for temporary logo, fixed crash when continuously opening and closing the app" />
-    <MESSAGE value="Enabled anon user (untested)" />
     <MESSAGE value="Created DBManager and associated DBAsync to handle database interface, will expand them with time" />
     <MESSAGE value="Improved DBManager and associated DBAsync, created ParseSorter to handle local sorting" />
     <MESSAGE value="Changed DBManager to reflect intended database schema, added in ability to set user settings and implemented a zip code to geolocation conversion database" />
@@ -1943,7 +2171,9 @@
     <MESSAGE value="SRA" />
     <MESSAGE value="Merge remote-tracking branch 'origin/Fort_Kickass' into Fort_Kickass&#10;&#10;Conflicts:&#10;&#9;.idea/gradle.xml&#10;&#9;.idea/libraries/support_v4_22_0_0.xml&#10;&#9;.idea/modules.xml&#10;&#9;.idea/workspace.xml&#10;&#9;TBA.iml&#10;&#9;app/build/intermediates/resources/resources-debug-androidTest.ap_&#10;&#9;app/src/main/java/com/example/com/cse110/tba/CreateBuyingListing.java&#10;&#9;build/intermediates/dex-cache/cache.xml&#10;&#9;com.cse110.tba.iml&#10;&#9;local.properties&#10;&#9;tba.iml&#10;" />
     <MESSAGE value="committing for rebase" />
-    <option name="LAST_COMMIT_MESSAGE" value="committing for rebase" />
+    <MESSAGE value="rebased stuff into other stuff" />
+    <MESSAGE value="rebased stuff into other stuff, fixed seellisting and some xml garbage, you know who you are ( ͡° ͜ʖ ͡°)" />
+    <option name="LAST_COMMIT_MESSAGE" value="rebased stuff into other stuff, fixed seellisting and some xml garbage, you know who you are ( ͡° ͜ʖ ͡°)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2183,14 +2413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5831063" vertical-offset="0" max-vertical-offset="0">
-          <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4152334" vertical-offset="0" max-vertical-offset="0">
@@ -2298,10 +2520,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.556797" vertical-offset="1622" max-vertical-offset="2159">
+          <caret line="113" column="19" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/SearchResultsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35355285" vertical-offset="0" max-vertical-offset="2074">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.6461825" vertical-offset="0" max-vertical-offset="2074">
+          <caret line="52" column="69" selection-start-line="52" selection-start-column="69" selection-end-line="52" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
