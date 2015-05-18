@@ -1,19 +1,15 @@
 package com.example.com.cse110.tba;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListView;
 
 import com.parse.ParseObject;
-import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by Alexander and Lucas on 5/4/2015.
@@ -48,13 +44,13 @@ public class SearchResultsActivity extends ListActivity implements DBAsync{
             long searchBy = currentSpinnerOption;
             String s = String.valueOf(currentSpinnerOption);
             switch ((int)searchBy) {
-                case 0: dbm.getSellListings(query, null, -1, null);
+                case 0: dbm.getSellListings(query, null, -1, null,-1);
                         break;
-                case 1: dbm.getSellListings(null, query, -1, null);
+                case 1: dbm.getSellListings(null, query, -1, null, -1);
                         break;
-                case 2: dbm.getSellListings(null, null, Integer.parseInt(query), null);
+                case 2: dbm.getSellListings(null, null, Integer.parseInt(query), null, -1);
                         break;
-                case 3: dbm.getSellListings(null, null, -1, query);
+                case 3: dbm.getSellListings(null, null, -1, query, -1);
                         break;
             }
 
