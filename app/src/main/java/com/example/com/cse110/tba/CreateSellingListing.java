@@ -16,14 +16,16 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
+/**
+ * Created by Chandra on 5/10/15.
+ */
 
 public class CreateSellingListing extends Activity {
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_selling_listing);
+        setContentView(R.layout.activity_create_selling_listing);*/
 
         // book information
         protected EditText wBookTitle;
@@ -38,7 +40,7 @@ public class CreateSellingListing extends Activity {
         protected CheckBox wHardCover;
 
         // button information
-        protected Button wCreateBuyingListingButton;
+        protected Button wCreateSellingListingButton;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class CreateSellingListing extends Activity {
             wBookISBN = (EditText)findViewById(R.id.createListingISBNNumber);
             wBookYear = (EditText)findViewById(R.id.createListingBookYear);
             wBookEdition = (EditText)findViewById(R.id.createListingBookEdition);
-            wCreateBuyingListingButton = (Button)findViewById(R.id.createListingButton);
+            wCreateSellingListingButton = (Button)findViewById(R.id.createListingButton);
 
             wPrice = (EditText)findViewById(R.id.createListingBookPrice);
             wCondition = (EditText)findViewById(R.id.createListingBookCondition);
@@ -60,7 +62,7 @@ public class CreateSellingListing extends Activity {
 
 
             // create listener for the create button
-            wCreateBuyingListingButton.setOnClickListener(new View.OnClickListener() {
+            wCreateSellingListingButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     // get all the book information and convert them into string
@@ -96,7 +98,7 @@ public class CreateSellingListing extends Activity {
                     String currentUserUsername = currentUser.getUsername();
 
                     ParseObject bookListing = new ParseObject("SellListing");
-                    bookListing.put("Book", book)
+                    bookListing.put("Book", book);
                     bookListing.put("Price", bookPrice);
                     bookListing.put("Condition", bookCondition);
                     bookListing.put("Comment", bookComment);
@@ -119,22 +121,22 @@ public class CreateSellingListing extends Activity {
                             if (e == null) {
                                 // successfully storing everything
                                 // create toast
-                                Toast.makeText(CreateBuyingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG.show());
+                                Toast.makeText(CreateSellingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG);
 
                                 // bring user to the next page later (INTENT)
                             }
 
                             else {
                                 // there is problem in storing
-                                AlertDialog.Builder builder = new AlertDialog().Builder(CreateBuyingListing.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(CreateSellingListing.this);
                                 builder.setMessage(e.getMessage());
                                 builder.setTitle("Ooops, something went wrong");
-                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener()) {
+                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         // close the dialogue message
                                         dialogInterface.dismiss();
                                     }
-                                }
+                                });
                                 AlertDialog dialog = builder.create();
                                 dialog.show();
                             }
