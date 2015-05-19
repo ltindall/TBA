@@ -95,34 +95,37 @@ public class DBManager
     public void getBuyListings(String title, String author, int isbn,
                                 String order, int limit)
     {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("BuyListing");
+        ParseQuery<ParseObject> bookQuery = ParseQuery.getQuery("CustomBook");
         if(title != null)
         {
-            query.whereEqualTo("Title", title);
+            bookQuery.whereEqualTo("Title", title);
         }
         if(author != null)
         {
-            query.whereEqualTo("Author", author);
+            bookQuery.whereEqualTo("Author", author);
         }
         if(isbn != -1)
         {
-            query.whereEqualTo("ISBN", isbn);
+            bookQuery.whereEqualTo("ISBN", isbn);
         }
         if(order != null)
         {
             if(order.equals("Title") || order.equals("Author") || order.equals("ISBN") ||
                     order.equals("Price") || order.equals("Condition"))
             {
-                query.orderByAscending(order);
+                bookQuery.orderByAscending(order);
             }
         }
 
+        ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("BuyListing");
+
         if(limit != -1)
         {
-            query.setLimit(limit);
+            listQuery.setLimit(limit);
         }
 
-        query.findInBackground(new FindCallback<ParseObject>() {
+        listQuery.whereMatchesQuery("Book", bookQuery);
+        listQuery.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> result, ParseException e) {
                 if (e == null) {
                     caller.onBuyListingsLoad(result);
@@ -133,38 +136,42 @@ public class DBManager
         });
     }
 
-    public void getSellListings(String title, String author, int isbn,
+    //public void getBooksInDB
+    public void getSellListings (String title, String author, int isbn,
                                String order, int limit)
     {
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("SellListing");
+        ParseQuery<ParseObject> bookQuery = ParseQuery.getQuery("CustomBook");
         if(title != null)
         {
-            query.whereEqualTo("Title", title);
+            bookQuery.whereEqualTo("Title", title);
         }
         if(author != null)
         {
-            query.whereEqualTo("Author", author);
+            bookQuery.whereEqualTo("Author", author);
         }
         if(isbn != -1)
         {
-            query.whereEqualTo("ISBN", isbn);
+            bookQuery.whereEqualTo("ISBN", isbn);
         }
         if(order != null)
         {
             if(order.equals("Title") || order.equals("Author") || order.equals("ISBN") ||
                     order.equals("Price") || order.equals("Condition"))
             {
-                query.orderByAscending(order);
+                bookQuery.orderByAscending(order);
             }
         }
 
+        ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("SellListing");
+
         if(limit != -1)
         {
-            query.setLimit(limit);
+            listQuery.setLimit(limit);
         }
 
-        query.findInBackground(new FindCallback<ParseObject>() {
+        listQuery.whereMatchesQuery("Book", bookQuery);
+        listQuery.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> result, ParseException e) {
                 if (e == null) {
                     caller.onSellListingsLoad(result);

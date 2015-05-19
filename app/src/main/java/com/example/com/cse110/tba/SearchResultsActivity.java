@@ -5,8 +5,10 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 
 import com.parse.ParseObject;
+import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 
 import java.util.List;
@@ -74,30 +76,15 @@ public class SearchResultsActivity extends ListActivity implements DBAsync{
     // what is this going to do?
     public void onSellListingsLoad(List<ParseObject> sellListings){
         if (sellListings != null) {
-            /*// Parse Query Adapter
-            ParseQueryAdapter<ParseObject> adapter = new ParseQueryAdapter<ParseObject>(this, "CustomBook");
-            adapter.setTextKey("Title");
-            //adapter.setImageKey("image");
-
-            // Set the ListActivity's adapter to be the PQA
-
-            ListView lv = (ListView)findViewById(android.R.id.list);
-
-            if (lv == null) {
-                Log.d("ListView", "BALLS");
-            }
+            if(sellListings.size() > 0)
+                Log.d("SearchResultsActivity", "FOUND");
 
             else
-                Log.d("ListView", "NO BALLS");
-
-            lv.setAdapter(adapter);*/
-
-            Log.d("SearchFunction", "FOUND");
+                Log.d("SearchFunction", "NOT FOUND");
         }
 
-        else {
-            Log.d("SearchFunction", "NOT FOUND");
-        }
+        else
+            Log.d("SearchFunction", "NULL OBJECT");
     }
     // what is this going to do?
     public void onUserLoad(List<ParseUser> userList){
