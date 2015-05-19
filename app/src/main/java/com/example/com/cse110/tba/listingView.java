@@ -1,7 +1,6 @@
 package com.example.com.cse110.tba;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,7 +54,7 @@ public class listingView extends Activity {
 
         // make a list view and configure it with the created adapter
           // create a ListView data structure to contain the adapter
-        ListView displayedListing = (ListView) findViewById(R.id.list);
+        ListView displayedListing = (ListView) findViewById(R.id.listViewListing);
           //set the adapter into the ListView
         displayedListing.setAdapter(listAdapter);
     }
@@ -67,7 +66,7 @@ public class listingView extends Activity {
     private void registerOnClick()
     {
         // grab the Listview from activity_listing_view.xml (id: listViewListing)
-        ListView displayedListing = (ListView) findViewById(R.id.list);
+        ListView displayedListing = (ListView) findViewById(R.id.listViewListing);
 
         // create a click listener and display the details of the Lsiting object when clicked
         displayedListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {

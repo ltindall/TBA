@@ -32,9 +32,11 @@ public class CreateBuyingListing extends Activity {
     protected EditText wCondition;
     protected EditText wComment;
     protected CheckBox wHardCover;
+    protected boolean isHardcover;
 
     // button information
     protected Button wCreateBuyingListingButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,17 +56,26 @@ public class CreateBuyingListing extends Activity {
         wComment = (EditText)findViewById(R.id.createListingBookComment);
         wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
 
+
+
        // create an on click listener to toggle the value of Hardcover boolean
         wHardCover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // toggle the value of boolean
-                if(wHardCover.isChecked())
-                    wHardCover.setChecked(false);
-                else
-                    wHardCover.setChecked(true);
+                OnCheckBoxClicked(v);
+            }
+
+            //a function to be called when checkbox is clicked
+            public void OnCheckBoxClicked(View view)
+            {
+                //if checkbox is checked
+                isHardcover = ((CheckBox) view).isChecked();
+
             }
         });
+
+
+
 
         // create listener for the create button
         wCreateBuyingListingButton.setOnClickListener(new View.OnClickListener() {

@@ -389,7 +389,7 @@ containing a value of this type.
         public static final int inline=0x7f080005;
         public static final int large=0x7f08000a;
         public static final int left=0x7f080008;
-        public static final int list=0x7f080018;
+        public static final int listViewListing =0x7f080018;
         public static final int login_help_email_input=0x7f08003e;
         public static final int login_help_instructions=0x7f08003d;
         public static final int login_help_submit=0x7f08003f;
