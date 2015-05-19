@@ -389,7 +389,7 @@ containing a value of this type.
         public static final int inline=0x7f080005;
         public static final int large=0x7f08000a;
         public static final int left=0x7f080008;
-        public static final int listViewListing=0x7f080018;
+        public static final int list=0x7f080018;
         public static final int login_help_email_input=0x7f08003e;
         public static final int login_help_instructions=0x7f08003d;
         public static final int login_help_submit=0x7f08003f;
@@ -427,7 +427,7 @@ containing a value of this type.
     public static final class layout {
         public static final int activity_create_buying_listing=0x7f030000;
         public static final int activity_create_selling_listing=0x7f030001;
-        public static final int activity_lisiting_view=0x7f030002;
+        public static final int activity_listing_view=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int com_facebook_friendpickerfragment=0x7f030004;
         public static final int com_facebook_login_activity_layout=0x7f030005;
