@@ -14,9 +14,17 @@
         android:text="@string/hello_world" />
     
     <ImageView
+        android:id="@+id/popup_hook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/havoclarge" />
+        android:src="@drawable/havoclarge"/>
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="popup"
+        android:onClick="launchPopup" />
 
 </RelativeLayout>
-<!-- From: file:/C:/Users/Joshua%20Lynch/AndroidStudio%20Workspace/com.cse110.tba/app/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/C:/Users/Hansen/Documents/TBA/app/src/main/res/layout/activity_main.xml -->

@@ -26,4 +26,4 @@
         android:layout_marginTop="@dimen/com_parse_ui_xlarge_vertical_spacing"
         android:text="@string/com_parse_ui_login_help_submit_button_label" />
 </LinearLayout>
-<!-- From: file:/C:/Users/Joshua%20Lynch/AndroidStudio%20Workspace/com.cse110.tba/parseUI/ParseLoginUI/res/layout/com_parse_ui_parse_login_help_form.xml --><!-- From: file:/C:/Users/Joshua%20Lynch/AndroidStudio%20Workspace/com.cse110.tba/app/build/intermediates/exploded-aar/com.cse110.tba/ParseLoginUI/unspecified/res/layout/com_parse_ui_parse_login_help_form.xml -->
+<!-- From: file:/C:/Users/Hansen/Documents/TBA/parseUI/ParseLoginUI/res/layout/com_parse_ui_parse_login_help_form.xml --><!-- From: file:/C:/Users/Hansen/Documents/TBA/app/build/intermediates/exploded-aar/TBA/ParseLoginUI/unspecified/res/layout/com_parse_ui_parse_login_help_form.xml -->

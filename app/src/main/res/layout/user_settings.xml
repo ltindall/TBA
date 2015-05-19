@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/zip_code"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/zip_hint"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/call_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/call_hint"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/text_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/text_hint"
+        android:inputType="phone" />
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/button_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_settings_submit"
+        android:onClick="submit" />
+
+</LinearLayout>

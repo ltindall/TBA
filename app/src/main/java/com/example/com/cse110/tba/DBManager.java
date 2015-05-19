@@ -1,12 +1,18 @@
 package com.example.com.cse110.tba;
 
+import android.util.Log;
+
 import com.parse.FindCallback;
+import com.parse.FunctionCallback;
+import com.parse.ParseACL;
+import com.parse.ParseCloud;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -26,12 +32,16 @@ public class DBManager
         ParseUser currentUser = ParseUser.getCurrentUser();
         if(isBuyOrder)
         {
+            ParseACL postACL = new ParseACL(ParseUser.getCurrentUser());
+            postACL.setPublicReadAccess(true);
+
             ParseObject book = new ParseObject("CustomBook");
             book.put("Title", title);
             book.put("Author", author);
             book.put("ISBN", isbn);
             book.put("Year", year);
             book.put("Edition", edition);
+            book.setACL(postACL);
 
             ParseObject bookListing = new ParseObject("BuyListing");
             bookListing.put("Book", book);
@@ -40,16 +50,28 @@ public class DBManager
             bookListing.put("Comment", comment);
             bookListing.put("HardCover", isHardcover);
             bookListing.put("User", currentUser.getEmail());
+            bookListing.setACL(postACL);
             bookListing.saveInBackground();
+
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            params.put("type", "BuyListing");
+            params.put("isbn", isbn);
+            params.put("price", price);
+
+            ParseCloud.callFunctionInBackground("detectMatches", params);
         }
         else
         {
+            ParseACL postACL = new ParseACL(ParseUser.getCurrentUser());
+            postACL.setPublicReadAccess(true);
+
             ParseObject book = new ParseObject("CustomBook");
             book.put("Title", title);
             book.put("Author", author);
             book.put("ISBN", isbn);
             book.put("Year", year);
             book.put("Edition", edition);
+            book.setACL(postACL);
 
             ParseObject bookListing = new ParseObject("SellListing");
             bookListing.put("Book", book);
@@ -58,12 +80,20 @@ public class DBManager
             bookListing.put("Comment", comment);
             bookListing.put("HardCover", isHardcover);
             bookListing.put("User", currentUser.getEmail());
+            bookListing.setACL(postACL);
             bookListing.saveInBackground();
+
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            params.put("type", "SellListing");
+            params.put("isbn", isbn);
+            params.put("price", price);
+
+            ParseCloud.callFunctionInBackground("detectMatches", params);
         }
     }
 
     public void getBuyListings(String title, String author, int isbn,
-                                String order)
+                                String order, int limit)
     {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("BuyListing");
         if(title != null)
@@ -87,6 +117,11 @@ public class DBManager
             }
         }
 
+        if(limit != -1)
+        {
+            query.setLimit(limit);
+        }
+
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> result, ParseException e) {
                 if (e == null) {
@@ -99,8 +134,9 @@ public class DBManager
     }
 
     public void getSellListings(String title, String author, int isbn,
-                               String order)
+                               String order, int limit)
     {
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("SellListing");
         if(title != null)
         {
@@ -121,6 +157,11 @@ public class DBManager
             {
                 query.orderByAscending(order);
             }
+        }
+
+        if(limit != -1)
+        {
+            query.setLimit(limit);
         }
 
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -149,11 +190,13 @@ public class DBManager
         });
     }
 
-    public void setUserSettings(int zipCode, String phone, String text)
+    public void setUserSettings(int zipCode, String call, String text)
     {
+        int validParamCount = 0;
         ParseUser current = ParseUser.getCurrentUser();
         if(zipCode != -1)
         {
+            ++validParamCount;
             ParseQuery<ParseObject> query = ParseQuery.getQuery("ZipcodeDB");
             query.whereEqualTo("Zip", zipCode);
             query.findInBackground(new FindCallback<ParseObject>() {
@@ -170,14 +213,19 @@ public class DBManager
             });
             current.put("Zipcode", zipCode);
         }
-        if(phone != null)
+        if(call != null)
         {
-            current.put("Phone", phone);
+            ++validParamCount;
+            current.put("Call", call);
         }
         if(text != null)
         {
+            ++validParamCount;
             current.put("Text", text);
         }
-        current.saveInBackground();
+        if(validParamCount > 0)
+        {
+            current.saveInBackground();
+        }
     }
 }
