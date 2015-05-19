@@ -8,6 +8,7 @@ import com.parse.ui.ParseLoginBuilder;
 
 import android.app.ActionBar;
 import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -95,8 +96,26 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
+        ComponentName cn = new ComponentName(this, SearchResultsActivity.class);
         searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
+                searchManager.getSearchableInfo(cn));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            public boolean onQueryTextChange(String newText) {
+                // this is your adapter that will be filtered
+                //listAdapter.getFilter().filter(newText);
+                return true;
+            }
+
+            public boolean onQueryTextSubmit(String query) {
+                Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
+                intent.setAction(Intent.ACTION_SEARCH);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                //listAdapter.getFilter().filter(query);
+                return true;
+            }
+        });
 
         // Inflate menu options
         menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");

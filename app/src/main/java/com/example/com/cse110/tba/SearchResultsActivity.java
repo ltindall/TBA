@@ -27,8 +27,7 @@ public class SearchResultsActivity extends ListActivity implements DBAsync{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbm = new DBManager(this);
-        Intent search = new Intent(Intent.ACTION_SEARCH);
-        handleIntent(search);
+        handleIntent(getIntent());
     }
 
     @Override
@@ -40,9 +39,8 @@ public class SearchResultsActivity extends ListActivity implements DBAsync{
     private void handleIntent(Intent intent) {
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
+            String query = intent.getStringExtra("query");
             long searchBy = currentSpinnerOption;
-            String s = String.valueOf(currentSpinnerOption);
             switch ((int)searchBy) {
                 case 0: dbm.getSellListings(query, null, -1, null,-1);
                         break;
