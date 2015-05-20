@@ -116,6 +116,10 @@
             android:name=".CreateSellingListing"
             android:label="@string/title_activity_create_selling_listing" >
         </activity>
+        <activity
+            android:name=".listingView"
+            android:label="listingView" >
+        </activity>
     </application>
 
 </manifest>

@@ -89,6 +89,9 @@
     <!-- From: file:/C:/Users/Hansen/Documents/TBA/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.23.1/res/values/values.xml -->
     <eat-comment/>
     <drawable name="com_facebook_picker_default_separator_color">#33464c59</drawable>
+    <!-- From: file:/C:/Users/Hansen/Documents/TBA/app/src/main/res/values/ids.xml -->
+    <eat-comment/>
+    <item name="menu_search" type="id"/>
     <!-- From: file:/C:/Users/Hansen/Documents/TBA/app/build/intermediates/exploded-aar/TBA/ParseLoginUI/unspecified/res/values/values.xml -->
     <eat-comment/>
     <plurals name="com_parse_ui_password_too_short_toast">

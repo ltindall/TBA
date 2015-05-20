@@ -65,17 +65,17 @@ uses-permission#com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE
 ADDED from AndroidManifest.xml:23:5
 	android:name
 		ADDED from AndroidManifest.xml:23:22
-android:uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from AndroidManifest.xml:25:5
 	android:maxSdkVersion
 		ADDED from AndroidManifest.xml:27:9
 	android:name
 		ADDED from AndroidManifest.xml:26:9
-android:uses-permission#android.permission.READ_PHONE_STATE
+uses-permission#android.permission.READ_PHONE_STATE
 ADDED from AndroidManifest.xml:28:5
 	android:name
-		ADDED from AndroidManifest.xml:28:30
-android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
+		ADDED from AndroidManifest.xml:28:22
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from AndroidManifest.xml:29:5
 	android:maxSdkVersion
 		ADDED from AndroidManifest.xml:31:9
@@ -231,13 +231,13 @@ ADDED from AndroidManifest.xml:111:9
 		ADDED from AndroidManifest.xml:113:13
 	android:name
 		ADDED from AndroidManifest.xml:112:13
-activity#com.example.com.cse110.tba.CreateSeelingListing
+activity#com.example.com.cse110.tba.CreateSellingListing
 ADDED from AndroidManifest.xml:115:9
 	android:label
 		ADDED from AndroidManifest.xml:117:13
 	android:name
 		ADDED from AndroidManifest.xml:116:13
-activity#com.example.com.cse110.tba.CreateSellingListing
+activity#com.example.com.cse110.tba.listingView
 ADDED from AndroidManifest.xml:119:9
 	android:label
 		ADDED from AndroidManifest.xml:121:13
