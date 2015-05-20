@@ -28,6 +28,13 @@ public class ListingAdapter extends ArrayAdapter<ParseObject> {
         mListing = listing;
     }
 
+    /*
+        A getter function to access the List of ParseObjects
+     */
+    public List<ParseObject> getmListing() {
+        return mListing;
+    }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;

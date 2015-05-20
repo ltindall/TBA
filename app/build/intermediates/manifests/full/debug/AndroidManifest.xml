@@ -21,12 +21,11 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE" />
-
-    <android:uses-permission
+    <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
 
@@ -113,12 +112,12 @@
             android:label="@string/title_activity_create_buying_listing" >
         </activity>
         <activity
-            android:name="com.example.com.cse110.tba.CreateSeelingListing"
-            android:label="@string/title_activity_create_seeling_listing" >
-        </activity>
-        <activity
             android:name="com.example.com.cse110.tba.CreateSellingListing"
             android:label="@string/title_activity_create_selling_listing" >
+        </activity>
+        <activity
+            android:name="com.example.com.cse110.tba.listingView"
+            android:label="listingView" >
         </activity>
     </application>
 

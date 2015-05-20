@@ -121,7 +121,7 @@ public class CreateSellingListing extends Activity {
                             if (e == null) {
                                 // successfully storing everything
                                 // create toast
-                                Toast.makeText(CreateSellingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG);
+                                Toast.makeText(CreateSellingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG).show();
 
                                 // bring user to the next page later (INTENT)
                             }

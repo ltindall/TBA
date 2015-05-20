@@ -26,5 +26,10 @@
         android:text="popup"
         android:onClick="launchPopup" />
 
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </RelativeLayout>
 <!-- From: file:/C:/Users/Hansen/Documents/TBA/app/src/main/res/layout/activity_main.xml -->

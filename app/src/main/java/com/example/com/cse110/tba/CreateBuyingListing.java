@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,9 +32,11 @@ public class CreateBuyingListing extends Activity {
     protected EditText wCondition;
     protected EditText wComment;
     protected CheckBox wHardCover;
+    protected boolean isHardcover;
 
     // button information
     protected Button wCreateBuyingListingButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,26 @@ public class CreateBuyingListing extends Activity {
         wCondition = (EditText)findViewById(R.id.createListingBookCondition);
         wComment = (EditText)findViewById(R.id.createListingBookComment);
         wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
+
+
+
+       // create an on click listener to toggle the value of Hardcover boolean
+        wHardCover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnCheckBoxClicked(v);
+            }
+
+            //a function to be called when checkbox is clicked
+            public void OnCheckBoxClicked(View view)
+            {
+                //if checkbox is checked
+                isHardcover = ((CheckBox) view).isChecked();
+
+            }
+        });
+
+
 
 
         // create listener for the create button
@@ -114,7 +137,7 @@ public class CreateBuyingListing extends Activity {
                         if (e == null) {
                             // successfully storing everything
                             // create toast
-                            Toast.makeText(CreateBuyingListing.this, "Success Creating Listing", Toast.LENGTH_LONG);
+                            Toast.makeText(CreateBuyingListing.this, "Success Creating Listing", Toast.LENGTH_LONG).show();
 
                             // bring user to the next page later (INTENT)
                         }
