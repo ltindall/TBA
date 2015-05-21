@@ -167,14 +167,14 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
     private void populateListView( List<ParseObject> listofListing)
     {
-
+        // listofListing is a list of Listing object that wants to be displayed.
         //make an adapter containing a String from each Listing objects
 
         ListingAdapter listAdapter = new ListingAdapter(this, listofListing);
 
         // make a list view and configure it with the created adapter
         // create a ListView data structure to contain the adapter
-        ListView displayedListing = (ListView) findViewById(R.id.listViewListing);
+        ListView displayedListing = (ListView) findViewById(R.id.listViewMainPage);
         //set the adapter into the ListView
         displayedListing.setAdapter(listAdapter);
     }
@@ -186,7 +186,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     private void registerOnClick()
     {
         // grab the ListView
-        ListView displayedListing = (ListView) findViewById(R.id.);
+        ListView displayedListing = (ListView) findViewById(R.id.listViewMainPage);
 
         // create a click listener and display the details of the Lsiting object when clicked
         displayedListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
