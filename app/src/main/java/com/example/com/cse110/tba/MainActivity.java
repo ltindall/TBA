@@ -18,8 +18,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 
@@ -45,6 +47,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
+
+        registerOnClick();
 
 	}
 
@@ -159,5 +163,42 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     {
         currentSpinnerItem = l;
         return true;
+    }
+
+    private void populateListView( List<ParseObject> listofListing)
+    {
+
+        //make an adapter containing a String from each Listing objects
+
+        ListingAdapter listAdapter = new ListingAdapter(this, listofListing);
+
+        // make a list view and configure it with the created adapter
+        // create a ListView data structure to contain the adapter
+        ListView displayedListing = (ListView) findViewById(R.id.listViewListing);
+        //set the adapter into the ListView
+        displayedListing.setAdapter(listAdapter);
+    }
+
+    /*
+     * This method will handle a Click event. When a ListView item is clicked, the click listener
+     * will view a detailed information of the Lsitng object clicked
+     */
+    private void registerOnClick()
+    {
+        // grab the ListView
+        ListView displayedListing = (ListView) findViewById(R.id.);
+
+        // create a click listener and display the details of the Lsiting object when clicked
+        displayedListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
+                //make a ListingPopup object to show the clicked Listing
+                ListingPopup popup = new ListingPopup(MainActivity.this ,   // Context
+                        (ParseObject) parent.getAdapter().getItem(position) , //ParseObject to be displayed. How to get the ParseObject???????
+                        viewClicked);   // View where popup will be shown
+            }
+        });
+
+
     }
 }
