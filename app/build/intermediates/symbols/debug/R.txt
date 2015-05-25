@@ -1,27 +1,31 @@
 int array search_spinner 0x7f050000
-int attr auxiliary_view_position 0x7f010004
-int attr confirm_logout 0x7f010006
-int attr done_button_background 0x7f010010
-int attr done_button_text 0x7f01000e
-int attr extra_fields 0x7f01000b
-int attr fetch_user_info 0x7f010007
-int attr foreground_color 0x7f010001
-int attr horizontal_alignment 0x7f010005
-int attr is_cropped 0x7f010016
-int attr login_text 0x7f010008
-int attr logout_text 0x7f010009
-int attr multi_select 0x7f010000
-int attr object_id 0x7f010002
-int attr preset_size 0x7f010015
-int attr radius_in_meters 0x7f010011
-int attr results_limit 0x7f010012
-int attr search_text 0x7f010013
-int attr show_pictures 0x7f01000a
-int attr show_search_box 0x7f010014
-int attr show_title_bar 0x7f01000c
-int attr style 0x7f010003
-int attr title_bar_background 0x7f01000f
-int attr title_text 0x7f01000d
+int attr auxiliary_view_position 0x7f010008
+int attr confirm_logout 0x7f01000a
+int attr done_button_background 0x7f010014
+int attr done_button_text 0x7f010012
+int attr extra_fields 0x7f01000f
+int attr fetch_user_info 0x7f01000b
+int attr foreground_color 0x7f010005
+int attr horizontal_alignment 0x7f010009
+int attr is_cropped 0x7f01001a
+int attr login_text 0x7f01000c
+int attr logout_text 0x7f01000d
+int attr multi_select 0x7f010004
+int attr object_id 0x7f010006
+int attr preset_size 0x7f010019
+int attr radius_in_meters 0x7f010015
+int attr results_limit 0x7f010016
+int attr search_text 0x7f010017
+int attr seriesColor 0x7f010003
+int attr seriesData 0x7f010000
+int attr seriesTitle 0x7f010002
+int attr seriesType 0x7f010001
+int attr show_pictures 0x7f01000e
+int attr show_search_box 0x7f010018
+int attr show_title_bar 0x7f010010
+int attr style 0x7f010007
+int attr title_bar_background 0x7f010013
+int attr title_text 0x7f010011
 int color com_facebook_blue 0x7f060000
 int color com_facebook_likeboxcountview_border_color 0x7f060001
 int color com_facebook_likeboxcountview_text_color 0x7f060002
@@ -198,7 +202,7 @@ int id facebook_login 0x7f080040
 int id inline 0x7f080005
 int id large 0x7f08000a
 int id left 0x7f080008
-int id list 0x7f080018
+int id listViewListing 0x7f080018
 int id login_help_email_input 0x7f08003e
 int id login_help_instructions 0x7f08003d
 int id login_help_submit 0x7f08003f
@@ -370,20 +374,26 @@ int style ParseLoginUI_TextView 0x7f0b0007
 int style com_facebook_loginview_default_style 0x7f0b0008
 int style com_facebook_loginview_silver_style 0x7f0b0009
 int style tooltip_bubble_text 0x7f0b000a
-int[] styleable com_facebook_friend_picker_fragment { 0x7f010000 }
+int[] styleable GraphViewXML { 0x010101e1, 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003 }
+int styleable GraphViewXML_android_title 0
+int styleable GraphViewXML_seriesColor 4
+int styleable GraphViewXML_seriesData 1
+int styleable GraphViewXML_seriesTitle 3
+int styleable GraphViewXML_seriesType 2
+int[] styleable com_facebook_friend_picker_fragment { 0x7f010004 }
 int styleable com_facebook_friend_picker_fragment_multi_select 0
-int[] styleable com_facebook_like_view { 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005 }
+int[] styleable com_facebook_like_view { 0x7f010005, 0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009 }
 int styleable com_facebook_like_view_auxiliary_view_position 3
 int styleable com_facebook_like_view_foreground_color 0
 int styleable com_facebook_like_view_horizontal_alignment 4
 int styleable com_facebook_like_view_object_id 1
 int styleable com_facebook_like_view_style 2
-int[] styleable com_facebook_login_view { 0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009 }
+int[] styleable com_facebook_login_view { 0x7f01000a, 0x7f01000b, 0x7f01000c, 0x7f01000d }
 int styleable com_facebook_login_view_confirm_logout 0
 int styleable com_facebook_login_view_fetch_user_info 1
 int styleable com_facebook_login_view_login_text 2
 int styleable com_facebook_login_view_logout_text 3
-int[] styleable com_facebook_picker_fragment { 0x7f01000a, 0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f01000f, 0x7f010010 }
+int[] styleable com_facebook_picker_fragment { 0x7f01000e, 0x7f01000f, 0x7f010010, 0x7f010011, 0x7f010012, 0x7f010013, 0x7f010014 }
 int styleable com_facebook_picker_fragment_done_button_background 6
 int styleable com_facebook_picker_fragment_done_button_text 4
 int styleable com_facebook_picker_fragment_extra_fields 1
@@ -391,12 +401,12 @@ int styleable com_facebook_picker_fragment_show_pictures 0
 int styleable com_facebook_picker_fragment_show_title_bar 2
 int styleable com_facebook_picker_fragment_title_bar_background 5
 int styleable com_facebook_picker_fragment_title_text 3
-int[] styleable com_facebook_place_picker_fragment { 0x7f010011, 0x7f010012, 0x7f010013, 0x7f010014 }
+int[] styleable com_facebook_place_picker_fragment { 0x7f010015, 0x7f010016, 0x7f010017, 0x7f010018 }
 int styleable com_facebook_place_picker_fragment_radius_in_meters 0
 int styleable com_facebook_place_picker_fragment_results_limit 1
 int styleable com_facebook_place_picker_fragment_search_text 2
 int styleable com_facebook_place_picker_fragment_show_search_box 3
-int[] styleable com_facebook_profile_picture_view { 0x7f010015, 0x7f010016 }
+int[] styleable com_facebook_profile_picture_view { 0x7f010019, 0x7f01001a }
 int styleable com_facebook_profile_picture_view_is_cropped 1
 int styleable com_facebook_profile_picture_view_preset_size 0
 int xml searchable 0x7f040000

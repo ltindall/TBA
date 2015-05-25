@@ -80,9 +80,11 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     {
         Log.d("MainActivity", "Button pressed");
         ParseObject sampleListing = new ParseObject("BuyListing");
-        sampleListing.put("Title", "Antigone");
-        sampleListing.put("ISBN", 7616);
+        ParseObject sampleBook = new ParseObject("CustomBook");
+        sampleBook.put("Title", "Antigone");
+        sampleBook.put("ISBN", 7616);
         sampleListing.put("Price", 9002);
+        sampleListing.put("Book", sampleBook);
         ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v);
     }
 
@@ -146,6 +148,16 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
     @Override
     public void onSellListingsLoad(List<ParseObject> sellListings) {
+
+    }
+
+    @Override
+    public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
+
+    }
+
+    @Override
+    public void onSellHistoryLoad(List<ParseObject> sellHistory) {
 
     }
 

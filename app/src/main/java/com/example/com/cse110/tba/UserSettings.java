@@ -16,6 +16,15 @@ import java.util.List;
  */
 public class UserSettings extends Activity implements  DBAsync
 {
+    @Override
+    public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
+
+    }
+
+    @Override
+    public void onSellHistoryLoad(List<ParseObject> sellHistory) {
+
+    }
 
     private int currentZip;
 

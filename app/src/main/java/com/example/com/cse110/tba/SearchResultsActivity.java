@@ -86,6 +86,17 @@ public class SearchResultsActivity extends ListActivity implements DBAsync{
         else
             Log.d("SearchFunction", "NULL OBJECT");
     }
+
+    @Override
+    public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
+
+    }
+
+    @Override
+    public void onSellHistoryLoad(List<ParseObject> sellHistory) {
+
+    }
+
     // what is this going to do?
     public void onUserLoad(List<ParseUser> userList){
         if (userList != null) {

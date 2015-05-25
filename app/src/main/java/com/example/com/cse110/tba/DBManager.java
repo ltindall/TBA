@@ -17,15 +17,20 @@ import java.util.List;
 
 /**
  * Created by Joshua Lynch on 4/26/2015.
+ * Manager Class for dealing with all database queries, has methods for downloading and uploading data,
+ * paired with DBAsync to return data asynchronously
  */
 public class DBManager
 {
+    //the calling class that instantiated this instance, should be 'this'
     private DBAsync caller;
+
     public DBManager(DBAsync c)
     {
         caller = c;
     }
 
+    //add a book listing to the database
     public void addBookListing(boolean isBuyOrder, String title, String author, int isbn, float price,
                                int condition, int year, int edition, String comment, boolean isHardcover)
     {
@@ -49,6 +54,7 @@ public class DBManager
             bookListing.put("Condition", condition);
             bookListing.put("Comment", comment);
             bookListing.put("HardCover", isHardcover);
+            bookListing.put("isHistory", false);
             bookListing.put("User", currentUser.getEmail());
             bookListing.setACL(postACL);
             bookListing.saveInBackground();
@@ -58,6 +64,7 @@ public class DBManager
             params.put("isbn", isbn);
             params.put("price", price);
 
+            //run cloud code to detect matching listing and contact its user
             ParseCloud.callFunctionInBackground("detectMatches", params);
         }
         else
@@ -79,6 +86,7 @@ public class DBManager
             bookListing.put("Condition", condition);
             bookListing.put("Comment", comment);
             bookListing.put("HardCover", isHardcover);
+            bookListing.put("isHistory", false);
             bookListing.put("User", currentUser.getEmail());
             bookListing.setACL(postACL);
             bookListing.saveInBackground();
@@ -88,6 +96,7 @@ public class DBManager
             params.put("isbn", isbn);
             params.put("price", price);
 
+            //run cloud code to detect matching listing and contact its user
             ParseCloud.callFunctionInBackground("detectMatches", params);
         }
     }
@@ -125,6 +134,7 @@ public class DBManager
         }
 
         listQuery.whereMatchesQuery("Book", bookQuery);
+        listQuery.whereEqualTo("isHistory", false);
         listQuery.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> result, ParseException e) {
                 if (e == null) {
@@ -136,11 +146,9 @@ public class DBManager
         });
     }
 
-    //public void getBooksInDB
     public void getSellListings (String title, String author, int isbn,
                                String order, int limit)
     {
-
         ParseQuery<ParseObject> bookQuery = ParseQuery.getQuery("CustomBook");
         if(title != null)
         {
@@ -171,6 +179,7 @@ public class DBManager
         }
 
         listQuery.whereMatchesQuery("Book", bookQuery);
+        listQuery.whereEqualTo("isHistory", false);
         listQuery.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> result, ParseException e) {
                 if (e == null) {
@@ -234,5 +243,55 @@ public class DBManager
         {
             current.saveInBackground();
         }
+    }
+
+    public void getBuyHistory(int isbn, int limit)
+    {
+        ParseQuery<ParseObject> bookQuery = ParseQuery.getQuery("CustomBook");
+        bookQuery.whereEqualTo("ISBN", isbn);
+        ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("BuyListing");
+        listQuery.whereEqualTo("isHistory", true);
+        listQuery.orderByAscending("createdAt");
+
+        if(limit != -1)
+        {
+            listQuery.setLimit(limit);
+        }
+
+        listQuery.whereMatchesQuery("Book", bookQuery);
+        listQuery.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> result, ParseException e) {
+                if (e == null) {
+                    caller.onBuyHistoryLoad(result);
+                } else {
+                    caller.onBuyHistoryLoad(null);
+                }
+            }
+        });
+    }
+
+    public void getSellHistory(int isbn, int limit)
+    {
+        ParseQuery<ParseObject> bookQuery = ParseQuery.getQuery("CustomBook");
+        bookQuery.whereEqualTo("ISBN", isbn);
+        ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("SellListing");
+        listQuery.whereEqualTo("isHistory", true);
+        listQuery.orderByAscending("createdAt");
+
+        if(limit != -1)
+        {
+            listQuery.setLimit(limit);
+        }
+
+        listQuery.whereMatchesQuery("Book", bookQuery);
+        listQuery.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> result, ParseException e) {
+                if (e == null) {
+                    caller.onSellHistoryLoad(result);
+                } else {
+                    caller.onSellHistoryLoad(null);
+                }
+            }
+        });
     }
 }
