@@ -120,14 +120,17 @@ public class CreateBuyingListing extends Activity {
                 bookListing.put("Comment", bookComment);
                 bookListing.put("User", currentUser.getEmail());
 
-                boolean checked = wHardCover.isChecked();
+
+                /*boolean checked = wHardCover.isChecked();
                 if (checked) {
                     bookListing.put("HardCover", true);
                 }
 
                 else {
                     bookListing.put("HardCover", false);
-                }
+                }*/
+                //alternatively, can use isHardCover member variable
+                bookListing.put("HardCover", isHardcover);
 
                 // save it
                 book.saveInBackground();

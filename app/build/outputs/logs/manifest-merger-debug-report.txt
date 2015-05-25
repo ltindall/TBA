@@ -241,9 +241,3 @@ ADDED from AndroidManifest.xml:115:9
 		ADDED from AndroidManifest.xml:117:13
 	android:name
 		ADDED from AndroidManifest.xml:116:13
-activity#com.example.com.cse110.tba.listingView
-ADDED from AndroidManifest.xml:119:9
-	android:label
-		ADDED from AndroidManifest.xml:121:13
-	android:name
-		ADDED from AndroidManifest.xml:120:13

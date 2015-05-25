@@ -38,6 +38,7 @@ public class CreateSellingListing extends Activity {
         protected EditText wCondition;
         protected EditText wComment;
         protected CheckBox wHardCover;
+        protected boolean isHardcover;
 
         // button information
         protected Button wCreateSellingListingButton;
@@ -60,6 +61,21 @@ public class CreateSellingListing extends Activity {
             wComment = (EditText)findViewById(R.id.createListingBookComment);
             wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
 
+            // create an on click listener to toggle the value of Hardcover boolean
+            wHardCover.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    OnCheckBoxClicked(v);
+                }
+
+                //a function to be called when checkbox is clicked
+                public void OnCheckBoxClicked(View view)
+                {
+                    //if checkbox is checked
+                    isHardcover = ((CheckBox) view).isChecked();
+
+                }
+            });
 
             // create listener for the create button
             wCreateSellingListingButton.setOnClickListener(new View.OnClickListener() {
@@ -103,15 +119,18 @@ public class CreateSellingListing extends Activity {
                     bookListing.put("Condition", bookCondition);
                     bookListing.put("Comment", bookComment);
                     bookListing.put("User", currentUser.getEmail());
+                    bookListing.put("HardCover", isHardcover);
 
-                    boolean checked = wHardCover.isChecked();
+
+                    /*boolean checked = wHardCover.isChecked();
                     if (checked) {
                         bookListing.put("HardCover", true);
                     }
 
                     else {
                         bookListing.put("HardCover", false);
-                    }
+                    }*/
+
 
                     // save it
                     book.saveInBackground();
