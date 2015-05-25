@@ -1,8 +1,6 @@
 -- Merging decision tree log ---
 manifest
 ADDED from AndroidManifest.xml:2:1
-	xmlns:android
-		ADDED from AndroidManifest.xml:2:11
 	package
 		ADDED from AndroidManifest.xml:3:5
 		INJECTED from AndroidManifest.xml:0:0
@@ -13,11 +11,15 @@ ADDED from AndroidManifest.xml:2:1
 		ADDED from AndroidManifest.xml:4:5
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
 uses-sdk
 ADDED from AndroidManifest.xml:7:5
-MERGED from TBA:ParseLoginUI:unspecified:7:5
+MERGED from com.cse110.tba:ParseLoginUI:unspecified:7:5
 MERGED from com.android.support:support-v4:22.0.0:20:5
 MERGED from com.facebook.android:facebook-android-sdk:3.23.1:20:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.jjoe64:graphview:4.0.1:7:5
 MERGED from com.android.support:support-v4:22.0.0:20:5
 	android:targetSdkVersion
 		ADDED from AndroidManifest.xml:9:9
@@ -83,9 +85,11 @@ ADDED from AndroidManifest.xml:29:5
 		ADDED from AndroidManifest.xml:30:9
 application
 ADDED from AndroidManifest.xml:33:5
-MERGED from TBA:ParseLoginUI:unspecified:11:5
+MERGED from com.cse110.tba:ParseLoginUI:unspecified:11:5
 MERGED from com.android.support:support-v4:22.0.0:22:5
 MERGED from com.facebook.android:facebook-android-sdk:3.23.1:24:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.jjoe64:graphview:4.0.1:11:5
 MERGED from com.android.support:support-v4:22.0.0:22:5
 	android:label
 		ADDED from AndroidManifest.xml:37:9
@@ -129,16 +133,16 @@ activity#com.parse.ui.ParseLoginActivity
 ADDED from AndroidManifest.xml:57:9
 	android:label
 		ADDED from AndroidManifest.xml:59:13
-	android:name
-		ADDED from AndroidManifest.xml:58:13
 	android:launchMode
 		ADDED from AndroidManifest.xml:60:13
+	android:name
+		ADDED from AndroidManifest.xml:58:13
 meta-data#com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED
 ADDED from AndroidManifest.xml:61:13
-	android:name
-		ADDED from AndroidManifest.xml:62:17
 	android:value
 		ADDED from AndroidManifest.xml:63:17
+	android:name
+		ADDED from AndroidManifest.xml:62:17
 meta-data#com.parse.ui.ParseLoginActivity.APP_LOGO
 ADDED from AndroidManifest.xml:65:13
 	android:resource
@@ -147,16 +151,16 @@ ADDED from AndroidManifest.xml:65:13
 		ADDED from AndroidManifest.xml:66:17
 meta-data#com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME
 ADDED from AndroidManifest.xml:69:13
-	android:name
-		ADDED from AndroidManifest.xml:70:17
 	android:value
 		ADDED from AndroidManifest.xml:71:17
+	android:name
+		ADDED from AndroidManifest.xml:70:17
 meta-data#com.parse.ui.ParseLoginActivity.PARSE_SIGNUP_MIN_PASSWORD_LENGTH
 ADDED from AndroidManifest.xml:72:13
-	android:name
-		ADDED from AndroidManifest.xml:73:17
 	android:value
 		ADDED from AndroidManifest.xml:74:17
+	android:name
+		ADDED from AndroidManifest.xml:73:17
 activity#com.example.com.cse110.tba.SearchResultsActivity
 ADDED from AndroidManifest.xml:76:9
 	android:name
@@ -237,9 +241,3 @@ ADDED from AndroidManifest.xml:115:9
 		ADDED from AndroidManifest.xml:117:13
 	android:name
 		ADDED from AndroidManifest.xml:116:13
-activity#com.example.com.cse110.tba.listingView
-ADDED from AndroidManifest.xml:119:9
-	android:label
-		ADDED from AndroidManifest.xml:121:13
-	android:name
-		ADDED from AndroidManifest.xml:120:13

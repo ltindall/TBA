@@ -17,6 +17,7 @@ import com.parse.ParseObject;
 
 /**
  * Created by Joshua Lynch on 5/14/2015.
+ * Creates a popup object that displays the data from a CustomBook object
  */
 public class ListingPopup
 {
@@ -35,10 +36,10 @@ public class ListingPopup
         popup.setContentView(popUpView);
 
         TextView title = (TextView)popUpView.findViewById(R.id.popup_title);
-        title.setText("Title: " + listing.getString("Title"));
+        title.setText("Title: " + listing.getParseObject("Book").getString("Title"));
 
         TextView isbn = (TextView)popUpView.findViewById(R.id.popup_isbn);
-        isbn.setText("ISBN: " + listing.getInt("ISBN"));
+        isbn.setText("ISBN: " + listing.getParseObject("Book").getInt("ISBN"));
 
         TextView price = (TextView)popUpView.findViewById(R.id.popup_price);
         price.setText("Price: " + listing.getDouble("Price"));
