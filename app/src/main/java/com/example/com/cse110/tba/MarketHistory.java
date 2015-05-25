@@ -2,6 +2,7 @@ package com.example.com.cse110.tba;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -44,7 +45,10 @@ public class MarketHistory extends Activity implements DBAsync
         {
             gView.setTitle("Sell Listings");
         }
-        //CREATE THE GRAPH STUFF HERE
+        // display graph
+        setContentView(R.layout.history_view);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.graph1);
+        layout.addView(gView);
     }
 
     public void updateData()
