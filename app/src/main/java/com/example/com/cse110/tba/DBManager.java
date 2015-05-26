@@ -283,7 +283,7 @@ public class DBManager
             listQuery.setLimit(limit);
         }
 
-        listQuery.whereMatchesQuery("Book", bookQuery);
+        //listQuery.whereMatchesQuery("Book", bookQuery);
         listQuery.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> result, ParseException e) {
                 if (e == null) {

@@ -1,6 +1,7 @@
 package com.example.com.cse110.tba;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -67,6 +68,10 @@ public class UserSettings extends Activity implements  DBAsync
         }
 
 
+        Intent intent = new Intent(this, MarketHistory.class);
+        intent.putExtra("listingType", MarketHistory.SELL_HISTORY);
+        intent.putExtra("ISBN", 7616);
+        startActivity(intent);
     }
 
     public void submit(View v)
