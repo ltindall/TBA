@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,22 +31,18 @@ public class CreateBuyingListing extends Activity {
     protected EditText wPrice;
     protected EditText wCondition;
     protected EditText wComment;
-
-    protected CheckBox wNewBook;
-    protected CheckBox wUsedBook;
     protected CheckBox wHardCover;
+    protected boolean isHardcover;
 
     // button information
     protected Button wCreateBuyingListingButton;
 
-    private DBManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_buying_listing);
 
-        manager = new DBManager(this);
         // initializing
         wBookTitle = (EditText)findViewById(R.id.createListingBookTitle);
         wBookAuthor = (EditText)findViewById(R.id.createListingBookAuthor);
@@ -57,10 +54,27 @@ public class CreateBuyingListing extends Activity {
         wPrice = (EditText)findViewById(R.id.createListingBookPrice);
         wCondition = (EditText)findViewById(R.id.createListingBookCondition);
         wComment = (EditText)findViewById(R.id.createListingBookComment);
-        //This CheckBox crashes. Don't know why. -Hansen-.
-        wNewBook = (CheckBox)findViewById(R.id.bookConditionNew);
-        wUsedBook = (CheckBox)findViewById(R.id.bookConditionUsed);
         wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
+
+
+
+       // create an on click listener to toggle the value of Hardcover boolean
+        wHardCover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnCheckBoxClicked(v);
+            }
+
+            //a function to be called when checkbox is clicked
+            public void OnCheckBoxClicked(View view)
+            {
+                //if checkbox is checked
+                isHardcover = ((CheckBox) view).isChecked();
+
+            }
+        });
+
+
 
 
         // create listener for the create button
@@ -72,57 +86,66 @@ public class CreateBuyingListing extends Activity {
                 String bookAuthor = wBookAuthor.getText().toString().trim();
 
                 String stringBookISBN = wBookISBN.getText().toString().trim();
-                int bookISBN = Integer.parseInt(stringBookISBN);
+                long bookISBN = Long.parseLong(stringBookISBN);
 
                 String stringBookYear = wBookYear.getText().toString().trim();
                 int bookYear = Integer.parseInt(stringBookYear);
 
                 String stringBookEdition = wBookYear.getText().toString().trim();
-                int bookEdition = Integer.parseInt(stringBookEdition);
+                double bookEdition = Double.parseDouble(stringBookEdition);
 
                 String stringBookPrice = wBookYear.getText().toString().trim();
-                float bookPrice = Float.parseFloat(stringBookPrice);
+                double bookPrice = Double.parseDouble(stringBookPrice);
 
                 String bookCondition = wCondition.getText().toString();
                 String bookComment = wComment.getText().toString();
 
-                boolean checkNew = wNewBook.isChecked();
-                boolean checkUsed = wUsedBook.isChecked();
-
-                int newBookOrNot = 0;
-                if (checkNew) {
-                    newBookOrNot = 1;
-                }
-
-                if (checkUsed) {
-                    newBookOrNot = 0;
-                }
-
-                boolean hardCoverChecked = wHardCover.isChecked();
 
                 // save it on parse as new Book object
+                ParseObject book = new ParseObject("CustomBook");
+                book.put("Title", bookTitle);
+                book.put("Author", bookAuthor);
+                book.put("ISBN", bookISBN);
+                book.put("Year", bookYear);
+                book.put("Edition", bookEdition);
+
                 // save it on parse as new Listing object
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                String currentUserUsername = currentUser.getUsername();
 
-                manager.addBookListing(true, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
-                        bookYear, bookEdition, bookComment, hardCoverChecked);
+                ParseObject bookListing = new ParseObject("BuyListing");
+                bookListing.put("Book", book);
+                bookListing.put("Price", bookPrice);
+                bookListing.put("Condition", bookCondition);
+                bookListing.put("Comment", bookComment);
+                bookListing.put("User", currentUser.getEmail());
 
+
+                /*boolean checked = wHardCover.isChecked();
+                if (checked) {
+                    bookListing.put("HardCover", true);
+                }
+
+                else {
+                    bookListing.put("HardCover", false);
+                }*/
+                //alternatively, can use isHardCover member variable
+                bookListing.put("HardCover", isHardcover);
 
                 // save it
-
+                book.saveInBackground();
                 bookListing.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
                         if (e == null) {
                             // successfully storing everything
                             // create toast
-                            // Changed Toast.LENGTH_LONG.show() to LENGTH_LONG -Hansen-
-                            Toast.makeText(CreateBuyingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG);
+                            Toast.makeText(CreateBuyingListing.this, "Success Creating Listing", Toast.LENGTH_LONG).show();
 
                             // bring user to the next page later (INTENT)
                         }
 
                         else {
-                            // Debugged this part. -Hansen-
                             // there is problem in storing
                             AlertDialog.Builder builder = new AlertDialog.Builder(CreateBuyingListing.this);
                             builder.setMessage(e.getMessage());

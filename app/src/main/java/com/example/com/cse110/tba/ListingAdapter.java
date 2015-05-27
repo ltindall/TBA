@@ -71,15 +71,15 @@ public class ListingAdapter extends ArrayAdapter<ParseObject> {
 
         // book Condition
         String bookCondition = listingObject.getString("ISBN");
-        holder.bookISBNListingAdapter.setText(bookCondition);
+        holder.bookConditionListingAdapter.setText(bookCondition);
 
         // book Price
         String bookPrice = listingObject.getString("Condition");
-        holder.bookISBNListingAdapter.setText(bookPrice);
+        holder.bookPriceListingAdapter.setText(bookPrice);
 
         // book User
         String bookUser = listingObject.getString("User");
-        holder.bookISBNListingAdapter.setText(bookUser);
+        holder.bookUserListingAdapter.setText(bookUser);
 
         return convertView;
     }
