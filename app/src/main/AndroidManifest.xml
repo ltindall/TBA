@@ -53,6 +53,10 @@
             android:name=".UserSettings"
             android:label="User Settings" />
 
+        <activity
+            android:name=".MarketHistory"
+            android:label="Market History" />
+
         <!-- Login activity that displays login screen and handles signup/password resets -->
         <activity
             android:name="com.parse.ui.ParseLoginActivity"
