@@ -121,6 +121,17 @@ public class SearchResultsActivity extends Activity implements DBAsync{
             Log.d("SearchFunction", "NULL OBJECT");
     }
 
+    @Override
+    public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
+
+    }
+
+    @Override
+    public void onSellHistoryLoad(List<ParseObject> sellHistory) {
+
+    }
+
+
     private void populateListView(List<ParseObject> sellListings){
         setContentView(R.layout.list_view);
         lister = (ListView)findViewById(R.id.list);

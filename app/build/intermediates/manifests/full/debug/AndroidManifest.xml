@@ -51,6 +51,9 @@
         <activity
             android:name="com.example.com.cse110.tba.UserSettings"
             android:label="User Settings" />
+        <activity
+            android:name="com.example.com.cse110.tba.MarketHistory"
+            android:label="Market History" />
 
         <!-- Login activity that displays login screen and handles signup/password resets -->
         <activity
@@ -114,10 +117,6 @@
         <activity
             android:name="com.example.com.cse110.tba.CreateSellingListing"
             android:label="@string/title_activity_create_selling_listing" >
-        </activity>
-        <activity
-            android:name="com.example.com.cse110.tba.listingView"
-            android:label="listingView" >
         </activity>
     </application>
 

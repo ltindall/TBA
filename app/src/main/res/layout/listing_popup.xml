@@ -24,6 +24,13 @@
         android:gravity="center"/>
 
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/popup_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Market History"
+        android:gravity="center_horizontal"/>
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/popup_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

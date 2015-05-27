@@ -10,9 +10,13 @@ import java.util.List;
  */
 public interface DBAsync
 {
-    abstract void onBuyListingsLoad(List<ParseObject> buyListings);
+    void onBuyListingsLoad(List<ParseObject> buyListings);
 
-    abstract void onSellListingsLoad(List<ParseObject> sellListings);
+    void onSellListingsLoad(List<ParseObject> sellListings);
 
-    abstract void onUserLoad(List<ParseUser> userList);
+    void onBuyHistoryLoad(List<ParseObject> buyHistory);
+
+    void onSellHistoryLoad(List<ParseObject> sellHistory);
+
+    void onUserLoad(List<ParseUser> userList);
 }
