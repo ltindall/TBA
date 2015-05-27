@@ -369,7 +369,7 @@ containing a value of this type.
         public static final int popup_border=0x7f020039;
     }
     public static final class id {
-        public static final int action_settings=0x7f080055;
+        public static final int action_settings=0x7f080056;
         public static final int app_logo=0x7f080032;
         public static final int bookListingBookCondition=0x7f080049;
         public static final int bookListingBookISBN=0x7f080048;
@@ -379,8 +379,8 @@ containing a value of this type.
         public static final int bottom=0x7f080004;
         public static final int box_count=0x7f080001;
         public static final int button=0x7f080002;
-        public static final int button_send=0x7f080053;
-        public static final int call_number=0x7f080051;
+        public static final int button_send=0x7f080054;
+        public static final int call_number=0x7f080052;
         public static final int center=0x7f080007;
         public static final int com_facebook_body_frame=0x7f08002a;
         public static final int com_facebook_button_xout=0x7f08002c;
@@ -438,12 +438,13 @@ containing a value of this type.
         public static final int parse_login_help=0x7f080039;
         public static final int parse_signup_button=0x7f080038;
         public static final int picker_subtitle=0x7f080027;
-        public static final int popup_button=0x7f08004f;
+        public static final int popup_button=0x7f080050;
+        public static final int popup_history=0x7f08004f;
         public static final int popup_isbn=0x7f08004d;
         public static final int popup_price=0x7f08004e;
         public static final int popup_title=0x7f08004c;
         public static final int right=0x7f080009;
-        public static final int search=0x7f080054;
+        public static final int search=0x7f080055;
         public static final int signup_confirm_password_input=0x7f080041;
         public static final int signup_email_input=0x7f080042;
         public static final int signup_name_input=0x7f080043;
@@ -451,10 +452,10 @@ containing a value of this type.
         public static final int signup_username_input=0x7f08003f;
         public static final int small=0x7f08000c;
         public static final int standard=0x7f080003;
-        public static final int text_number=0x7f080052;
+        public static final int text_number=0x7f080053;
         public static final int top=0x7f080006;
         public static final int twitter_login=0x7f08003e;
-        public static final int zip_code=0x7f080050;
+        public static final int zip_code=0x7f080051;
     }
     public static final class layout {
         public static final int activity_create_buying_listing=0x7f030000;

@@ -233,6 +233,4 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
 
     }
-
-
 }

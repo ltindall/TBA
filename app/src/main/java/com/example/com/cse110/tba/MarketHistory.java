@@ -7,8 +7,6 @@ import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GridLabelRenderer;
-import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -25,6 +23,7 @@ public class MarketHistory extends Activity implements DBAsync
 {
     private int listingType;
     private int ISBN;
+    private String Title;
     private DBManager manager;
     private GraphView gView;
 
@@ -36,22 +35,24 @@ public class MarketHistory extends Activity implements DBAsync
     {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
+        Title = "";
         if(extras != null)
         {
             listingType = extras.getInt("listingType");
             ISBN = extras.getInt("ISBN");
+            Title = extras.getString("Title");
         }
         manager = new DBManager(this);
         gView = new GraphView(getApplicationContext());
         if(listingType == 0)
         {
-            gView.setTitle("Buy Listings");
+            gView.setTitle("Buy Listings for " + Title);
             gView.setTitleColor(Color.BLACK);
             gView.setTitleTextSize(50f);
         }
         else if(listingType == 1)
         {
-            gView.setTitle("Sell Listings");
+            gView.setTitle("Sell Listings for " + Title);
             gView.setTitleColor(Color.BLACK);
             gView.setTitleTextSize(50f);
         }
@@ -63,12 +64,10 @@ public class MarketHistory extends Activity implements DBAsync
         //also need to add some text for legend!
         */
 
-        /*GridLabelRenderer lables = new GridLabelRenderer(gView);
-        lables.setHorizontalLabelsColor(Color.BLACK);
-        lables.setVerticalLabelsColor(Color.BLACK);*/
         gView.getGridLabelRenderer().setVerticalLabelsColor(Color.BLACK);
         gView.getGridLabelRenderer().setHorizontalLabelsColor(Color.BLACK);
         gView.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getApplicationContext()));
+        gView.getGridLabelRenderer().setNumHorizontalLabels(3);
 
         // display graph
         setContentView(R.layout.history_view);

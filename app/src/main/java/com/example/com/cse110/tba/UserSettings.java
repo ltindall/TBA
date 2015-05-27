@@ -66,12 +66,6 @@ public class UserSettings extends Activity implements  DBAsync
         {
             text.setText(current.getString("Text"));
         }
-
-
-        Intent intent = new Intent(this, MarketHistory.class);
-        intent.putExtra("listingType", MarketHistory.SELL_HISTORY);
-        intent.putExtra("ISBN", 7616);
-        startActivity(intent);
     }
 
     public void submit(View v)
@@ -100,6 +94,14 @@ public class UserSettings extends Activity implements  DBAsync
 
         Toast.makeText(getApplicationContext(), "User Settings Updated",
                 Toast.LENGTH_SHORT).show();
+
+        ParseObject sampleListing = new ParseObject("SellListing");
+        ParseObject sampleBook = new ParseObject("CustomBook");
+        sampleBook.put("Title", "Antigone");
+        sampleBook.put("ISBN", 7616);
+        sampleListing.put("Price", 9002);
+        sampleListing.put("Book", sampleBook);
+        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v);
     }
 
     @Override
