@@ -40,7 +40,12 @@ public class CreateSellingListing extends Activity {
         protected CheckBox wHardCover;
 
         // button information
+
+        protected CheckBox wNewBook;
+        protected CheckBox wUsedBook;
         protected Button wCreateSellingListingButton;
+
+        private DBManager manager;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,9 @@ public class CreateSellingListing extends Activity {
             wPrice = (EditText)findViewById(R.id.createListingBookPrice);
             wCondition = (EditText)findViewById(R.id.createListingBookCondition);
             wComment = (EditText)findViewById(R.id.createListingBookComment);
+
+            wNewBook = (CheckBox)findViewById(R.id.bookConditionNew);
+            wUsedBook = (CheckBox)findViewById(R.id.bookConditionUsed);
             wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
 
 
@@ -70,48 +78,39 @@ public class CreateSellingListing extends Activity {
                     String bookAuthor = wBookAuthor.getText().toString().trim();
 
                     String stringBookISBN = wBookISBN.getText().toString().trim();
-                    long bookISBN = Long.parseLong(stringBookISBN);
+                    int bookISBN = Integer.parseInt(stringBookISBN);
 
                     String stringBookYear = wBookYear.getText().toString().trim();
                     int bookYear = Integer.parseInt(stringBookYear);
 
                     String stringBookEdition = wBookYear.getText().toString().trim();
-                    double bookEdition = Double.parseDouble(stringBookEdition);
+                    int bookEdition = Integer.parseInt(stringBookEdition);
 
                     String stringBookPrice = wBookYear.getText().toString().trim();
-                    double bookPrice = Double.parseDouble(stringBookPrice);
+                    float bookPrice = Float.parseFloat(stringBookPrice);
 
-                    String bookCondition = wCondition.getText().toString();
+                    boolean checkNew = wNewBook.isChecked();
+                    boolean checkUsed = wUsedBook.isChecked();
+
+                    int newBookOrNot = 0;
+                    if (checkNew) {
+                        newBookOrNot = 1;
+                    }
+
+                    if (checkUsed) {
+                        newBookOrNot = 0;
+                    }
+
                     String bookComment = wComment.getText().toString();
+                    boolean hardCoverChecked = wHardCover.isChecked();
 
+                    manager.addBookListing(false, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
+                            bookYear, bookEdition, bookComment, hardCoverChecked);
 
                     // save it on parse as new Book object
-                    ParseObject book = new ParseObject("CustomBook");
-                    book.put("Title", bookTitle);
-                    book.put("Author", bookAuthor);
-                    book.put("ISBN", bookISBN);
-                    book.put("Year", bookYear);
-                    book.put("Edition", bookEdition);
-
                     // save it on parse as new Listing object
-                    ParseUser currentUser = ParseUser.getCurrentUser();
-                    String currentUserUsername = currentUser.getUsername();
 
-                    ParseObject bookListing = new ParseObject("SellListing");
-                    bookListing.put("Book", book);
-                    bookListing.put("Price", bookPrice);
-                    bookListing.put("Condition", bookCondition);
-                    bookListing.put("Comment", bookComment);
-                    bookListing.put("User", currentUser.getEmail());
 
-                    boolean checked = wHardCover.isChecked();
-                    if (checked) {
-                        bookListing.put("HardCover", true);
-                    }
-
-                    else {
-                        bookListing.put("HardCover", false);
-                    }
 
                     // save it
                     book.saveInBackground();

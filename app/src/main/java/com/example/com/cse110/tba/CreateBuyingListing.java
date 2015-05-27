@@ -30,16 +30,22 @@ public class CreateBuyingListing extends Activity {
     protected EditText wPrice;
     protected EditText wCondition;
     protected EditText wComment;
+
+    protected CheckBox wNewBook;
+    protected CheckBox wUsedBook;
     protected CheckBox wHardCover;
 
     // button information
     protected Button wCreateBuyingListingButton;
+
+    private DBManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_buying_listing);
 
+        manager = new DBManager(this);
         // initializing
         wBookTitle = (EditText)findViewById(R.id.createListingBookTitle);
         wBookAuthor = (EditText)findViewById(R.id.createListingBookAuthor);
@@ -52,6 +58,8 @@ public class CreateBuyingListing extends Activity {
         wCondition = (EditText)findViewById(R.id.createListingBookCondition);
         wComment = (EditText)findViewById(R.id.createListingBookComment);
         //This CheckBox crashes. Don't know why. -Hansen-.
+        wNewBook = (CheckBox)findViewById(R.id.bookConditionNew);
+        wUsedBook = (CheckBox)findViewById(R.id.bookConditionUsed);
         wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
 
 
@@ -64,51 +72,43 @@ public class CreateBuyingListing extends Activity {
                 String bookAuthor = wBookAuthor.getText().toString().trim();
 
                 String stringBookISBN = wBookISBN.getText().toString().trim();
-                long bookISBN = Long.parseLong(stringBookISBN);
+                int bookISBN = Integer.parseInt(stringBookISBN);
 
                 String stringBookYear = wBookYear.getText().toString().trim();
                 int bookYear = Integer.parseInt(stringBookYear);
 
                 String stringBookEdition = wBookYear.getText().toString().trim();
-                double bookEdition = Double.parseDouble(stringBookEdition);
+                int bookEdition = Integer.parseInt(stringBookEdition);
 
                 String stringBookPrice = wBookYear.getText().toString().trim();
-                double bookPrice = Double.parseDouble(stringBookPrice);
+                float bookPrice = Float.parseFloat(stringBookPrice);
 
                 String bookCondition = wCondition.getText().toString();
                 String bookComment = wComment.getText().toString();
 
+                boolean checkNew = wNewBook.isChecked();
+                boolean checkUsed = wUsedBook.isChecked();
+
+                int newBookOrNot = 0;
+                if (checkNew) {
+                    newBookOrNot = 1;
+                }
+
+                if (checkUsed) {
+                    newBookOrNot = 0;
+                }
+
+                boolean hardCoverChecked = wHardCover.isChecked();
 
                 // save it on parse as new Book object
-                ParseObject book = new ParseObject("CustomBook");
-                book.put("Title", bookTitle);
-                book.put("Author", bookAuthor);
-                book.put("ISBN", bookISBN);
-                book.put("Year", bookYear);
-                book.put("Edition", bookEdition);
-
                 // save it on parse as new Listing object
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                String currentUserUsername = currentUser.getUsername();
 
-                ParseObject bookListing = new ParseObject("BuyListing");
-                bookListing.put("Book", book);
-                bookListing.put("Price", bookPrice);
-                bookListing.put("Condition", bookCondition);
-                bookListing.put("Comment", bookComment);
-                bookListing.put("User", currentUser.getEmail());
+                manager.addBookListing(true, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
+                        bookYear, bookEdition, bookComment, hardCoverChecked);
 
-                boolean checked = wHardCover.isChecked();
-                if (checked) {
-                    bookListing.put("HardCover", true);
-                }
-
-                else {
-                    bookListing.put("HardCover", false);
-                }
 
                 // save it
-                book.saveInBackground();
+
                 bookListing.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {

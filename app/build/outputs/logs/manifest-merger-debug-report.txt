@@ -15,7 +15,7 @@ ADDED from AndroidManifest.xml:2:1
 		INJECTED from AndroidManifest.xml:0:0
 uses-sdk
 ADDED from AndroidManifest.xml:7:5
-MERGED from TBA:ParseLoginUI:unspecified:7:5
+MERGED from tba:ParseLoginUI:unspecified:7:5
 MERGED from com.android.support:support-v4:22.0.0:20:5
 MERGED from com.facebook.android:facebook-android-sdk:3.23.1:20:5
 MERGED from com.android.support:support-v4:22.0.0:20:5
@@ -83,7 +83,7 @@ ADDED from AndroidManifest.xml:29:5
 		ADDED from AndroidManifest.xml:30:9
 application
 ADDED from AndroidManifest.xml:33:5
-MERGED from TBA:ParseLoginUI:unspecified:11:5
+MERGED from tba:ParseLoginUI:unspecified:11:5
 MERGED from com.android.support:support-v4:22.0.0:22:5
 MERGED from com.facebook.android:facebook-android-sdk:3.23.1:24:5
 MERGED from com.android.support:support-v4:22.0.0:22:5
