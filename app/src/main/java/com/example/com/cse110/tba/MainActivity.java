@@ -31,6 +31,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
     public static final int LOGIN_PAGE = 0;
     private long currentSpinnerItem = 0;
+    private boolean sellList = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
                 intent.setAction(Intent.ACTION_SEARCH);
                 intent.putExtra("query", query);
+                intent.putExtra("sellList", sellList);
+                intent.putExtra("currentSpinnerItem", currentSpinnerItem);
                 startActivity(intent);
                 //listAdapter.getFilter().filter(query);
                 return true;
@@ -158,6 +161,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     public boolean onNavigationItemSelected(int i, long l)
     {
         currentSpinnerItem = l;
+        Log.d("MainActivity", "currentSpinnerItem = " + Long.toString(currentSpinnerItem));
         return true;
     }
 }

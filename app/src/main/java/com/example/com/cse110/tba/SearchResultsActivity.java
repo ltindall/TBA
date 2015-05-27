@@ -25,7 +25,6 @@ import java.util.List;
  */
 public class SearchResultsActivity extends Activity implements DBAsync{
     public DBManager dbm;
-    private long currentSpinnerOption;
     ListView lister;
 
     public SearchResultsActivity() {
@@ -50,18 +49,43 @@ public class SearchResultsActivity extends Activity implements DBAsync{
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra("query");
-            long searchBy = currentSpinnerOption;
-            switch ((int)searchBy) {
-                case 0: dbm.getSellListings(query, null, -1, null,-1);
+            boolean sellOrBuy = intent.getBooleanExtra("sellList", true);
+            long searchBy = intent.getLongExtra("currentSpinnerItem", 0);
+            Log.d("SearchResultsActivity", "searchBy setting = " + Long.toString(searchBy));
+
+            if (sellOrBuy) {
+                switch ((int) searchBy) {
+                    case 0:
+                        dbm.getSellListings(query, null, -1, null, -1);
                         break;
-                case 1: dbm.getSellListings(null, query, -1, null, -1);
+                    case 1:
+                        dbm.getSellListings(null, query, -1, null, -1);
                         break;
-                case 2: dbm.getSellListings(null, null, Integer.parseInt(query), null, -1);
+                    case 2:
+                        dbm.getSellListings(null, null, Integer.parseInt(query), null, -1);
                         break;
-                case 3: dbm.getSellListings(null, null, -1, query, -1);
+                    case 3:
+                        dbm.getSellListings(null, null, -1, query, -1);
                         break;
+                }
             }
 
+            else {
+                switch ((int) searchBy) {
+                    case 0:
+                        dbm.getBuyListings(query, null, -1, null, -1);
+                        break;
+                    case 1:
+                        dbm.getBuyListings(null, query, -1, null, -1);
+                        break;
+                    case 2:
+                        dbm.getBuyListings(null, null, Integer.parseInt(query), null, -1);
+                        break;
+                    case 3:
+                        dbm.getBuyListings(null, null, -1, query, -1);
+                        break;
+                }
+            }
         }
 
         else {
@@ -103,7 +127,9 @@ public class SearchResultsActivity extends Activity implements DBAsync{
 
         ArrayList list = new ArrayList();
         for(ParseObject listings: sellListings) {
-            list.add(listings.getString("Title"));
+            ParseObject book = listings.getParseObject("Book");
+
+
         }
 
         String[] values = new String[list.size()];
@@ -164,7 +190,4 @@ public class SearchResultsActivity extends Activity implements DBAsync{
         }
     }
 
-    public void setCurrentSpinnerOption(long l) {
-        currentSpinnerOption = l;
-    }
 }
