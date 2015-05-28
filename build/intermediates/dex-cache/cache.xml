@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\tba\ParseLoginUI\unspecified\libs\Parse-1.8.4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0fcb6bbc9cf6d2643a90c812539aa82ed16ea315">
-        <dex dex="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\pre-dexed\debug\Parse-1.8.4-93ba5ff7ee6f671dbe54e57b828878e6c9c8db21.jar" />
-    </item>
-    <item
         jar="C:\Users\lucas\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -23,25 +16,11 @@
         <dex dex="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-67e5d750dcad82a91d78cf299639c0b1eb709cd7.jar" />
     </item>
     <item
-        jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-21f393dc6d46192eb5a31ca5e88450db7ccf4474.jar" />
-    </item>
-    <item
         jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\com.jjoe64\graphview\4.0.1\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="37bf8de5b4f9e7e93006db783b9b3168e32e38e9">
         <dex dex="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\pre-dexed\debug\classes-81b9afe201687fe643243f9cdc6d80a9a2a3fdf3.jar" />
-    </item>
-    <item
-        jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.23.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c8414f03ff9e5b045f185921c9bc42914c906458">
-        <dex dex="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\pre-dexed\debug\classes-7bbb0c14fe739a06a6019805685256575c252f9d.jar" />
     </item>
     <item
         jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\tba\ParseLoginUI\unspecified\libs\ParseFacebookUtils-1.8.4.jar"
@@ -61,8 +40,29 @@
         jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\tba\ParseLoginUI\unspecified\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="131dc33048baa13fcdfea5af3d6b1f8d47aad15d">
+        sha1="873bdc811940b07367db4a0d1f8fd9a6699391fe">
         <dex dex="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\pre-dexed\debug\classes-e63df445e32f7caf0dabb5471a7ae94766e7da60.jar" />
+    </item>
+    <item
+        jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\tba\ParseLoginUI\unspecified\libs\Parse-1.8.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0fcb6bbc9cf6d2643a90c812539aa82ed16ea315">
+        <dex dex="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\pre-dexed\debug\Parse-1.8.4-93ba5ff7ee6f671dbe54e57b828878e6c9c8db21.jar" />
+    </item>
+    <item
+        jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-21f393dc6d46192eb5a31ca5e88450db7ccf4474.jar" />
+    </item>
+    <item
+        jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.23.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c8414f03ff9e5b045f185921c9bc42914c906458">
+        <dex dex="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\pre-dexed\debug\classes-7bbb0c14fe739a06a6019805685256575c252f9d.jar" />
     </item>
     <item
         jar="C:\Users\lucas\AndroidStudioProjects\tba\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
