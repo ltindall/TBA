@@ -7,6 +7,7 @@ import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
 import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -48,6 +49,28 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
+
+        ActionBar.TabListener tabListener = new ActionBar.TabListener()
+        {
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+            }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+            }
+        };
+
+        ActionBar actionbar2 = getActionBar();
+        actionbar2.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        actionbar2.addTab(actionbar2.newTab().setText("Buy").setTabListener(tabListener));
 
 
         //get initial buy/sell listing. this is the first time user will see listing before doing anything
