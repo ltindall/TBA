@@ -29,6 +29,7 @@ import android.widget.SearchView;
 import java.util.List;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
+import android.widget.TabHost;
 
 public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavigationListener{
 
@@ -50,27 +51,20 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
 
-        ActionBar.TabListener tabListener = new ActionBar.TabListener()
-        {
-            @Override
-            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
-            }
+        TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
 
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+        tabHost.setup();
 
-            }
+        TabHost.TabSpec tabSpec = tabHost.newTabSpec("buylistingmain");
+        tabSpec.setContent(R.id.listViewMainBuy);
+        tabSpec.setIndicator("Buy");
+        tabHost.addTab(tabSpec);
 
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-            }
-        };
-
-        ActionBar actionbar2 = getActionBar();
-        actionbar2.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        actionbar2.addTab(actionbar2.newTab().setText("Buy").setTabListener(tabListener));
+        tabSpec = tabHost.newTabSpec("selllistingmain");
+        tabSpec.setContent(R.id.listViewMainSell);
+        tabSpec.setIndicator("Sell");
+        tabHost.addTab(tabSpec);
 
 
         //get initial buy/sell listing. this is the first time user will see listing before doing anything
@@ -188,14 +182,14 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
         //display the given List of Listings
-        populateListView(buyListings);
+        populateBuyListView(buyListings);
 
     }
 
     @Override
     public void onSellListingsLoad(List<ParseObject> sellListings) {
         //display the given Listings
-        populateListView(sellListings);
+        populateSellListView(sellListings);
 
     }
 
@@ -224,7 +218,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
 
     //This functions fills the ListView with given Listing objects
-    private void populateListView( List<ParseObject> listofListing)
+    private void populateBuyListView( List<ParseObject> listofListing)
     {
         // listofListing is a list of Listing object that wants to be displayed.
         //make an adapter containing a String from each Listing objects
@@ -233,7 +227,22 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         // make a list view and configure it with the created adapter
         // create a ListView data structure to contain the adapter
-        ListView displayedListing = (ListView) findViewById(R.id.listViewMainPage);
+        ListView displayedListing = (ListView) findViewById(R.id.listViewMainBuy);
+        //set the adapter into the ListView
+        displayedListing.setAdapter(listAdapter);
+    }
+
+
+    private void populateSellListView( List<ParseObject> listofListing)
+    {
+        // listofListing is a list of Listing object that wants to be displayed.
+        //make an adapter containing a String from each Listing objects
+
+        ListingAdapter listAdapter = new ListingAdapter(this, listofListing);
+
+        // make a list view and configure it with the created adapter
+        // create a ListView data structure to contain the adapter
+        ListView displayedListing = (ListView) findViewById(R.id.listViewMainSell);
         //set the adapter into the ListView
         displayedListing.setAdapter(listAdapter);
     }
@@ -245,7 +254,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     private void registerOnClick()
     {
         // grab the ListView
-        ListView displayedListing = (ListView) findViewById(R.id.listViewMainPage);
+        ListView displayedListing = (ListView) findViewById(R.id.listViewMainBuy);
 
         // create a click listener and display the details of the Lsiting object when clicked
         displayedListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -258,6 +267,19 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             }
         });
 
+
+        displayedListing = (ListView) findViewById(R.id.listViewMainSell);
+
+        // create a click listener and display the details of the Lsiting object when clicked
+        displayedListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
+                //make a ListingPopup object to show the clicked Listing
+                ListingPopup popup = new ListingPopup(MainActivity.this,   // Context
+                        (ParseObject) parent.getAdapter().getItem(position), //ParseObject to be displayed. How to get the ParseObject???????
+                        viewClicked);   // View where popup will be shown
+            }
+        });
 
     }
 }
