@@ -165,7 +165,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
         //display the given List of Listings
-        populateListView(buyListings);
+        //populateListView(buyListings);
 
     }
 
