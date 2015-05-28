@@ -56,16 +56,16 @@ public class SearchResultsActivity extends Activity implements DBAsync{
             if (sellOrBuy) {
                 switch ((int) searchBy) {
                     case 0:
-                        dbm.getSellListings(query, null, -1, null, -1);
+                        dbm.getSellListings(query, null, -1, null, null, -1);
                         break;
                     case 1:
-                        dbm.getSellListings(null, query, -1, null, -1);
+                        dbm.getSellListings(null, query, -1, null, null, -1);
                         break;
                     case 2:
-                        dbm.getSellListings(null, null, Integer.parseInt(query), null, -1);
+                        dbm.getSellListings(null, null, Integer.parseInt(query), null, null, -1);
                         break;
                     case 3:
-                        dbm.getSellListings(null, null, -1, query, -1);
+                        dbm.getSellListings(null, null, -1, query, null, -1);
                         break;
                 }
             }
@@ -73,16 +73,16 @@ public class SearchResultsActivity extends Activity implements DBAsync{
             else {
                 switch ((int) searchBy) {
                     case 0:
-                        dbm.getBuyListings(query, null, -1, null, -1);
+                        dbm.getBuyListings(query, null, -1, null, null, -1);
                         break;
                     case 1:
-                        dbm.getBuyListings(null, query, -1, null, -1);
+                        dbm.getBuyListings(null, query, -1, null, null, -1);
                         break;
                     case 2:
-                        dbm.getBuyListings(null, null, Integer.parseInt(query), null, -1);
+                        dbm.getBuyListings(null, null, Integer.parseInt(query), null, null, -1);
                         break;
                     case 3:
-                        dbm.getBuyListings(null, null, -1, query, -1);
+                        dbm.getBuyListings(null, null, -1, query, null, -1);
                         break;
                 }
             }
