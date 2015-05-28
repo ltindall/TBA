@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
@@ -132,14 +133,23 @@ public class SearchResultsActivity extends Activity implements DBAsync{
     }
 
 
+
     private void populateListView(List<ParseObject> sellListings){
         setContentView(R.layout.list_view);
         lister = (ListView)findViewById(R.id.list);
 
-        ArrayList list = new ArrayList();
+        ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: sellListings) {
             ParseObject book = listings.getParseObject("Book");
+            try {
+                book.fetch();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            //book.fetchIfNeeded();
 
+            Log.d("book title string", book.getString("Title"));
+            list.add(book.getString("Title")+" - "+book.getString("Author")+" - $"+listings.getNumber("Price"));
 
         }
 
