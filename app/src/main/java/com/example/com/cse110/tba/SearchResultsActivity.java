@@ -134,7 +134,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
 
 
 
-    private void populateListView(List<ParseObject> sellListings){
+    private void populateListView(final List<ParseObject> sellListings){
         setContentView(R.layout.list_view);
         lister = (ListView)findViewById(R.id.list);
 
@@ -184,6 +184,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view);
                 // ListView Clicked item index
                 int itemPosition     = position;
 
