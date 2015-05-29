@@ -1,6 +1,7 @@
 package com.example.com.cse110.tba;
 
 import com.parse.ParseAnonymousUtils;
+import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -26,20 +27,27 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 
+
+import java.util.ArrayList;
 import java.util.List;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavigationListener{
 
     public static final int LOGIN_PAGE = 0;
     private long currentSpinnerItem = 0;
     private boolean sellList = true;
+    public DBManager dbm;
+    ListView lister;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        dbm = new DBManager(this);
 		setContentView(R.layout.activity_main);
 
         ParseLoginBuilder builder = new ParseLoginBuilder(this);
@@ -71,11 +79,12 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
           //use DBManager to get any latest buy listing.
         DBManager dbm = new DBManager(this);    // create DBManager object with MainActivity as its caller
           //call getBuyListing passing null arguments so query will not do any search
-        dbm.getBuyListings(null,
+        /*dbm.getBuyListings(null,
                             null,
                              -1 ,
                             "Title",  // sort the listing by title
-                            10);       // limit to 10 listings
+                            10);     */  // limit to 10 listings
+        dbm.getSellListings(null, null, -1, "Title", 10);
 
 
         // set the onClickListener for each item of ListView
@@ -233,18 +242,61 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     }
 
 
-    private void populateSellListView( List<ParseObject> listofListing)
+    private void populateSellListView( List<ParseObject> sellListings)
     {
-        // listofListing is a list of Listing object that wants to be displayed.
-        //make an adapter containing a String from each Listing objects
 
-        ListingAdapter listAdapter = new ListingAdapter(this, listofListing);
+        setContentView(R.layout.list_view);
+        lister = (ListView)findViewById(R.id.list);
 
-        // make a list view and configure it with the created adapter
-        // create a ListView data structure to contain the adapter
-        ListView displayedListing = (ListView) findViewById(R.id.listViewMainSell);
-        //set the adapter into the ListView
-        displayedListing.setAdapter(listAdapter);
+        ArrayList<String> list = new ArrayList<String>();
+        for(ParseObject listings: sellListings) {
+            ParseObject book = listings.getParseObject("Book");
+            try {
+                book.fetch();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            //book.fetchIfNeeded();
+
+            Log.d("book title string", book.getString("Title"));
+            list.add(book.getString("Title")+" - "+book.getString("Author")+" - $"+listings.getNumber("Price"));
+
+        }
+
+        String[] values = new String[list.size()];
+        for(int j =0; j<values.length; j++) {
+            values[j] = list.get(j).toString();
+        }
+
+
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+
+
+        //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
+        lister.setAdapter(itemsAdapter);
+
+        // ListView Item Click Listener
+        lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                // ListView Clicked item index
+                int itemPosition     = position;
+
+                // ListView Clicked item value
+                String  itemValue    = (String) lister.getItemAtPosition(position);
+
+                // Show Alert
+                Toast.makeText(getApplicationContext(),
+                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        .show();
+
+            }
+
+        });
     }
 
     /*
