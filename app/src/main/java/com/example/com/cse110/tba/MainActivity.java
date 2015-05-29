@@ -69,9 +69,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 -1,
                 "Title",  // sort the listing by title
                 10);       // limit to 10 listings
-        //dbm.getSellListings(null, null, -1, "Title", 10);
+        dbm.getSellListings(null, null, -1, "Title", 10);
 
-
+        tabSetup();
 	}
 
 
@@ -173,14 +173,14 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
         //display the given List of Listings. remake the tabs
-        tabSetup(buyListings);
+        populateBuyListView(buyListings);
 
     }
 
     @Override
     public void onSellListingsLoad(List<ParseObject> sellListings) {
         //display the given Listings. remake the tabs
-        tabSetup(sellListings);
+        populateSellListView(sellListings);
 
     }
 
@@ -267,7 +267,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     }
 
 
-    private ListView populateSellListView( List<ParseObject> sellListings)
+    private void populateSellListView( List<ParseObject> sellListings)
     {
 
         //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
@@ -322,10 +322,10 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             }
 
         });
-        return lister;
+
     }
 
-    private void tabSetup( final List<ParseObject> listings)
+    private void tabSetup()
     {
 
         tabHost = (TabHost) findViewById(R.id.tabHost);
@@ -337,8 +337,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         //creating the content of this tab
         tabSpec.setContent(new TabHost.TabContentFactory() {
             @Override
-            public View createTabContent(String s) {
-                return populateBuyListView(listings);
+            public View createTabContent(String tag) {
+                ListView buyListView = (ListView) findViewById(R.id.listViewMainBuy);
+                return buyListView;
             }
         });
         tabSpec.setIndicator("Buy");  // name displayed on tab
@@ -350,13 +351,15 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         //set the tcontent of this tab
         tabSpec.setContent(new TabHost.TabContentFactory() {
             @Override
-            public View createTabContent(String s) {
-
-                return populateSellListView(listings);
+            public View createTabContent(String tag) {
+                ListView sellListView = (ListView) findViewById(R.id.listViewMainSell);
+                return sellListView;
             }
         });
         tabSpec.setIndicator("Sell");  // set the displayed name of the tab
         tabHost.addTab(tabSpec);  // add the tab to tabhost
+
+
     }
 
 
