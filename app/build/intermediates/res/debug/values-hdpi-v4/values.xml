@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Albert%20Gouw/Desktop/cse%20110/tba/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.23.1/res/values-hdpi-v4/values.xml -->
+    <!-- From: file:/C:/Users/Hansen/Documents/tba/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.23.1/res/values-hdpi-v4/values.xml -->
     <eat-comment/>
     <dimen name="com_facebook_picker_divider_width">1px</dimen>
 </resources>

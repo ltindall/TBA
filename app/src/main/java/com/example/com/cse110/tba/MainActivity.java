@@ -42,6 +42,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     private boolean sellList = true;
     public DBManager dbm;
     ListView lister;
+    TabHost tabHost;
 
 
 	@Override
@@ -59,36 +60,17 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
 
-
-        TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
-
-        tabHost.setup();
-
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec("buylistingmain");
-        tabSpec.setContent(R.id.listViewMainBuy);
-        tabSpec.setIndicator("Buy");
-        tabHost.addTab(tabSpec);
-
-        tabSpec = tabHost.newTabSpec("selllistingmain");
-        tabSpec.setContent(R.id.listViewMainSell);
-        tabSpec.setIndicator("Sell");
-        tabHost.addTab(tabSpec);
-
-
         //get initial buy/sell listing. this is the first time user will see listing before doing anything
           //use DBManager to get any latest buy listing.
         DBManager dbm = new DBManager(this);    // create DBManager object with MainActivity as its caller
           //call getBuyListing passing null arguments so query will not do any search
-        /*dbm.getBuyListings(null,
-                            null,
-                             -1 ,
-                            "Title",  // sort the listing by title
-                            10);     */  // limit to 10 listings
-        dbm.getSellListings(null, null, -1, "Title", 10);
+        dbm.getBuyListings(null,
+                null,
+                -1,
+                "Title",  // sort the listing by title
+                10);       // limit to 10 listings
+        //dbm.getSellListings(null, null, -1, "Title", 10);
 
-
-        // set the onClickListener for each item of ListView
-        registerOnClick();
 
 	}
 
@@ -190,15 +172,15 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
-        //display the given List of Listings
-        populateBuyListView(buyListings);
+        //display the given List of Listings. remake the tabs
+        tabSetup(buyListings);
 
     }
 
     @Override
     public void onSellListingsLoad(List<ParseObject> sellListings) {
-        //display the given Listings
-        populateSellListView(sellListings);
+        //display the given Listings. remake the tabs
+        tabSetup(sellListings);
 
     }
 
@@ -227,26 +209,69 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
 
     //This functions fills the ListView with given Listing objects
-    private void populateBuyListView( List<ParseObject> listofListing)
+    private ListView populateBuyListView( List<ParseObject> buyListings)
     {
-        // listofListing is a list of Listing object that wants to be displayed.
-        //make an adapter containing a String from each Listing objects
+        //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
+        lister = (ListView)findViewById(R.id.listViewMainBuy);
 
-        ListingAdapter listAdapter = new ListingAdapter(this, listofListing);
+        ArrayList<String> list = new ArrayList<String>();
+        for(ParseObject listings: buyListings) {
+            ParseObject book = listings.getParseObject("Book");
+            try {
+                book.fetch();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            //book.fetchIfNeeded();
 
-        // make a list view and configure it with the created adapter
-        // create a ListView data structure to contain the adapter
-        ListView displayedListing = (ListView) findViewById(R.id.listViewMainBuy);
-        //set the adapter into the ListView
-        displayedListing.setAdapter(listAdapter);
+            Log.d("book title string", book.getString("Title"));
+            list.add(book.getString("Title")+" - "+book.getString("Author")+" - $"+listings.getNumber("Price"));
+
+        }
+
+        String[] values = new String[list.size()];
+        for(int j =0; j<values.length; j++) {
+            values[j] = list.get(j).toString();
+        }
+
+
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+
+
+        //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
+        lister.setAdapter(itemsAdapter);
+
+        // ListView Item Click Listener
+        lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                // ListView Clicked item index
+                int itemPosition = position;
+
+                // ListView Clicked item value
+                String itemValue = (String) lister.getItemAtPosition(position);
+
+                // Show Alert
+                Toast.makeText(getApplicationContext(),
+                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        .show();
+
+            }
+
+        });
+        return lister;
     }
 
 
-    private void populateSellListView( List<ParseObject> sellListings)
+    private ListView populateSellListView( List<ParseObject> sellListings)
     {
 
-        setContentView(R.layout.list_view);
-        lister = (ListView)findViewById(R.id.list);
+        //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
+        lister = (ListView)findViewById(R.id.listViewMainSell);
 
         ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: sellListings) {
@@ -297,13 +322,50 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             }
 
         });
+        return lister;
     }
+
+    private void tabSetup( final List<ParseObject> listings)
+    {
+
+        tabHost = (TabHost) findViewById(R.id.tabHost);
+        //set up the tabs
+        tabHost.setup();
+
+        //tab for buy Listing
+        TabHost.TabSpec tabSpec = tabHost.newTabSpec("buylistingmain");
+        //creating the content of this tab
+        tabSpec.setContent(new TabHost.TabContentFactory() {
+            @Override
+            public View createTabContent(String s) {
+                return populateBuyListView(listings);
+            }
+        });
+        tabSpec.setIndicator("Buy");  // name displayed on tab
+        tabHost.addTab(tabSpec);  // add tab to tabHost
+
+
+        // tab for sell Listing
+        tabSpec = tabHost.newTabSpec("selllistingmain");
+        //set the tcontent of this tab
+        tabSpec.setContent(new TabHost.TabContentFactory() {
+            @Override
+            public View createTabContent(String s) {
+
+                return populateSellListView(listings);
+            }
+        });
+        tabSpec.setIndicator("Sell");  // set the displayed name of the tab
+        tabHost.addTab(tabSpec);  // add the tab to tabhost
+    }
+
+
 
     /*
      * This method will handle a Click event. When a ListView item is clicked, the click listener
      * will view a detailed information of the Lsitng object clicked
      */
-    private void registerOnClick()
+    /*private void registerOnClick()
     {
         // grab the ListView
         ListView displayedListing = (ListView) findViewById(R.id.listViewMainBuy);
@@ -333,5 +395,5 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             }
         });
 
-    }
+    }*/
 }
