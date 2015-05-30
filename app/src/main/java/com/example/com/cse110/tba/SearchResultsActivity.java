@@ -1,15 +1,21 @@
 package com.example.com.cse110.tba;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.app.SearchManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.parse.ParseObject;
@@ -36,7 +42,46 @@ public class SearchResultsActivity extends Activity implements DBAsync{
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.list_view);
         dbm = new DBManager(this);
+
+        Log.d("SearchResultsActivity", "onCreate entered");
         handleIntent(getIntent());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        // Initialize search stuff
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        ComponentName cn = new ComponentName(this, SearchResultsActivity.class);
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(cn));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            public boolean onQueryTextChange(String newText) {
+                // this is your adapter that will be filtered
+                //listAdapter.getFilter().filter(newText);
+                return true;
+            }
+
+            public boolean onQueryTextSubmit(String query) {
+                Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
+                intent.setAction(Intent.ACTION_SEARCH);
+                intent.putExtra("query", query);
+                handleIntent(intent);
+
+                //listAdapter.getFilter().filter(query);
+                return true;
+            }
+        });
+
+        // Inflate menu options
+        menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+        menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
+        return true;
     }
 
     @Override
@@ -46,6 +91,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
     }
 
     private void handleIntent(Intent intent) {
+
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra("query");
@@ -98,27 +144,34 @@ public class SearchResultsActivity extends Activity implements DBAsync{
     // what is this going to do?
     public void onBuyListingsLoad(List<ParseObject> buyListings){
         if (buyListings != null) {
-            // bring up the list of results of the buy listings that match the search.
+             if(buyListings.size() > 0) {
+                Log.d("SearchResultsActivity", "FOUND");
+                populateListView(buyListings);
+            }
+            else
+                Log.d("SearchResultsActivity", "NOT FOUND");
         }
 
         else {
-            // display search failure method
+            Log.d("SearchResultsActivity", "NULL OBJECT");
         }
     }
+
     // what is this going to do?
     public void onSellListingsLoad(List<ParseObject> sellListings){
+
+        Log.d("SearchResultsActivity", "This function is being visited");
         if (sellListings != null) {
             if(sellListings.size() > 0) {
                 Log.d("SearchResultsActivity", "FOUND");
                 populateListView(sellListings);
-
             }
             else
-                Log.d("SearchFunction", "NOT FOUND");
+                Log.d("SearchResultsActivity", "NOT FOUND");
         }
 
         else
-            Log.d("SearchFunction", "NULL OBJECT");
+            Log.d("SearchResultsActivity", "NULL OBJECT");
     }
 
     @Override
@@ -200,5 +253,4 @@ public class SearchResultsActivity extends Activity implements DBAsync{
             // display search failure method
         }
     }
-
 }
