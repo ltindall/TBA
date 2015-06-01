@@ -331,6 +331,10 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
     }
 
+
+    /*
+     * a method to set up the tabs and their contents. Links each tab with its corresponding listView
+     */
     private void tabSetup()
     {
 
@@ -351,7 +355,6 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         tabSpec.setIndicator("Buy");  // name displayed on tab
         tabHost.addTab(tabSpec);  // add tab to tabHost
 
-
         // tab for sell Listing
         tabSpec = tabHost.newTabSpec("selllistingmain");
         //set the tcontent of this tab
@@ -365,44 +368,10 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         tabSpec.setIndicator("Sell");  // set the displayed name of the tab
         tabHost.addTab(tabSpec);  // add the tab to tabhost
 
-
+        tabHost.setCurrentTabByTag("selllistingmain");
     }
 
 
 
-    /*
-     * This method will handle a Click event. When a ListView item is clicked, the click listener
-     * will view a detailed information of the Lsitng object clicked
-     */
-    /*private void registerOnClick()
-    {
-        // grab the ListView
-        ListView displayedListing = (ListView) findViewById(R.id.listViewMainBuy);
 
-        // create a click listener and display the details of the Lsiting object when clicked
-        displayedListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-                //make a ListingPopup object to show the clicked Listing
-                ListingPopup popup = new ListingPopup(MainActivity.this,   // Context
-                        (ParseObject) parent.getAdapter().getItem(position), //ParseObject to be displayed. How to get the ParseObject???????
-                        viewClicked);   // View where popup will be shown
-            }
-        });
-
-
-        displayedListing = (ListView) findViewById(R.id.listViewMainSell);
-
-        // create a click listener and display the details of the Lsiting object when clicked
-        displayedListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-                //make a ListingPopup object to show the clicked Listing
-                ListingPopup popup = new ListingPopup(MainActivity.this,   // Context
-                        (ParseObject) parent.getAdapter().getItem(position), //ParseObject to be displayed. How to get the ParseObject???????
-                        viewClicked);   // View where popup will be shown
-            }
-        });
-
-    }*/
 }
