@@ -102,7 +102,7 @@ public class DBManager
     }
 
     public void getBuyListings(String title, String author, int isbn,
-                                String order, int limit)
+                                String order, String user, int limit)
     {
         ParseQuery<ParseObject> bookQuery = ParseQuery.getQuery("CustomBook");
         if(title != null)
@@ -124,6 +124,11 @@ public class DBManager
             {
                 bookQuery.orderByAscending(order);
             }
+        }
+
+        if(user != null)
+        {
+            bookQuery.whereEqualTo("User", user);
         }
 
         ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("BuyListing");
@@ -147,7 +152,7 @@ public class DBManager
     }
 
     public void getSellListings (String title, String author, int isbn,
-                               String order, int limit)
+                               String order, String user, int limit)
     {
         ParseQuery<ParseObject> bookQuery = ParseQuery.getQuery("CustomBook");
         if(title != null)
@@ -169,6 +174,11 @@ public class DBManager
             {
                 bookQuery.orderByAscending(order);
             }
+        }
+
+        if(user != null)
+        {
+            bookQuery.whereEqualTo("User", user);
         }
 
         ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("SellListing");
@@ -294,4 +304,5 @@ public class DBManager
             }
         });
     }
+
 }
