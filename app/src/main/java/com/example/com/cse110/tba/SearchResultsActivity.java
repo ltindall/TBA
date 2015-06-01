@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
@@ -56,16 +57,16 @@ public class SearchResultsActivity extends Activity implements DBAsync{
             if (sellOrBuy) {
                 switch ((int) searchBy) {
                     case 0:
-                        dbm.getSellListings(query, null, -1, null, -1);
+                        dbm.getSellListings(query, null, -1, null, null, -1);
                         break;
                     case 1:
-                        dbm.getSellListings(null, query, -1, null, -1);
+                        dbm.getSellListings(null, query, -1, null, null, -1);
                         break;
                     case 2:
-                        dbm.getSellListings(null, null, Integer.parseInt(query), null, -1);
+                        dbm.getSellListings(null, null, Integer.parseInt(query), null, null, -1);
                         break;
                     case 3:
-                        dbm.getSellListings(null, null, -1, query, -1);
+                        dbm.getSellListings(null, null, -1, query, null, -1);
                         break;
                 }
             }
@@ -73,16 +74,16 @@ public class SearchResultsActivity extends Activity implements DBAsync{
             else {
                 switch ((int) searchBy) {
                     case 0:
-                        dbm.getBuyListings(query, null, -1, null, -1);
+                        dbm.getBuyListings(query, null, -1, null, null, -1);
                         break;
                     case 1:
-                        dbm.getBuyListings(null, query, -1, null, -1);
+                        dbm.getBuyListings(null, query, -1, null, null, -1);
                         break;
                     case 2:
-                        dbm.getBuyListings(null, null, Integer.parseInt(query), null, -1);
+                        dbm.getBuyListings(null, null, Integer.parseInt(query), null, null, -1);
                         break;
                     case 3:
-                        dbm.getBuyListings(null, null, -1, query, -1);
+                        dbm.getBuyListings(null, null, -1, query, null, -1);
                         break;
                 }
             }
@@ -132,14 +133,23 @@ public class SearchResultsActivity extends Activity implements DBAsync{
     }
 
 
+
     private void populateListView(List<ParseObject> sellListings){
         setContentView(R.layout.list_view);
         lister = (ListView)findViewById(R.id.list);
 
-        ArrayList list = new ArrayList();
+        ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: sellListings) {
             ParseObject book = listings.getParseObject("Book");
+            try {
+                book.fetch();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            //book.fetchIfNeeded();
 
+            Log.d("book title string", book.getString("Title"));
+            list.add(book.getString("Title")+" - "+book.getString("Author")+" - $"+listings.getNumber("Price"));
 
         }
 
