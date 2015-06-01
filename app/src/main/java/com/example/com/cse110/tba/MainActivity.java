@@ -44,11 +44,13 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         ParseLoginBuilder builder = new ParseLoginBuilder(this);
         startActivityForResult(builder.build(), LOGIN_PAGE);
 
+        // create the action bar and add items to it such as the spinner
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
+        // actionBar end
 
         ActionBar.TabListener tabListener = new ActionBar.TabListener()
         {
@@ -135,7 +137,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 
-        // Initialize search stuff
+        // Initialize: Search Stuff
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
@@ -161,7 +163,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 //listAdapter.getFilter().filter(query);
                 return true;
             }
-        });
+        }); // Search Stuff end
 
         // Inflate menu options
         menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
@@ -235,6 +237,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         // create a ListView data structure to contain the adapter
         ListView displayedListing = (ListView) findViewById(R.id.listViewMainPage);
         //set the adapter into the ListView
+
         displayedListing.setAdapter(listAdapter);
     }
 

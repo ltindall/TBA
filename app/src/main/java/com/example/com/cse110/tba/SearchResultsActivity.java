@@ -26,22 +26,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Alexander and Lucas on 5/4/2015.
+ * Created by Alexander Orr and Lucas Tindall on 5/4/2015.
  * Code for running the search function by taking a query
  */
-public class SearchResultsActivity extends Activity implements DBAsync{
+public class SearchResultsActivity extends Activity implements DBAsync, ActionBar.OnNavigationListener{
     public DBManager dbm;
+    private long currentSpinnerItem; // global variable that determines which filter to search by:
+                                     //     book, author, isbn, order
+    private boolean sellOrBuy; // global bool to determine whether the search query is originating
+                               // from the 'sell' tab or the 'buy' tab
     ListView lister;
 
-    public SearchResultsActivity() {
+    /*public SearchResultsActivity() {
         Log.d("SearchResultsActivity", "An instance of SearchResultsActivity has been created.");
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.list_view);
         dbm = new DBManager(this);
+
+        // action bar to display the search bar and the spinner
+        ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
+        actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
 
         Log.d("SearchResultsActivity", "onCreate entered");
         handleIntent(getIntent());
@@ -51,7 +62,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
 
-        // Initialize search stuff
+        // Initialize Search Bar
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
@@ -71,6 +82,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
                 Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
                 intent.setAction(Intent.ACTION_SEARCH);
                 intent.putExtra("query", query);
+                intent.putExtra("currentSpinnerItem", currentSpinnerItem);
                 handleIntent(intent);
 
                 //listAdapter.getFilter().filter(query);
@@ -90,15 +102,23 @@ public class SearchResultsActivity extends Activity implements DBAsync{
         handleIntent(intent);
     }
 
+    /*
+     * method: handleIntent
+     * description: handles the search intent by passing the query, sellOrBuy boolean, and searchBy
+     *              long to query either the sellListing or buyListing database to see if the query
+     *              has a match.  searchBy determines whether the query is a book, author, isbn or
+     *              order.
+     */
     private void handleIntent(Intent intent) {
 
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra("query");
-            boolean sellOrBuy = intent.getBooleanExtra("sellList", true);
+            sellOrBuy = intent.getBooleanExtra("sellList", true);
             long searchBy = intent.getLongExtra("currentSpinnerItem", 0);
             Log.d("SearchResultsActivity", "searchBy setting = " + Long.toString(searchBy));
 
+            // branch for searching sell listings
             if (sellOrBuy) {
                 switch ((int) searchBy) {
                     case 0:
@@ -116,6 +136,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
                 }
             }
 
+            // branch for searching buy listings
             else {
                 switch ((int) searchBy) {
                     case 0:
@@ -139,9 +160,13 @@ public class SearchResultsActivity extends Activity implements DBAsync{
         }
     }
 
-    // how do we link the output of getSellListings to onSellListingsLoad
-
-    // what is this going to do?
+    /*
+     * method: onBuyListingsLoad
+     * description: once the getBuyListings method returns a list of parse objects
+     *              onBuyListingsLoad will check the contents of the list and pass
+     *              it on to the display in order to display the listings that match
+     *              the query
+     */
     public void onBuyListingsLoad(List<ParseObject> buyListings){
         if (buyListings != null) {
              if(buyListings.size() > 0) {
@@ -157,7 +182,13 @@ public class SearchResultsActivity extends Activity implements DBAsync{
         }
     }
 
-    // what is this going to do?
+    /*
+     * method: onSellListingsLoad
+     * description: once the getSellListings method returns a list of parse objects
+     *              onSellListingsLoad will check the contents of the list and pass
+     *              it on to the display in order to display the listings that match
+     *              the query
+     */
     public void onSellListingsLoad(List<ParseObject> sellListings){
 
         Log.d("SearchResultsActivity", "This function is being visited");
@@ -252,5 +283,42 @@ public class SearchResultsActivity extends Activity implements DBAsync{
         else {
             // display search failure method
         }
+    }
+
+    //Used to check if query statement is an int or not an int
+    //WILL ONLY BE USED IF THE SPINNER CANNOT BE IMPLEMENTED PROPERLY
+    /*public static boolean isInteger(String str) {
+        if (str == null) {
+            return false;
+        }
+        int length = str.length();
+        if (length == 0) {
+            return false;
+        }
+        int i = 0;
+        if (str.charAt(0) == '-') {
+            if (length == 1) {
+                return false;
+            }
+            i = 1;
+        }
+        for (; i < length; i++) {
+            char c = str.charAt(i);
+            if (c <= '/' || c >= ':') {
+                return false;
+            }
+        }
+        return true;
+    }*/
+
+    /*
+     * method: onNavigationItemSelected
+     * description: determines which spinner item has been selected
+     */
+    @Override
+    public boolean onNavigationItemSelected(int i, long l) {
+        currentSpinnerItem = l;
+        Log.d("MainActivity", "currentSpinnerItem = " + Long.toString(currentSpinnerItem));
+        return true;
     }
 }
