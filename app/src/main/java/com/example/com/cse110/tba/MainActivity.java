@@ -68,8 +68,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 null,
                 -1,
                 "Title",  // sort the listing by title
+                null,
                 10);       // limit to 10 listings
-        dbm.getSellListings(null, null, -1, "Title", 10);
+        dbm.getSellListings(null, null, -1, "Title", null, 10);
 
         tabSetup();
 	}
@@ -150,6 +151,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         // Inflate menu options
         menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+        menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
         menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
 		return true;
 	}
@@ -160,6 +162,10 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             case 0:
                 Intent intent = new Intent(MainActivity.this, UserSettings.class);
                 startActivity(intent);
+                return true;
+            case 2:
+                Intent intent2 = new Intent(MainActivity.this, MyListings.class);
+                startActivity(intent2);
                 return true;
             case 1:
                 ParseUser.logOut();
