@@ -40,10 +40,9 @@
 
                     <ListView
                         android:layout_width="fill_parent"
-                        android:layout_height="253dp"
+                        android:layout_height="381dp"
                         android:id="@+id/listViewMainBuy"
-                        android:layout_marginTop="106dp"
-                        android:layout_weight="0.35" />
+                        android:layout_marginTop="10dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -56,7 +55,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/listViewMainSell"
-                        android:layout_marginTop="106dp"/>
+                        android:layout_marginTop="10dp"/>
                 </LinearLayout>
 
             </FrameLayout>

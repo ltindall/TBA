@@ -151,6 +151,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         // Inflate menu options
         menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+        menu.add(Menu.NONE, 3, Menu.NONE, "Create Listing");
         menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
         menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
 		return true;
@@ -172,6 +173,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 ParseLoginBuilder builder = new ParseLoginBuilder(this);
                 startActivityForResult(builder.build(), LOGIN_PAGE);
                 break;
+            case 3:
+
+                return true;
         }
         return true;
     }
@@ -371,6 +375,39 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         tabHost.setCurrentTabByTag("selllistingmain");
     }
 
+    /*Mini class for pairing*/
+    private class Pair<String, ParseObject>
+    {
+        private String description;
+        private ParseObject bookObject;
+
+        //a constructor
+        public Pair(String s , ParseObject object)
+        {
+            this.description = s;
+            this.bookObject = object;
+        }
+
+        public String getString()
+        {
+           return description;
+        }
+
+        public  ParseObject getParseObj()
+        {
+            return bookObject;
+        }
+
+        public void setDescription(String s)
+        {
+            this.description = s;
+        }
+
+        public void setBookObject(ParseObject object)
+        {
+            bookObject = object;
+        }
+    }
 
 
 
