@@ -25,6 +25,7 @@ public class MyListings extends Activity implements  DBAsync
     TabHost tabHost;
     public DBManager dbm;
     ListView lister;
+    String email;
 
     @Override
     public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
@@ -45,29 +46,16 @@ public class MyListings extends Activity implements  DBAsync
         dbm = new DBManager(this);
 
         ParseUser current = ParseUser.getCurrentUser();
-        String email = current.getEmail();
+        email = current.getEmail();
+        Log.d("user", email);
 
-        //get all buy listings made by this user
-        dbm.getBuyListings(null,
-                        null, 
-                        -1,
-                        null,
-                        email,
-                        -1);
-
-        //get all sell listings made by this user
-        dbm.getSellListings(null,
-                        null,
-                        -1,
-                        null,
-                        email,
-                        -1);
         tabSetup();
 
 
     }
 
     private ListView populateBuyListView( List<ParseObject> buyListings){
+
         //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainBuy);
 
@@ -88,7 +76,7 @@ public class MyListings extends Activity implements  DBAsync
 
         String[] values = new String[list.size()];
         for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j).toString();
+            values[j] = list.get(j);
         }
 
 
@@ -107,14 +95,14 @@ public class MyListings extends Activity implements  DBAsync
                                     int position, long id) {
 
                 // ListView Clicked item index
-                int itemPosition = position;
+                //int itemPosition = position;
 
                 // ListView Clicked item value
                 String itemValue = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
                 Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
                         .show();
 
             }
@@ -124,6 +112,8 @@ public class MyListings extends Activity implements  DBAsync
     }
 
     private void populateSellListView( List<ParseObject> sellListings){
+
+
         //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainSell);
 
@@ -144,7 +134,7 @@ public class MyListings extends Activity implements  DBAsync
 
         String[] values = new String[list.size()];
         for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j).toString();
+            values[j] = list.get(j);
         }
 
 
@@ -163,14 +153,14 @@ public class MyListings extends Activity implements  DBAsync
                                     int position, long id) {
 
                 // ListView Clicked item index
-                int itemPosition     = position;
+                //int itemPosition     = position;
 
                 // ListView Clicked item value
                 String  itemValue    = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
                 Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
                         .show();
 
             }
@@ -180,6 +170,14 @@ public class MyListings extends Activity implements  DBAsync
 
     private void tabSetup()
     {
+        //get all buy listings made by this user
+        dbm.getBuyListings(null,
+                null,
+                -1,
+                null,
+                email,
+                -1);
+
 
         tabHost = (TabHost) findViewById(R.id.tabHost);
         //set up the tabs
@@ -198,6 +196,13 @@ public class MyListings extends Activity implements  DBAsync
         tabSpec.setIndicator("Buy");  // name displayed on tab
         tabHost.addTab(tabSpec);  // add tab to tabHost
 
+        //get all sell listings made by this user
+        dbm.getSellListings(null,
+                null,
+                -1,
+                null,
+                email,
+                -1);
 
         // tab for sell Listing
         tabSpec = tabHost.newTabSpec("selllistingmylistings");
@@ -212,11 +217,12 @@ public class MyListings extends Activity implements  DBAsync
         tabSpec.setIndicator("Sell");  // set the displayed name of the tab
         tabHost.addTab(tabSpec);  // add the tab to tabhost
 
-
+        tabHost.setCurrentTabByTag("buylistingsmylistings");
     }
 
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
+        //Log.d("MyListings", "buyListings" + buyListings.size());
         populateBuyListView(buyListings);
     }
 
