@@ -151,7 +151,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         // Inflate menu options
         menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
-        menu.add(Menu.NONE, 3, Menu.NONE, "Create Listing");
+        menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
+        menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
         menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
         menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
 		return true;
@@ -173,8 +174,13 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 ParseLoginBuilder builder = new ParseLoginBuilder(this);
                 startActivityForResult(builder.build(), LOGIN_PAGE);
                 break;
-            case 3:
-
+            case 3:  // Crete buy listing
+                Intent intent3 = new Intent(MainActivity.this , CreateBuyingListing.class);
+                startActivity(intent3);
+                return true;
+            case 4:  // Create sell listing
+                Intent intent4 = new Intent(MainActivity.this , CreateSellingListing.class);
+                startActivity(intent4);
                 return true;
         }
         return true;
