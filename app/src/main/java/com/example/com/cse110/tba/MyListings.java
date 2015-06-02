@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -196,6 +197,12 @@ public class MyListings extends Activity implements  DBAsync
         tabSpec.setIndicator("Buy");  // name displayed on tab
         tabHost.addTab(tabSpec);  // add tab to tabHost
 
+        final FrameLayout tabContent = tabHost.getTabContentView();
+
+        for (int index = 0; index < tabContent.getChildCount(); index++){
+            tabContent.getChildAt(index).setVisibility(View.GONE);
+        }
+
         //get all sell listings made by this user
         dbm.getSellListings(null,
                 null,
@@ -217,7 +224,7 @@ public class MyListings extends Activity implements  DBAsync
         tabSpec.setIndicator("Sell");  // set the displayed name of the tab
         tabHost.addTab(tabSpec);  // add the tab to tabhost
 
-        tabHost.setCurrentTabByTag("buylistingsmylistings");
+        tabHost.setCurrentTabByTag("selllistingsmylistings");
     }
 
     @Override
