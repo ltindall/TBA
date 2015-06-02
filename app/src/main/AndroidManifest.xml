@@ -50,6 +50,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MyListings"
+            android:label="My Listings" />
+        <activity
             android:name=".UserSettings"
             android:label="User Settings" />
 
