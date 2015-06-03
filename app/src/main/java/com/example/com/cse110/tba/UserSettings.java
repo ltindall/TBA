@@ -67,8 +67,8 @@ public class UserSettings extends Activity implements  DBAsync
             text.setText(current.getString("Text"));
         }
 
-        /*DBManager dbm = new DBManager(this);
-        dbm.addBookListing(true, "The Balls", "Zebra", 8, 9, 1, 2015, 9000, "here you go Batman", true);*/
+        //DBManager dbm = new DBManager(this);
+        //dbm.addBookListing(true, "The Balls",  "", 8, 9, 1, 2015, 9000, "here you go Batman", true);
     }
 
     public void submit(View v)
