@@ -1,8 +1,7 @@
 package com.example.com.cse110.tba;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,10 +11,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
-import com.parse.SaveCallback;
 /**
  * Created by Chandra on 5/10/15.
  */
@@ -27,147 +22,101 @@ public class CreateSellingListing extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_selling_listing);*/
 
-        // book information
-        protected EditText wBookTitle;
-        protected EditText wBookAuthor;
-        protected EditText wBookISBN;
-        protected EditText wBookYear;
-        protected EditText wBookEdition;
+    // book information
+    protected EditText wBookTitle;
+    protected EditText wBookAuthor;
+    protected EditText wBookISBN;
+    protected EditText wBookYear;
+    protected EditText wBookEdition;
 
-        protected EditText wPrice;
-        protected EditText wCondition;
-        protected EditText wComment;
-        protected CheckBox wHardCover;
-        protected boolean isHardcover;
+    protected EditText wPrice;
+    protected EditText wCondition;
+    protected EditText wComment;
+    protected CheckBox wHardCover;
 
-        // button information
-        protected Button wCreateSellingListingButton;
+    // button information
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_create_buying_listing);
+    protected CheckBox wNewBook;
+    protected CheckBox wUsedBook;
+    protected Button wCreateSellingListingButton;
 
-            // initializing
-            wBookTitle = (EditText)findViewById(R.id.createListingBookTitle);
-            wBookAuthor = (EditText)findViewById(R.id.createListingBookAuthor);
-            wBookISBN = (EditText)findViewById(R.id.createListingISBNNumber);
-            wBookYear = (EditText)findViewById(R.id.createListingBookYear);
-            wBookEdition = (EditText)findViewById(R.id.createListingBookEdition);
-            wCreateSellingListingButton = (Button)findViewById(R.id.createListingButton);
+    private DBManager manager;
 
-            wPrice = (EditText)findViewById(R.id.createListingBookPrice);
-            //wCondition = (EditText)findViewById(R.id.createListingBookCondition);
-            wComment = (EditText)findViewById(R.id.createListingBookComment);
-            wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create_buying_listing);
 
-            // create an on click listener to toggle the value of Hardcover boolean
-            wHardCover.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    OnCheckBoxClicked(v);
+        // initializing
+        wBookTitle = (EditText) findViewById(R.id.createListingBookTitle);
+        wBookAuthor = (EditText) findViewById(R.id.createListingBookAuthor);
+        wBookISBN = (EditText) findViewById(R.id.createListingISBNNumber);
+        wBookYear = (EditText) findViewById(R.id.createListingBookYear);
+        wBookEdition = (EditText) findViewById(R.id.createListingBookEdition);
+        wCreateSellingListingButton = (Button) findViewById(R.id.createListingButton);
+
+        wPrice = (EditText) findViewById(R.id.createListingBookPrice);
+        wComment = (EditText) findViewById(R.id.createListingBookComment);
+
+        wNewBook = (CheckBox) findViewById(R.id.bookConditionNew);
+        wUsedBook = (CheckBox) findViewById(R.id.bookConditionUsed);
+        wHardCover = (CheckBox) findViewById(R.id.createListingIsHardCover);
+
+
+        // create listener for the create button
+        wCreateSellingListingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get all the book information and convert them into string
+                String bookTitle = wBookTitle.getText().toString().trim();
+                String bookAuthor = wBookAuthor.getText().toString().trim();
+
+                String stringBookISBN = wBookISBN.getText().toString().trim();
+                int bookISBN = Integer.parseInt(stringBookISBN);
+
+                String stringBookYear = wBookYear.getText().toString().trim();
+                int bookYear = Integer.parseInt(stringBookYear);
+
+                String stringBookEdition = wBookYear.getText().toString().trim();
+                int bookEdition = Integer.parseInt(stringBookEdition);
+
+                String stringBookPrice = wBookYear.getText().toString().trim();
+                float bookPrice = Float.parseFloat(stringBookPrice);
+
+                boolean checkNew = wNewBook.isChecked();
+                boolean checkUsed = wUsedBook.isChecked();
+
+                int newBookOrNot = 0;
+                if (checkNew) {
+                    newBookOrNot = 1;
                 }
 
-                //a function to be called when checkbox is clicked
-                public void OnCheckBoxClicked(View view)
-                {
-                    //if checkbox is checked
-                    isHardcover = ((CheckBox) view).isChecked();
-
+                if (checkUsed) {
+                    newBookOrNot = 0;
                 }
-            });
 
-            // create listener for the create button
-            wCreateSellingListingButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // get all the book information and convert them into string
-                    String bookTitle = wBookTitle.getText().toString().trim();
-                    String bookAuthor = wBookAuthor.getText().toString().trim();
+                String bookComment = wComment.getText().toString();
+                boolean hardCoverChecked = wHardCover.isChecked();
 
-                    String stringBookISBN = wBookISBN.getText().toString().trim();
-                    long bookISBN = Long.parseLong(stringBookISBN);
+                manager.addBookListing(false, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
+                        bookYear, bookEdition, bookComment, hardCoverChecked);
 
-                    String stringBookYear = wBookYear.getText().toString().trim();
-                    int bookYear = Integer.parseInt(stringBookYear);
+                // save it on parse as new Book object
+                // save it on parse as new Listing object
 
-                    String stringBookEdition = wBookYear.getText().toString().trim();
-                    double bookEdition = Double.parseDouble(stringBookEdition);
+                // Make a toast to signal that it's ok
+                Toast.makeText(CreateSellingListing.this, "Success Creating Listing", Toast.LENGTH_LONG);
 
-                    String stringBookPrice = wBookYear.getText().toString().trim();
-                    double bookPrice = Double.parseDouble(stringBookPrice);
+                // save it
+            }
 
-                    String bookCondition = wCondition.getText().toString();
-                    String bookComment = wComment.getText().toString();
+            public void sendMessage(View view) {
+                Intent intent = new Intent(CreateSellingListing.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
-                    // save it on parse as new Book object
-                    ParseObject book = new ParseObject("CustomBook");
-                    book.put("Title", bookTitle);
-                    book.put("Author", bookAuthor);
-                    book.put("ISBN", bookISBN);
-                    book.put("Year", bookYear);
-                    book.put("Edition", bookEdition);
-
-                    // save it on parse as new Listing object
-                    ParseUser currentUser = ParseUser.getCurrentUser();
-                    String currentUserUsername = currentUser.getUsername();
-
-                    ParseObject bookListing = new ParseObject("SellListing");
-                    bookListing.put("Book", book);
-                    bookListing.put("Price", bookPrice);
-                    bookListing.put("Condition", bookCondition);
-                    bookListing.put("Comment", bookComment);
-                    bookListing.put("User", currentUser.getEmail());
-                    bookListing.put("HardCover", isHardcover);
-
-
-                    /*boolean checked = wHardCover.isChecked();
-                    if (checked) {
-                        bookListing.put("HardCover", true);
-                    }
-
-                    else {
-                        bookListing.put("HardCover", false);
-                    }*/
-
-
-                    // save it
-                    book.saveInBackground();
-                    bookListing.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if (e == null) {
-                                // successfully storing everything
-                                // create toast
-                                Toast.makeText(CreateSellingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG).show();
-
-                                // bring user to the next page later (INTENT)
-                            }
-
-                            else {
-                                // there is problem in storing
-                                AlertDialog.Builder builder = new AlertDialog.Builder(CreateSellingListing.this);
-                                builder.setMessage(e.getMessage());
-                                builder.setTitle("Ooops, something went wrong");
-                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        // close the dialogue message
-                                        dialogInterface.dismiss();
-                                    }
-                                });
-                                AlertDialog dialog = builder.create();
-                                dialog.show();
-                            }
-
-                        }
-                    });
-
-
-
-
-                }
-            });
     }
 
     @Override
