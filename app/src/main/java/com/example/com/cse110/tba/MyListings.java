@@ -42,7 +42,7 @@ public class MyListings extends Activity implements  DBAsync
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.my_listings);
 
         dbm = new DBManager(this);
 
@@ -69,10 +69,10 @@ public class MyListings extends Activity implements  DBAsync
         tabSetup();
     }
 
-    private ListView populateBuyListView( List<ParseObject> buyListings){
+    private ListView populateBuyListView( final List<ParseObject> buyListings){
 
         //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
-        lister = (ListView)findViewById(R.id.listViewMainBuy);
+        lister = (ListView)findViewById(R.id.listViewMyListBuy);
 
         ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: buyListings) {
@@ -109,16 +109,12 @@ public class MyListings extends Activity implements  DBAsync
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                // ListView Clicked item index
-                //int itemPosition = position;
+                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, true);
 
-                // ListView Clicked item value
-                String itemValue = (String) lister.getItemAtPosition(position);
-
-                // Show Alert
-                Toast.makeText(getApplicationContext(),
-                        "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                int currentTab = tabHost.getCurrentTab();
+                //tabHost.clearAllTabs();
+                //tabSetup();
+                tabHost.setCurrentTab(currentTab);
 
             }
 
@@ -126,11 +122,11 @@ public class MyListings extends Activity implements  DBAsync
         return lister;
     }
 
-    private void populateSellListView( List<ParseObject> sellListings){
+    private void populateSellListView( final List<ParseObject> sellListings){
 
 
         //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
-        lister = (ListView)findViewById(R.id.listViewMainSell);
+        lister = (ListView)findViewById(R.id.listViewMyListSell);
 
         ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: sellListings) {
@@ -167,16 +163,12 @@ public class MyListings extends Activity implements  DBAsync
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                // ListView Clicked item index
-                //int itemPosition     = position;
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, true);
 
-                // ListView Clicked item value
-                String  itemValue    = (String) lister.getItemAtPosition(position);
-
-                // Show Alert
-                Toast.makeText(getApplicationContext(),
-                        "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                int currentTab = tabHost.getCurrentTab();
+                //tabHost.clearAllTabs();
+                //tabSetup();
+                tabHost.setCurrentTab(currentTab);
 
             }
 
@@ -196,7 +188,7 @@ public class MyListings extends Activity implements  DBAsync
         tabSpec.setContent(new TabHost.TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
-                ListView buyListView = (ListView) findViewById(R.id.listViewMainBuy);
+                ListView buyListView = (ListView) findViewById(R.id.listViewMyListBuy);
                 return buyListView;
             }
         });
@@ -209,7 +201,7 @@ public class MyListings extends Activity implements  DBAsync
         tabSpec.setContent(new TabHost.TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
-                ListView sellListView = (ListView) findViewById(R.id.listViewMainSell);
+                ListView sellListView = (ListView) findViewById(R.id.listViewMyListSell);
                 return sellListView;
             }
         });

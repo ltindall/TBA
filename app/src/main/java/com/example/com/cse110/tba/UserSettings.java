@@ -108,7 +108,7 @@ public class UserSettings extends Activity implements  DBAsync
         sampleBook.put("ISBN", 7616);
         sampleListing.put("Price", 9002);
         sampleListing.put("Book", sampleBook);
-        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v);
+        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false);
     }
 
     @Override

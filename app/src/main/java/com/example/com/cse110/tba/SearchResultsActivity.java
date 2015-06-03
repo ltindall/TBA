@@ -225,7 +225,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false);
 
 
                 // ListView Clicked item index

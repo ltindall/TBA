@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popup_border"
+    android:gravity="center_horizontal">
+    <!--#46008B-->
+    <TextView
+        android:id="@+id/popup_title1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_author1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_isbn1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_year1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_edition1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_price1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_condition1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_comment1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_hardcover1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/popup_history1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Market History"
+        android:gravity="center_horizontal"/>
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/popup_delete1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Listing"
+        android:gravity="center_horizontal"/>
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/popup_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:gravity="center_horizontal"/>
+
+</LinearLayout>

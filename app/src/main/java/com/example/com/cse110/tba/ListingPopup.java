@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Toast;
 
 import com.parse.ParseObject;
 
@@ -29,8 +30,7 @@ public class ListingPopup
     private int isbn;
     private String title;
 
-
-    public ListingPopup(Context c, ParseObject p, View parentView)
+    public ListingPopup(Context c, ParseObject p, View parentView, boolean isMyListing)
     {
         context = c;
         listing = p;
@@ -46,76 +46,147 @@ public class ListingPopup
         }
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View popUpView = inflater.inflate(R.layout.listing_popup, null, false);
-        popup = new PopupWindow(popUpView, 400, 580, true);
-        popup.setContentView(popUpView);
 
-        TextView title = (TextView)popUpView.findViewById(R.id.popup_title);
-        title.setText("Title: " + listing.getParseObject("Book").getString("Title"));
+        View popUpView;
 
-        TextView author = (TextView)popUpView.findViewById(R.id.popup_author);
-        author.setText("Author: " + listing.getParseObject("Book").getString("Author"));
+        if (!isMyListing) {
+            popUpView = inflater.inflate(R.layout.listing_popup, null, false);
 
-        TextView isbn = (TextView)popUpView.findViewById(R.id.popup_isbn);
-        isbn.setText("ISBN: " + listing.getParseObject("Book").getInt("ISBN"));
+            popup = new PopupWindow(popUpView, 400, 580, true);
+            popup.setContentView(popUpView);
 
-        TextView year = (TextView)popUpView.findViewById(R.id.popup_year);
-        year.setText("Year: " + listing.getParseObject("Book").getInt("Year"));
+            TextView title = (TextView) popUpView.findViewById(R.id.popup_title);
+            title.setText("Title: " + listing.getParseObject("Book").getString("Title"));
 
-        TextView edition = (TextView)popUpView.findViewById(R.id.popup_edition);
-        edition.setText("Edition: " + listing.getParseObject("Book").getInt("Edition"));
+            TextView author = (TextView) popUpView.findViewById(R.id.popup_author);
+            author.setText("Author: " + listing.getParseObject("Book").getString("Author"));
 
-        TextView price = (TextView)popUpView.findViewById(R.id.popup_price);
-        price.setText("Price: " + listing.getDouble("Price"));
+            TextView isbn = (TextView) popUpView.findViewById(R.id.popup_isbn);
+            isbn.setText("ISBN: " + listing.getParseObject("Book").getInt("ISBN"));
 
-        if(listing.getInt("Condition") == 0){
-            TextView condition = (TextView)popUpView.findViewById(R.id.popup_condition);
-            condition.setText("Condition: Old");
-        }
+            TextView year = (TextView) popUpView.findViewById(R.id.popup_year);
+            year.setText("Year: " + listing.getParseObject("Book").getInt("Year"));
 
-        else{
-            TextView condition = (TextView)popUpView.findViewById(R.id.popup_condition);
-            condition.setText("Condition: New");
-        }
+            TextView edition = (TextView) popUpView.findViewById(R.id.popup_edition);
+            edition.setText("Edition: " + listing.getParseObject("Book").getInt("Edition"));
 
-        TextView comment = (TextView)popUpView.findViewById(R.id.popup_comment);
-        comment.setText("Comment: " + listing.getString("Comment"));
+            TextView price = (TextView) popUpView.findViewById(R.id.popup_price);
+            price.setText("Price: " + listing.getDouble("Price"));
 
-        if(listing.getString("Hardcover") == "true") {
-            TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover);
-            hardcover.setText("Hardcover: Yes");
-        }
-
-        else{
-            TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover);
-            hardcover.setText("Hardcover: No");
-        }
-
-        Button exit = (Button)popUpView.findViewById(R.id.popup_button);
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                popup.dismiss();
+            if (listing.getInt("Condition") == 0) {
+                TextView condition = (TextView) popUpView.findViewById(R.id.popup_condition);
+                condition.setText("Condition: Old");
+            } else {
+                TextView condition = (TextView) popUpView.findViewById(R.id.popup_condition);
+                condition.setText("Condition: New");
             }
-        });
 
-        Button contact = (Button)popUpView.findViewById(R.id.popup_contact);
-        contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DBManager.notifyUser(listing);
-                popup.dismiss();
-            }
-        });
+            TextView comment = (TextView) popUpView.findViewById(R.id.popup_comment);
+            comment.setText("Comment: " + listing.getString("Comment"));
 
-        Button history = (Button)popUpView.findViewById(R.id.popup_history);
-        history.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showMarketHistory();
-                popup.dismiss();
+            if (listing.getString("Hardcover") == "true") {
+                TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover);
+                hardcover.setText("Hardcover: Yes");
+            } else {
+                TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover);
+                hardcover.setText("Hardcover: No");
             }
-        });
+
+            Button exit = (Button) popUpView.findViewById(R.id.popup_button);
+            exit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    popup.dismiss();
+                }
+            });
+
+
+            Button history = (Button) popUpView.findViewById(R.id.popup_history);
+            history.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showMarketHistory();
+                    popup.dismiss();
+
+                }
+            });
+        }
+
+        else {
+            popUpView = inflater.inflate(R.layout.my_listings_popup, null, false);
+
+            popup = new PopupWindow(popUpView, 400, 580, true);
+            popup.setContentView(popUpView);
+
+            TextView title = (TextView) popUpView.findViewById(R.id.popup_title1);
+            title.setText("Title: " + listing.getParseObject("Book").getString("Title"));
+
+            TextView author = (TextView) popUpView.findViewById(R.id.popup_author1);
+            author.setText("Author: " + listing.getParseObject("Book").getString("Author"));
+
+            TextView isbn = (TextView) popUpView.findViewById(R.id.popup_isbn1);
+            isbn.setText("ISBN: " + listing.getParseObject("Book").getInt("ISBN"));
+
+            TextView year = (TextView) popUpView.findViewById(R.id.popup_year1);
+            year.setText("Year: " + listing.getParseObject("Book").getInt("Year"));
+
+            TextView edition = (TextView) popUpView.findViewById(R.id.popup_edition1);
+            edition.setText("Edition: " + listing.getParseObject("Book").getInt("Edition"));
+
+            TextView price = (TextView) popUpView.findViewById(R.id.popup_price1);
+            price.setText("Price: " + listing.getDouble("Price"));
+
+            if (listing.getInt("Condition") == 0) {
+                TextView condition = (TextView) popUpView.findViewById(R.id.popup_condition1);
+                condition.setText("Condition: Old");
+            } else {
+                TextView condition = (TextView) popUpView.findViewById(R.id.popup_condition1);
+                condition.setText("Condition: New");
+            }
+
+            TextView comment = (TextView) popUpView.findViewById(R.id.popup_comment1);
+            comment.setText("Comment: " + listing.getString("Comment"));
+
+            if (listing.getString("Hardcover") == "true") {
+                TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover1);
+                hardcover.setText("Hardcover: Yes");
+            } else {
+                TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover1);
+                hardcover.setText("Hardcover: No");
+            }
+
+            Button exit = (Button) popUpView.findViewById(R.id.popup_button1);
+            exit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    popup.dismiss();
+                }
+            });
+
+            Button delete = (Button) popUpView.findViewById(R.id.popup_delete1);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //remove the listing
+                    listing.deleteInBackground();
+                    Toast.makeText(context,
+                            "Item Deleted", Toast.LENGTH_LONG)
+                            .show();
+                    popup.dismiss();
+                }
+            });
+
+
+            Button history = (Button) popUpView.findViewById(R.id.popup_history1);
+            history.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showMarketHistory();
+                    popup.dismiss();
+
+                }
+            });
+        }
 
         popup.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
         popup.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
