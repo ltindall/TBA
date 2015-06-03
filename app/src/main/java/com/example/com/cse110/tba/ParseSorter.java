@@ -42,11 +42,11 @@ public class ParseSorter
         }
         while(!unsorted.isEmpty()) //perform operation until all elements are moved to new List
         {
-            /*ParseObject rank = new ParseObject(type);
+            ParseObject rank = new ParseObject(type);
             rank.put(sortField, 0);
             for(ParseObject d: unsorted)
             {
-                if((float)(d.get(sortField)) <= (float)(rank.get(sortField)))
+                if(d.getDouble(sortField) <= rank.getDouble(sortField))
                 {
                     rank.put(sortField, d);
                 }
@@ -54,9 +54,9 @@ public class ParseSorter
             }
             finalList.add(rank);
 
-            unsorted.remove(unsorted.indexOf(rank));*/
+            unsorted.remove(unsorted.indexOf(rank));
 
-            finalList =  mergeSort(unsorted, sortField);
+            //finalList =  mergeSort(unsorted, sortField);
 
         }
         if(direction == 1)
