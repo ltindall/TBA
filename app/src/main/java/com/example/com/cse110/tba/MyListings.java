@@ -185,20 +185,21 @@ public class MyListings extends Activity implements  DBAsync
         tabHost.setup();
 
         //tab for buy Listing
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec("buylistingsmylistings");
+        TabHost.TabSpec tabSpec1 = tabHost.newTabSpec("buylistingsmylistings");
         //creating the content of this tab
-        tabSpec.setContent(new TabHost.TabContentFactory() {
+        tabSpec1.setContent(new TabHost.TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
                 ListView buyListView = (ListView) findViewById(R.id.listViewMainBuy);
                 return buyListView;
             }
         });
-        tabSpec.setIndicator("Buy");  // name displayed on tab
-        tabHost.addTab(tabSpec);  // add tab to tabHost
+        tabSpec1.setIndicator("Buy");  // name displayed on tab
+        tabHost.addTab(tabSpec1);  // add tab to tabHost
 
         final FrameLayout tabContent = tabHost.getTabContentView();
 
+        //to make everything not displayed on startup
         for (int index = 0; index < tabContent.getChildCount(); index++){
             tabContent.getChildAt(index).setVisibility(View.GONE);
         }
@@ -212,17 +213,17 @@ public class MyListings extends Activity implements  DBAsync
                 -1);
 
         // tab for sell Listing
-        tabSpec = tabHost.newTabSpec("selllistingmylistings");
+        TabHost.TabSpec tabSpec2 = tabHost.newTabSpec("selllistingmylistings");
         //set the tcontent of this tab
-        tabSpec.setContent(new TabHost.TabContentFactory() {
+        tabSpec2.setContent(new TabHost.TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
                 ListView sellListView = (ListView) findViewById(R.id.listViewMainSell);
                 return sellListView;
             }
         });
-        tabSpec.setIndicator("Sell");  // set the displayed name of the tab
-        tabHost.addTab(tabSpec);  // add the tab to tabhost
+        tabSpec2.setIndicator("Sell");  // set the displayed name of the tab
+        tabHost.addTab(tabSpec2);  // add the tab to tabhost
 
         tabHost.setCurrentTabByTag("selllistingsmylistings");
     }
