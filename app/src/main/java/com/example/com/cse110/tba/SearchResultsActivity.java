@@ -185,6 +185,8 @@ public class SearchResultsActivity extends Activity implements DBAsync{
                                     int position, long id) {
 
                 ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view);
+
+
                 // ListView Clicked item index
                 int itemPosition     = position;
 
