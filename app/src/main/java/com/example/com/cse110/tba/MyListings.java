@@ -113,12 +113,12 @@ public class MyListings extends Activity implements  DBAsync
                 //int itemPosition = position;
 
                 // ListView Clicked item value
-                String itemValue = (String) lister.getItemAtPosition(position);
+                /*String itemValue = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
                 Toast.makeText(getApplicationContext(),
                         "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 
@@ -171,12 +171,12 @@ public class MyListings extends Activity implements  DBAsync
                 //int itemPosition     = position;
 
                 // ListView Clicked item value
-                String  itemValue    = (String) lister.getItemAtPosition(position);
+                /*String  itemValue    = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
                 Toast.makeText(getApplicationContext(),
                         "Position :" + position + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 
