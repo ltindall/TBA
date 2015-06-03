@@ -313,7 +313,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                                     int position, long id) {
                 ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false);
                 // ListView Clicked item index
-                int itemPosition = position;
+                /*int itemPosition = position;
 
                 // ListView Clicked item value
                 String itemValue = (String) lister.getItemAtPosition(position);
@@ -373,7 +373,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false);
 
                 // ListView Clicked item index
-                int itemPosition     = position;
+                /*int itemPosition     = position;
 
                 // ListView Clicked item value
                 String  itemValue    = (String) lister.getItemAtPosition(position);

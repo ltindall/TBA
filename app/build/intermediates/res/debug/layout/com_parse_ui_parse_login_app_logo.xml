@@ -4,4 +4,5 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/com_parse_ui_app_logo"
-    android:contentDescription="@string/com_parse_ui_logo_content_description" /><!-- From: file:/C:/Users/Hansen/Documents/tba/parseUI/ParseLoginUI/res/layout/com_parse_ui_parse_login_app_logo.xml --><!-- From: file:/C:/Users/Hansen/Documents/tba/app/build/intermediates/exploded-aar/tba/ParseLoginUI/unspecified/res/layout/com_parse_ui_parse_login_app_logo.xml -->
+    android:contentDescription="@string/com_parse_ui_logo_content_description" />
+<!-- From: file:/C:/Users/Owner/Desktop/code/CS110/Android/TBA/parseUI/ParseLoginUI/res/layout/com_parse_ui_parse_login_app_logo.xml --><!-- From: file:/C:/Users/Owner/Desktop/code/CS110/Android/TBA/app/build/intermediates/exploded-aar/TBA/ParseLoginUI/unspecified/res/layout/com_parse_ui_parse_login_app_logo.xml -->
