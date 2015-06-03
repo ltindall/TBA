@@ -102,13 +102,13 @@ public class UserSettings extends Activity implements  DBAsync
         Toast.makeText(getApplicationContext(), "User Settings Updated",
                 Toast.LENGTH_SHORT).show();
 
-        ParseObject sampleListing = new ParseObject("SellListing");
+        /*ParseObject sampleListing = new ParseObject("SellListing");
         ParseObject sampleBook = new ParseObject("CustomBook");
         sampleBook.put("Title", "Antigone");
         sampleBook.put("ISBN", 7616);
         sampleListing.put("Price", 9002);
         sampleListing.put("Book", sampleBook);
-        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false);
+        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false);*/
     }
 
     @Override

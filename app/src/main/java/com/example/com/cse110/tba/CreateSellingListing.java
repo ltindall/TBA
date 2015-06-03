@@ -139,16 +139,16 @@ public class CreateSellingListing extends Activity implements DBAsync {
                     return;
                 }
 
-                String stringBookEdition = wBookYear.getText().toString().trim();
+                String stringBookEdition = wBookEdition.getText().toString().trim();
                 int bookEdition = Integer.parseInt(stringBookEdition);
+
                 if(wPrice.getText().length() == 0)
                 {
                     Toast.makeText(CreateSellingListing.this, "Price cannot be empty", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-
-                String stringBookPrice = wBookYear.getText().toString().trim();
+                String stringBookPrice = wPrice.getText().toString().trim();
                 float bookPrice = Float.parseFloat(stringBookPrice);
 
 
