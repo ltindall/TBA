@@ -34,6 +34,9 @@ public class CreateSellingListing extends Activity {
     protected EditText wComment;
     protected CheckBox wHardCover;
 
+    boolean checkNew = false;
+    boolean checkUsed = false;
+    boolean isHardCover = false;
     // button information
 
     protected CheckBox wNewBook;
@@ -41,6 +44,8 @@ public class CreateSellingListing extends Activity {
     protected Button wCreateSellingListingButton;
 
     private DBManager manager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,33 @@ public class CreateSellingListing extends Activity {
         wNewBook = (CheckBox) findViewById(R.id.bookConditionNew);
         wUsedBook = (CheckBox) findViewById(R.id.bookConditionUsed);
         wHardCover = (CheckBox) findViewById(R.id.createListingIsHardCover);
+
+        wNewBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((CheckBox) view).isChecked()) {
+                    checkNew = true;
+                }
+            }
+        });
+
+        wUsedBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((CheckBox) view).isChecked()) {
+                    checkUsed = true;
+                }
+            }
+        });
+
+        wHardCover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((CheckBox) view).isChecked()) {
+                    isHardCover = true;
+                }
+            }
+        });
 
 
         // create listener for the create button
@@ -83,8 +115,7 @@ public class CreateSellingListing extends Activity {
                 String stringBookPrice = wBookYear.getText().toString().trim();
                 float bookPrice = Float.parseFloat(stringBookPrice);
 
-                boolean checkNew = wNewBook.isChecked();
-                boolean checkUsed = wUsedBook.isChecked();
+
 
                 int newBookOrNot = 0;
                 if (checkNew) {
@@ -96,10 +127,9 @@ public class CreateSellingListing extends Activity {
                 }
 
                 String bookComment = wComment.getText().toString();
-                boolean hardCoverChecked = wHardCover.isChecked();
 
                 manager.addBookListing(false, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
-                        bookYear, bookEdition, bookComment, hardCoverChecked);
+                        bookYear, bookEdition, bookComment, isHardCover);
 
                 // save it on parse as new Book object
                 // save it on parse as new Listing object
