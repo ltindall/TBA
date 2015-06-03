@@ -387,7 +387,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             }
         });
         tabSpec.setIndicator("Sell");  // set the displayed name of the tab
-        tabHost.addTab(tabSpec);  // add the tab to tabhost
+        //tabHost.addTab(tabSpec);  // add the tab to tabhost
 
         tabHost.setCurrentTabByTag("selllistingmain");
     }
@@ -425,11 +425,4 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             bookObject = object;
         }
     }
-
-
-    }*/
-
-
-
-
 }
