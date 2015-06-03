@@ -69,12 +69,21 @@
         android:inputType="number|numberDecimal"
         />
 
-    <EditText
-        android:layout_width="match_parent"
+    <CheckBox
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Describe book condition"
-        android:id="@+id/createListingBookCondition"
-        />
+        android:id="@+id/bookConditionNew"
+        android:text="New"
+        android:onClick="onCheckboxClicked"
+        android:layout_weight="0.26" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bookConditionUsed"
+        android:text="Used"
+        android:onClick="onCheckboxClicked"
+        android:layout_weight="0.26" />
 
     <EditText
         android:layout_width="match_parent"
