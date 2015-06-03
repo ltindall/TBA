@@ -134,6 +134,7 @@ public class CreateBuyingListing extends Activity implements DBAsync {
                 Toast.makeText(CreateBuyingListing.this, "Success Creating Listing", Toast.LENGTH_LONG).show();
 
                 // save it
+                finish();
             }
 
             protected void sendMessage(View view) {

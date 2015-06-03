@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Insert Book Details"
         android:gravity="center_horizontal"
+        android:editable="false"
         />
 
     <EditText
@@ -59,6 +60,7 @@
         android:layout_height="wrap_content"
         android:text="Insert Selling Information"
         android:gravity="center_horizontal"
+        android:editable="false"
         />
 
     <EditText
