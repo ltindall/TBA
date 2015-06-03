@@ -11,11 +11,16 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+
+import java.util.List;
+
 /**
  * Created by Chandra on 5/10/15.
  */
 
-public class CreateSellingListing extends Activity {
+public class CreateSellingListing extends Activity implements DBAsync {
 
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,25 +48,23 @@ public class CreateSellingListing extends Activity {
     protected CheckBox wUsedBook;
     protected Button wCreateSellingListingButton;
 
-    private DBManager manager;
-
-
+    private DBManager manager = new DBManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_buying_listing);
+        setContentView(R.layout.activity_create_selling_listing);
 
         // initializing
-        wBookTitle = (EditText) findViewById(R.id.createListingBookTitle);
-        wBookAuthor = (EditText) findViewById(R.id.createListingBookAuthor);
-        wBookISBN = (EditText) findViewById(R.id.createListingISBNNumber);
-        wBookYear = (EditText) findViewById(R.id.createListingBookYear);
-        wBookEdition = (EditText) findViewById(R.id.createListingBookEdition);
-        wCreateSellingListingButton = (Button) findViewById(R.id.createListingButton);
+        wBookTitle = (EditText) findViewById(R.id.createSellListingBookTitle);
+        wBookAuthor = (EditText) findViewById(R.id.createSellListingBookAuthor);
+        wBookISBN = (EditText) findViewById(R.id.createSellListingISBNNumber);
+        wBookYear = (EditText) findViewById(R.id.createSellListingBookYear);
+        wBookEdition = (EditText) findViewById(R.id.createSellListingBookEdition);
+        wCreateSellingListingButton = (Button) findViewById(R.id.createSellListingButton);
 
-        wPrice = (EditText) findViewById(R.id.createListingBookPrice);
-        wComment = (EditText) findViewById(R.id.createListingBookComment);
+        wPrice = (EditText) findViewById(R.id.createSellListingBookPrice);
+        wComment = (EditText) findViewById(R.id.createSellListingBookComment);
 
         wNewBook = (CheckBox) findViewById(R.id.bookConditionNew);
         wUsedBook = (CheckBox) findViewById(R.id.bookConditionUsed);
@@ -104,7 +107,7 @@ public class CreateSellingListing extends Activity {
                 String bookAuthor = wBookAuthor.getText().toString().trim();
 
                 String stringBookISBN = wBookISBN.getText().toString().trim();
-                int bookISBN = Integer.parseInt(stringBookISBN);
+                long bookISBN = Long.parseLong(stringBookISBN);
 
                 String stringBookYear = wBookYear.getText().toString().trim();
                 int bookYear = Integer.parseInt(stringBookYear);
@@ -114,7 +117,6 @@ public class CreateSellingListing extends Activity {
 
                 String stringBookPrice = wBookYear.getText().toString().trim();
                 float bookPrice = Float.parseFloat(stringBookPrice);
-
 
 
                 int newBookOrNot = 0;
@@ -137,14 +139,17 @@ public class CreateSellingListing extends Activity {
                 // Make a toast to signal that it's ok
                 Toast.makeText(CreateSellingListing.this, "Success Creating Listing", Toast.LENGTH_LONG);
 
+                //Intent intent = new Intent(CreateSellingListing.this, MainActivity.class);
+                //startActivity(intent);
                 // save it
             }
 
-            public void sendMessage(View view) {
-                Intent intent = new Intent(CreateSellingListing.this, MainActivity.class);
-                startActivity(intent);
-            }
+
         });
+
+        //public void sendMessage(View view) {
+
+        //}
 
 
     }
@@ -169,5 +174,30 @@ public class CreateSellingListing extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBuyListingsLoad(List<ParseObject> buyListings) {
+
+    }
+
+    @Override
+    public void onSellListingsLoad(List<ParseObject> sellListings) {
+
+    }
+
+    @Override
+    public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
+
+    }
+
+    @Override
+    public void onSellHistoryLoad(List<ParseObject> sellHistory) {
+
+    }
+
+    @Override
+    public void onUserLoad(List<ParseUser> userList) {
+
     }
 }

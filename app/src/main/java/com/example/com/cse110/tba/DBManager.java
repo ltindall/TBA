@@ -31,7 +31,7 @@ public class DBManager
     }
 
     //add a book listing to the database
-    public void addBookListing(boolean isBuyOrder, String title, String author, int isbn, float price,
+    public void addBookListing(boolean isBuyOrder, String title, String author, long isbn, float price,
                                int condition, int year, int edition, String comment, boolean isHardcover)
     {
         ParseUser currentUser = ParseUser.getCurrentUser();

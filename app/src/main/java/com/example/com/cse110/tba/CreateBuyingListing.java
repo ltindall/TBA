@@ -102,7 +102,7 @@ public class CreateBuyingListing extends Activity implements DBAsync {
                 String bookAuthor = wBookAuthor.getText().toString().trim();
 
                 String stringBookISBN = wBookISBN.getText().toString().trim();
-                int bookISBN = Integer.parseInt(stringBookISBN);
+                long bookISBN = Long.parseLong(stringBookISBN);
 
                 String stringBookYear = wBookYear.getText().toString().trim();
                 int bookYear = Integer.parseInt(stringBookYear);
@@ -114,9 +114,6 @@ public class CreateBuyingListing extends Activity implements DBAsync {
                 float bookPrice = Float.parseFloat(stringBookPrice);
 
                 String bookComment = wComment.getText().toString();
-
-
-
 
                 int newBookOrNot = 0;
                 if (checkNew) {
