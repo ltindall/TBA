@@ -70,7 +70,7 @@
         android:id="@+id/popup_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contact a Person"
+        android:text="Contact Poster"
         android:gravity="center_horizontal"/>
 
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
