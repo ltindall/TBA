@@ -151,7 +151,7 @@ int drawable ic_search 0x7f020038
 int drawable popup_border 0x7f020039
 int id BuyListing 0x7f080018
 int id SellListing 0x7f08001a
-int id action_settings 0x7f08005a
+int id action_settings 0x7f08005b
 int id app_logo 0x7f080036
 int id bookListingBookCondition 0x7f08004d
 int id bookListingBookISBN 0x7f08004c
@@ -161,8 +161,8 @@ int id bookListingBookTitle 0x7f08004b
 int id bottom 0x7f080004
 int id box_count 0x7f080001
 int id button 0x7f080002
-int id button_send 0x7f080058
-int id call_number 0x7f080056
+int id button_send 0x7f080059
+int id call_number 0x7f080057
 int id center 0x7f080007
 int id com_facebook_body_frame 0x7f08002e
 int id com_facebook_button_xout 0x7f080030
@@ -206,6 +206,7 @@ int id inline 0x7f080005
 int id large 0x7f08000a
 int id left 0x7f080008
 int id list 0x7f08004a
+int id listView 0x7f080055
 int id listViewMainBuy 0x7f080019
 int id listViewMainSell 0x7f08001b
 int id login_help_email_input 0x7f08003f
@@ -227,7 +228,7 @@ int id popup_isbn 0x7f080051
 int id popup_price 0x7f080052
 int id popup_title 0x7f080050
 int id right 0x7f080009
-int id search 0x7f080059
+int id search 0x7f08005a
 int id signup_confirm_password_input 0x7f080045
 int id signup_email_input 0x7f080046
 int id signup_name_input 0x7f080047
@@ -236,10 +237,10 @@ int id signup_username_input 0x7f080043
 int id small 0x7f08000c
 int id standard 0x7f080003
 int id tabHost 0x7f080017
-int id text_number 0x7f080057
+int id text_number 0x7f080058
 int id top 0x7f080006
 int id twitter_login 0x7f080042
-int id zip_code 0x7f080055
+int id zip_code 0x7f080056
 int layout activity_create_buying_listing 0x7f030000
 int layout activity_create_selling_listing 0x7f030001
 int layout activity_main 0x7f030002
@@ -270,8 +271,9 @@ int layout history_view 0x7f03001a
 int layout list_view 0x7f03001b
 int layout listing_custom_layout 0x7f03001c
 int layout listing_popup 0x7f03001d
-int layout search 0x7f03001e
-int layout user_settings 0x7f03001f
+int layout my_listings 0x7f03001e
+int layout search 0x7f03001f
+int layout user_settings 0x7f030020
 int menu main 0x7f0c0000
 int menu menu_create_buying_listing 0x7f0c0001
 int menu menu_create_selling_listing 0x7f0c0002
