@@ -38,10 +38,14 @@ public class CreateSellingListing extends Activity {
         protected EditText wCondition;
         protected EditText wComment;
         protected CheckBox wHardCover;
-        protected boolean isHardcover;
 
         // button information
+
+        protected CheckBox wNewBook;
+        protected CheckBox wUsedBook;
         protected Button wCreateSellingListingButton;
+
+        private DBManager manager;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -57,25 +61,13 @@ public class CreateSellingListing extends Activity {
             wCreateSellingListingButton = (Button)findViewById(R.id.createListingButton);
 
             wPrice = (EditText)findViewById(R.id.createListingBookPrice);
-            wCondition = (EditText)findViewById(R.id.createListingBookCondition);
+            //wCondition = (EditText)findViewById(R.id.createListingBookCondition);
             wComment = (EditText)findViewById(R.id.createListingBookComment);
+
+            wNewBook = (CheckBox)findViewById(R.id.bookConditionNew);
+            wUsedBook = (CheckBox)findViewById(R.id.bookConditionUsed);
             wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
 
-            // create an on click listener to toggle the value of Hardcover boolean
-            wHardCover.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    OnCheckBoxClicked(v);
-                }
-
-                //a function to be called when checkbox is clicked
-                public void OnCheckBoxClicked(View view)
-                {
-                    //if checkbox is checked
-                    isHardcover = ((CheckBox) view).isChecked();
-
-                }
-            });
 
             // create listener for the create button
             wCreateSellingListingButton.setOnClickListener(new View.OnClickListener() {
@@ -86,50 +78,38 @@ public class CreateSellingListing extends Activity {
                     String bookAuthor = wBookAuthor.getText().toString().trim();
 
                     String stringBookISBN = wBookISBN.getText().toString().trim();
-                    long bookISBN = Long.parseLong(stringBookISBN);
+                    int bookISBN = Integer.parseInt(stringBookISBN);
 
                     String stringBookYear = wBookYear.getText().toString().trim();
                     int bookYear = Integer.parseInt(stringBookYear);
 
                     String stringBookEdition = wBookYear.getText().toString().trim();
-                    double bookEdition = Double.parseDouble(stringBookEdition);
+                    int bookEdition = Integer.parseInt(stringBookEdition);
 
                     String stringBookPrice = wBookYear.getText().toString().trim();
-                    double bookPrice = Double.parseDouble(stringBookPrice);
+                    float bookPrice = Float.parseFloat(stringBookPrice);
 
-                    String bookCondition = wCondition.getText().toString();
-                    String bookComment = wComment.getText().toString();
+                    boolean checkNew = wNewBook.isChecked();
+                    boolean checkUsed = wUsedBook.isChecked();
 
-
-                    // save it on parse as new Book object
-                    ParseObject book = new ParseObject("CustomBook");
-                    book.put("Title", bookTitle);
-                    book.put("Author", bookAuthor);
-                    book.put("ISBN", bookISBN);
-                    book.put("Year", bookYear);
-                    book.put("Edition", bookEdition);
-
-                    // save it on parse as new Listing object
-                    ParseUser currentUser = ParseUser.getCurrentUser();
-                    String currentUserUsername = currentUser.getUsername();
-
-                    ParseObject bookListing = new ParseObject("SellListing");
-                    bookListing.put("Book", book);
-                    bookListing.put("Price", bookPrice);
-                    bookListing.put("Condition", bookCondition);
-                    bookListing.put("Comment", bookComment);
-                    bookListing.put("User", currentUser.getEmail());
-                    bookListing.put("HardCover", isHardcover);
-
-
-                    /*boolean checked = wHardCover.isChecked();
-                    if (checked) {
-                        bookListing.put("HardCover", true);
+                    int newBookOrNot = 0;
+                    if (checkNew) {
+                        newBookOrNot = 1;
                     }
 
-                    else {
-                        bookListing.put("HardCover", false);
-                    }*/
+                    if (checkUsed) {
+                        newBookOrNot = 0;
+                    }
+
+                    String bookComment = wComment.getText().toString();
+                    boolean hardCoverChecked = wHardCover.isChecked();
+
+                    manager.addBookListing(false, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
+                            bookYear, bookEdition, bookComment, hardCoverChecked);
+
+                    // save it on parse as new Book object
+                    // save it on parse as new Listing object
+
 
 
                     // save it
@@ -140,7 +120,7 @@ public class CreateSellingListing extends Activity {
                             if (e == null) {
                                 // successfully storing everything
                                 // create toast
-                                Toast.makeText(CreateSellingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG).show();
+                                Toast.makeText(CreateSellingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG);
 
                                 // bring user to the next page later (INTENT)
                             }

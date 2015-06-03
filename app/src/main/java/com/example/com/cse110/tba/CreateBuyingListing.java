@@ -52,7 +52,7 @@ public class CreateBuyingListing extends Activity {
         wCreateBuyingListingButton = (Button)findViewById(R.id.createListingButton);
 
         wPrice = (EditText)findViewById(R.id.createListingBookPrice);
-        wCondition = (EditText)findViewById(R.id.createListingBookCondition);
+        //wCondition = (EditText)findViewById(R.id.createListingBookCondition);
         wComment = (EditText)findViewById(R.id.createListingBookComment);
         wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
 
