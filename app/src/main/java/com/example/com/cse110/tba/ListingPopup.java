@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.parse.ParseObject;
 
+import java.util.List;
+
 /**
  * Created by Joshua Lynch on 5/14/2015.
  * Creates a popup object that displays the data from a CustomBook object
@@ -30,7 +32,7 @@ public class ListingPopup
     private int isbn;
     private String title;
 
-    public ListingPopup(Context c, ParseObject p, View parentView, boolean isMyListing)
+    public ListingPopup(Context c, ParseObject p, View parentView, boolean isMyListing, final List<String> values, final int position)
     {
         context = c;
         listing = p;
@@ -172,6 +174,7 @@ public class ListingPopup
                     Toast.makeText(context,
                             "Item Deleted", Toast.LENGTH_LONG)
                             .show();
+                    values.remove(position);
                     popup.dismiss();
                 }
             });

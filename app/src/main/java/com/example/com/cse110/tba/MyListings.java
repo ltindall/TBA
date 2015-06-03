@@ -9,15 +9,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /* Created by Rachel Fisher on 5/26/15.
@@ -110,24 +107,8 @@ public class MyListings extends Activity implements  DBAsync
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, true);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, true, values, position);
 
-                /*dbm.getBuyListings(null,
-                        null,
-                        -1,
-                        null,
-                        email,
-                        -1);
-
-                dbm.getSellListings(null,
-                        null,
-                        -1,
-                        null,
-                        email,
-                        -1);*/
-
-
-                values.remove(position);
                 itemsAdapter.notifyDataSetChanged();
             }
 
@@ -176,24 +157,8 @@ public class MyListings extends Activity implements  DBAsync
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, true);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, true, values, position);
 
-                /*dbm.getBuyListings(null,
-                        null,
-                        -1,
-                        null,
-                        email,
-                        -1);
-
-                dbm.getSellListings(null,
-                        null,
-                        -1,
-                        null,
-                        email,
-                        -1);*/
-
-
-                values.remove(position);
                 itemsAdapter.notifyDataSetChanged();
             }
 

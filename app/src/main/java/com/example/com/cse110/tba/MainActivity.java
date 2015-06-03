@@ -45,7 +45,10 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     ListView lister;
     TabHost tabHost;
     SearchView searchView;
-
+    public static ArrayAdapter<String> buyItemsAdapter;
+    public static List<String> buyValues;
+    public static ArrayAdapter<String> sellItemsAdapter;
+    public static List<String> sellValues;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +74,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 -1,
                 "Title",  // sort the listing by title
                 null,
-                10);       // limit to 10 listings
-        dbm.getSellListings(null, null, -1, "Title", null, 10);
+                50);       // limit to 50 listings
+        dbm.getSellListings(null, null, -1, "Title", null, 50);
 
         tabSetup();
 	}
@@ -106,7 +109,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         //manager.setUserSettings(92092,null,null);
     }
 
-    public void launchPopup(View v)
+    /*public void launchPopup(View v)
     {
         Log.d("MainActivity", "Button pressed");
         ParseObject sampleListing = new ParseObject("BuyListing");
@@ -115,8 +118,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         sampleBook.put("ISBN", 7616);
         sampleListing.put("Price", 9002);
         sampleListing.put("Book", sampleBook);
-        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false);
-    }
+        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false, values, position);
+    }*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -221,7 +224,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 ParseLoginBuilder builder = new ParseLoginBuilder(this);
                 startActivityForResult(builder.build(), LOGIN_PAGE);
                 break;
-            case 3:  // Crete buy listing
+            case 3:  // Create buy listing
                 Intent intent3 = new Intent(MainActivity.this , CreateBuyingListing.class);
                 startActivity(intent3);
                 return true;
@@ -236,6 +239,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
         //display the given List of Listings. remake the tabs
+        //this.buyListings = buyListings;
         populateBuyListView(buyListings);
 
     }
@@ -243,6 +247,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     @Override
     public void onSellListingsLoad(List<ParseObject> sellListings) {
         //display the given Listings. remake the tabs
+        //this.sellListings = sellListings;
         populateSellListView(sellListings);
 
     }
@@ -292,18 +297,19 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         }
 
-        String[] values = new String[list.size()];
-        for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j).toString();
+        //I see that this is pointless but I don't feel like fixing it. GG.
+        buyValues = new ArrayList<String>();
+        for(int j =0; j<list.size(); j++) {
+            buyValues.add(list.get(j));
         }
 
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        buyItemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, buyValues);
 
 
         //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
-        lister.setAdapter(itemsAdapter);
+        lister.setAdapter(buyItemsAdapter);
 
         // ListView Item Click Listener
         lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -311,17 +317,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false);
-                // ListView Clicked item index
-                int itemPosition = position;
+                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false, buyValues, position);
 
-                // ListView Clicked item value
-                String itemValue = (String) lister.getItemAtPosition(position);
-
-                // Show Alert
-                /*Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();*/
+                buyItemsAdapter.notifyDataSetChanged();
 
             }
 
@@ -351,18 +349,18 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         }
 
-        String[] values = new String[list.size()];
-        for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j).toString();
+        sellValues = new ArrayList<String>();
+        for(int j =0; j<list.size(); j++) {
+            sellValues.add(list.get(j));
         }
 
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        sellItemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, sellValues);
 
 
         //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
-        lister.setAdapter(itemsAdapter);
+        lister.setAdapter(sellItemsAdapter);
 
         // ListView Item Click Listener
         lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -370,18 +368,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false, sellValues, position);
 
-                // ListView Clicked item index
-                int itemPosition     = position;
-
-                // ListView Clicked item value
-                String  itemValue    = (String) lister.getItemAtPosition(position);
-
-                // Show Alert
-                /*Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();*/
+                sellItemsAdapter.notifyDataSetChanged();
 
             }
 

@@ -165,6 +165,9 @@ public class CreateBuyingListing extends Activity implements DBAsync {
                 manager.addBookListing(true, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
                         bookYear, bookEdition, bookComment, isHardCover);
 
+                MainActivity.buyValues.add(bookTitle +" - "+bookAuthor+" - $"+bookPrice);
+                MainActivity.buyItemsAdapter.notifyDataSetChanged();
+
                 // Make a toast to signal that it's ok
                 Toast.makeText(CreateBuyingListing.this, "Success Creating Listing", Toast.LENGTH_LONG).show();
 
