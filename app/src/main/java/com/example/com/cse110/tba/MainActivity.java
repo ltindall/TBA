@@ -172,36 +172,11 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
-        menu.clear();
-
-        // Initialize: Search Stuff
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.search).getActionView();
-        ComponentName cn = new ComponentName(this, SearchResultsActivity.class);
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(cn));
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            public boolean onQueryTextChange(String newText) {
-                // this is your adapter that will be filtered
-                //listAdapter.getFilter().filter(newText);
-                return true;
-            }
-
-            public boolean onQueryTextSubmit(String query) {
-                Log.d("MainActivity", "onQueryTextSubmit");
-                Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
-                intent.setAction(Intent.ACTION_SEARCH);
-                intent.putExtra("query", query);
-                intent.putExtra("sellList", sellList);
-                intent.putExtra("currentSpinnerItem", currentSpinnerItem);
-                startActivity(intent);
-                //listAdapter.getFilter().filter(query);
-                return true;
-            }
-        }); // Search Stuff end
+        menu.removeItem(0);
+        menu.removeItem(1);
+        menu.removeItem(2);
+        menu.removeItem(3);
+        menu.removeItem(4);
 
         ParseUser current = ParseUser.getCurrentUser();
         String email = current.getEmail();
