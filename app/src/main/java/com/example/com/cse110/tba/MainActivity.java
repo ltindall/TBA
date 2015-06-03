@@ -140,6 +140,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             }
 
             public boolean onQueryTextSubmit(String query) {
+                Log.d("MainActivity", "onQueryTextSubmit");
                 Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
                 intent.setAction(Intent.ACTION_SEARCH);
                 intent.putExtra("query", query);
@@ -257,6 +258,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
+                Log.d("MainActivity", "setOnItemClickListener");
+
                 // ListView Clicked item index
                 int itemPosition = position;
 
@@ -274,10 +277,10 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         return lister;
         // make a list view and configure it with the created adapter
         // create a ListView data structure to contain the adapter
-        ListView displayedListing = (ListView) findViewById(R.id.listViewMainPage);
+        /*ListView displayedListing = (ListView) findViewById(R.id.listViewMainPage);
         //set the adapter into the ListView
 
-        displayedListing.setAdapter(listAdapter);
+        displayedListing.setAdapter(itemsAdapter);*/
     }
 
 
@@ -413,7 +416,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         });
 
     }*/
-    }
+
 
 
 }

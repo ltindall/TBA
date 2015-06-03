@@ -268,6 +268,7 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
+
                 // ListView Clicked item index
                 int itemPosition     = position;
 
