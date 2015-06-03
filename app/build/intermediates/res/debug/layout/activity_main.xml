@@ -42,7 +42,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="381dp"
                         android:id="@+id/listViewMainBuy"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1.14" />
                 </LinearLayout>
 
                 <LinearLayout
