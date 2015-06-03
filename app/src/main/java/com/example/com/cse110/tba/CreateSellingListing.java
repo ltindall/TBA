@@ -103,17 +103,50 @@ public class CreateSellingListing extends Activity implements DBAsync {
             @Override
             public void onClick(View view) {
                 // get all the book information and convert them into string
+                if(wBookTitle.getText().length() == 0)
+                {
+                    Toast.makeText(CreateSellingListing.this, "Title cannot be empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String bookTitle = wBookTitle.getText().toString().trim();
+
+                if(wBookAuthor.getText().length() == 0)
+                {
+                    Toast.makeText(CreateSellingListing.this, "Author cannot be empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String bookAuthor = wBookAuthor.getText().toString().trim();
 
+                if(wBookISBN.getText().length() == 0)
+                {
+                    Toast.makeText(CreateSellingListing.this, "ISBN cannot be empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String stringBookISBN = wBookISBN.getText().toString().trim();
                 long bookISBN = Long.parseLong(stringBookISBN);
 
+                if(wBookYear.getText().length() == 0)
+                {
+                    Toast.makeText(CreateSellingListing.this, "Year cannot be empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String stringBookYear = wBookYear.getText().toString().trim();
                 int bookYear = Integer.parseInt(stringBookYear);
 
+                if(wBookEdition.getText().length() == 0)
+                {
+                    Toast.makeText(CreateSellingListing.this, "Edition cannot be empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 String stringBookEdition = wBookYear.getText().toString().trim();
                 int bookEdition = Integer.parseInt(stringBookEdition);
+                if(wPrice.getText().length() == 0)
+                {
+                    Toast.makeText(CreateSellingListing.this, "Price cannot be empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
 
                 String stringBookPrice = wBookYear.getText().toString().trim();
                 float bookPrice = Float.parseFloat(stringBookPrice);
