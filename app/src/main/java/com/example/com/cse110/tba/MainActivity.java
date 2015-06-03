@@ -160,17 +160,49 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             }
         });
 
-        // Inflate menu options
-        menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
-        menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
-        menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
-        menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
-        menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
+        ParseUser current = ParseUser.getCurrentUser();
+        String email = current.getEmail();
+        Log.d("MainActivity.java", "Current User: " + email);
+        if (email == null){
+            menu.add(Menu.NONE, 1, Menu.NONE, "Login");
+        }
+        else {
+            // Inflate menu options
+            menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+            menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
+            menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
+            menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
+            menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
+        }
 		return true;
 	}
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        menu.clear();
+
+        ParseUser current = ParseUser.getCurrentUser();
+        String email = current.getEmail();
+        Log.d("MainActivity.java", "Current User: " + email);
+        if (email == null){
+            menu.add(Menu.NONE, 1, Menu.NONE, "Login");
+        }
+        else {
+            // Inflate menu options
+            menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+            menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
+            menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
+            menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
+            menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
+        }
+
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
+
         switch(item.getItemId()){
             case 0:
                 Intent intent = new Intent(MainActivity.this, UserSettings.class);
