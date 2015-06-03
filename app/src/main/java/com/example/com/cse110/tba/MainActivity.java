@@ -319,9 +319,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 String itemValue = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getApplicationContext(),
+                /*Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 
@@ -379,9 +379,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 String  itemValue    = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getApplicationContext(),
+                /*Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 
