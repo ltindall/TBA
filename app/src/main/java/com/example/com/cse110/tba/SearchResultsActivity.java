@@ -229,7 +229,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
 
 
                 // ListView Clicked item index
-                int itemPosition     = position;
+                /*int itemPosition     = position;
 
                 // ListView Clicked item value
                 String  itemValue    = (String) lister.getItemAtPosition(position);
@@ -237,7 +237,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
                 // Show Alert
                 Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 

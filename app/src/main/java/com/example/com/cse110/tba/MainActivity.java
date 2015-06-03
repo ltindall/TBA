@@ -50,6 +50,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     public static ArrayAdapter<String> sellItemsAdapter;
     public static List<String> sellValues;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -239,7 +240,6 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     @Override
     public void onBuyListingsLoad(List<ParseObject> buyListings) {
         //display the given List of Listings. remake the tabs
-        //this.buyListings = buyListings;
         populateBuyListView(buyListings);
 
     }
@@ -247,7 +247,6 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     @Override
     public void onSellListingsLoad(List<ParseObject> sellListings) {
         //display the given Listings. remake the tabs
-        //this.sellListings = sellListings;
         populateSellListView(sellListings);
 
     }
@@ -320,6 +319,11 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false, buyValues, position);
 
                 buyItemsAdapter.notifyDataSetChanged();
+
+                // Show Alert
+                /*Toast.makeText(getApplicationContext(),
+                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        .show();*/
 
             }
 
