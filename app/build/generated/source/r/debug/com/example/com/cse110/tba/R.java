@@ -331,7 +331,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f020014;
         public static final int com_facebook_loginbutton_silver=0x7f020015;
         public static final int com_facebook_logo=0x7f020016;
-        public static final int com_facebook_picker_default_separator_color=0x7f02003a;
+        public static final int com_facebook_picker_default_separator_color=0x7f02003b;
         public static final int com_facebook_picker_item_background=0x7f020017;
         public static final int com_facebook_picker_list_focused=0x7f020018;
         public static final int com_facebook_picker_list_longpressed=0x7f020019;
@@ -362,11 +362,12 @@ containing a value of this type.
         public static final int com_parse_ui_parse_login_button_background_selector=0x7f020032;
         public static final int com_parse_ui_twitter_login_button_background_selector=0x7f020033;
         public static final int com_parse_ui_twitter_login_logo=0x7f020034;
-        public static final int havoclarge=0x7f020035;
+        public static final int havoclargelolo=0x7f020035;
         public static final int havocmedium=0x7f020036;
-        public static final int ic_launcher=0x7f020037;
-        public static final int ic_search=0x7f020038;
-        public static final int popup_border=0x7f020039;
+        public static final int havocmediumlala=0x7f020037;
+        public static final int ic_launcher=0x7f020038;
+        public static final int ic_search=0x7f020039;
+        public static final int popup_border=0x7f02003a;
     }
     public static final class id {
         public static final int BuyListing=0x7f080022;
@@ -528,7 +529,8 @@ containing a value of this type.
         public static final int my_listings=0x7f03001e;
         public static final int my_listings_popup=0x7f03001f;
         public static final int search=0x7f030020;
-        public static final int user_settings=0x7f030021;
+        public static final int simple_spinner_dropdown_item_tba=0x7f030021;
+        public static final int user_settings=0x7f030022;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;

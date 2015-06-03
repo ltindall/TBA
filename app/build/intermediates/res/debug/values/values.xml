@@ -3,7 +3,7 @@
     <!-- From: file:/C:/Users/Hansen/Documents/tba/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="search_spinner">
-        <item>Book Title</item>
+        <item> Book Title </item>
         <item>Author</item>
         <item>ISBN</item>
         <item>Order</item>
@@ -26,14 +26,14 @@
     <color name="com_parse_ui_facebook_login_button">#3B5998</color>
     <color name="com_parse_ui_facebook_login_button_focus">#304F8B</color>
     <color name="com_parse_ui_facebook_login_button_push">#2E4677</color>
-    <color name="com_parse_ui_parse_login_button">#40CCCCCC</color>
-    <color name="com_parse_ui_parse_login_button_focus">#35CCCCCC</color>
-    <color name="com_parse_ui_parse_login_button_push">#30CCCCCC</color>
+    <color name="com_parse_ui_parse_login_button">#40000000</color>
+    <color name="com_parse_ui_parse_login_button_focus">#94000000</color>
+    <color name="com_parse_ui_parse_login_button_push">#ff5a5a5a</color>
     <color name="com_parse_ui_parse_login_display_text">@android:color/white</color>
-    <color name="com_parse_ui_parse_login_help_button_label">#E0E0E0</color>
-    <color name="com_parse_ui_parse_login_help_button_label_focus">#CCCCCC</color>
-    <color name="com_parse_ui_parse_login_help_button_label_push">#AAAAAA</color>
-    <color name="com_parse_ui_parse_login_text_hint">#AAAAAA</color>
+    <color name="com_parse_ui_parse_login_help_button_label">#ff808080</color>
+    <color name="com_parse_ui_parse_login_help_button_label_focus">#ff474747</color>
+    <color name="com_parse_ui_parse_login_help_button_label_push">#ff454545</color>
+    <color name="com_parse_ui_parse_login_text_hint">#ff777777</color>
     <color name="com_parse_ui_twitter_login_button">#2DAAE2</color>
     <color name="com_parse_ui_twitter_login_button_focus">#2788BE</color>
     <color name="com_parse_ui_twitter_login_button_push">#2588B5</color>
