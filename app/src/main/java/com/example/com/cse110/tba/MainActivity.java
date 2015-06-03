@@ -174,13 +174,41 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         menu.clear();
 
+        // Initialize: Search Stuff
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        ComponentName cn = new ComponentName(this, SearchResultsActivity.class);
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(cn));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            public boolean onQueryTextChange(String newText) {
+                // this is your adapter that will be filtered
+                //listAdapter.getFilter().filter(newText);
+                return true;
+            }
+
+            public boolean onQueryTextSubmit(String query) {
+                Log.d("MainActivity", "onQueryTextSubmit");
+                Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
+                intent.setAction(Intent.ACTION_SEARCH);
+                intent.putExtra("query", query);
+                intent.putExtra("sellList", sellList);
+                intent.putExtra("currentSpinnerItem", currentSpinnerItem);
+                startActivity(intent);
+                //listAdapter.getFilter().filter(query);
+                return true;
+            }
+        }); // Search Stuff end
+
         ParseUser current = ParseUser.getCurrentUser();
         String email = current.getEmail();
         Log.d("MainActivity.java", "Current User: " + email);
-        if (email == null){
+        if (email == null) {
             menu.add(Menu.NONE, 1, Menu.NONE, "Login");
-        }
-        else {
+        } else {
             // Inflate menu options
             menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
             menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
