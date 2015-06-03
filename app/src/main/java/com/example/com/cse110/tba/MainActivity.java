@@ -180,7 +180,11 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
-        menu.clear();
+        menu.removeItem(0);
+        menu.removeItem(1);
+        menu.removeItem(2);
+        menu.removeItem(3);
+        menu.removeItem(4);
 
         ParseUser current = ParseUser.getCurrentUser();
         String email = current.getEmail();

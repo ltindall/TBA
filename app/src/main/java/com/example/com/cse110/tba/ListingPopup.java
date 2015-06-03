@@ -29,6 +29,7 @@ public class ListingPopup
     private int isbn;
     private String title;
 
+
     public ListingPopup(Context c, ParseObject p, View parentView)
     {
         context = c;
@@ -94,6 +95,15 @@ public class ListingPopup
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                popup.dismiss();
+            }
+        });
+
+        Button contact = (Button)popUpView.findViewById(R.id.popup_contact);
+        contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBManager.notifyUser(listing);
                 popup.dismiss();
             }
         });
