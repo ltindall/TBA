@@ -137,10 +137,10 @@ public class CreateSellingListing extends Activity implements DBAsync {
                 // save it on parse as new Listing object
 
                 // Make a toast to signal that it's ok
-                Toast.makeText(CreateSellingListing.this, "Success Creating Listing", Toast.LENGTH_LONG);
+                Toast.makeText(CreateSellingListing.this, "Success Creating Listing", Toast.LENGTH_LONG).show();
 
-                //Intent intent = new Intent(CreateSellingListing.this, MainActivity.class);
-                //startActivity(intent);
+                finish();
+
                 // save it
             }
 

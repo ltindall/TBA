@@ -39,12 +39,6 @@
         android:inputType="phone"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView" />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +73,7 @@
 
     <CheckBox
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/bookConditionNew"
         android:text="New"
         android:onClick="onCheckboxClicked"
@@ -87,7 +81,7 @@
 
     <CheckBox
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/bookConditionUsed"
         android:text="Used"
         android:onClick="onCheckboxClicked"
