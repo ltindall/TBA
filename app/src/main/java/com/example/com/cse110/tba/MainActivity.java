@@ -115,7 +115,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         sampleBook.put("ISBN", 7616);
         sampleListing.put("Price", 9002);
         sampleListing.put("Book", sampleBook);
-        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v);
+        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false);
     }
 
 	@Override
@@ -311,17 +311,17 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false);
                 // ListView Clicked item index
-                int itemPosition = position;
+                /*int itemPosition = position;
 
                 // ListView Clicked item value
                 String itemValue = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getApplicationContext(),
+                /*Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 
@@ -370,18 +370,18 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false);
 
                 // ListView Clicked item index
-                int itemPosition     = position;
+                /*int itemPosition     = position;
 
                 // ListView Clicked item value
                 String  itemValue    = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getApplicationContext(),
+                /*Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 

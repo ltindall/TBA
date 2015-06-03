@@ -225,11 +225,11 @@ public class SearchResultsActivity extends Activity implements DBAsync{
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false);
 
 
                 // ListView Clicked item index
-                int itemPosition     = position;
+                /*int itemPosition     = position;
 
                 // ListView Clicked item value
                 String  itemValue    = (String) lister.getItemAtPosition(position);
@@ -237,7 +237,7 @@ public class SearchResultsActivity extends Activity implements DBAsync{
                 // Show Alert
                 Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 
