@@ -200,6 +200,10 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
             }
             else
                 Log.d("SearchResultsActivity", "NOT FOUND");
+            else {
+                noResults();
+                Log.d("SearchFunction", "NOT FOUND");
+            }
         }
 
         else
@@ -216,7 +220,46 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
 
     }
 
+    private void noResults() {
+        setContentView(R.layout.list_view);
+        lister = (ListView)findViewById(R.id.list);
 
+        String[] values = new String[1];
+        values[0] = "No results found.";
+
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+
+
+        //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
+        lister.setAdapter(itemsAdapter);
+
+        lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+
+
+                /*
+                // ListView Clicked item index
+                int itemPosition     = position;
+
+                // ListView Clicked item value
+                String  itemValue    = (String) lister.getItemAtPosition(position);
+
+                // Show Alert
+                Toast.makeText(getApplicationContext(),
+                        "Nothing was found, stop clicking", Toast.LENGTH_LONG)
+                        .show();
+                */
+
+            }
+
+        });
+
+    }
 
     private void populateListView(final List<ParseObject> sellListings){
         setContentView(R.layout.list_view);

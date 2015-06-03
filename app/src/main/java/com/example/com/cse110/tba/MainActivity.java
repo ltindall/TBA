@@ -19,6 +19,7 @@ import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -43,6 +44,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     public DBManager dbm;
     ListView lister;
     TabHost tabHost;
+    SearchView searchView;
 
 
 	@Override
@@ -126,17 +128,26 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         // Initialize: Search Stuff
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
+        searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                searchView.requestFocusFromTouch();
+                return true;
+            }
+        });
         ComponentName cn = new ComponentName(this, SearchResultsActivity.class);
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(cn));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
             public boolean onQueryTextChange(String newText) {
                 // this is your adapter that will be filtered
                 //listAdapter.getFilter().filter(newText);
-                return true;
+                Log.d("listening asdfawef", "listening.....");
+                return false;
             }
 
             public boolean onQueryTextSubmit(String query) {
