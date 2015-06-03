@@ -1,8 +1,7 @@
 package com.example.com.cse110.tba;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,11 +10,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 
 public class CreateBuyingListing extends Activity {
@@ -45,7 +39,6 @@ public class CreateBuyingListing extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_buying_listing);
 
-        manager = new DBManager(this);
         // initializing
         wBookTitle = (EditText)findViewById(R.id.createListingBookTitle);
         wBookAuthor = (EditText)findViewById(R.id.createListingBookAuthor);
@@ -55,7 +48,6 @@ public class CreateBuyingListing extends Activity {
         wCreateBuyingListingButton = (Button)findViewById(R.id.createListingButton);
 
         wPrice = (EditText)findViewById(R.id.createListingBookPrice);
-        wCondition = (EditText)findViewById(R.id.createListingBookCondition);
         wComment = (EditText)findViewById(R.id.createListingBookComment);
         //This CheckBox crashes. Don't know why. -Hansen-.
         wNewBook = (CheckBox)findViewById(R.id.bookConditionNew);
@@ -106,50 +98,17 @@ public class CreateBuyingListing extends Activity {
                 manager.addBookListing(true, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
                         bookYear, bookEdition, bookComment, hardCoverChecked);
 
+                // Make a toast to signal that it's ok
+                Toast.makeText(CreateBuyingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG).show();
 
                 // save it
+            }
 
-                bookListing.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            // successfully storing everything
-                            // create toast
-                            // Changed Toast.LENGTH_LONG.show() to LENGTH_LONG -Hansen-
-                            Toast.makeText(CreateBuyingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG);
-
-                            // bring user to the next page later (INTENT)
-                        }
-
-                        else {
-                            // Debugged this part. -Hansen-
-                            // there is problem in storing
-                            AlertDialog.Builder builder = new AlertDialog.Builder(CreateBuyingListing.this);
-                            builder.setMessage(e.getMessage());
-                            builder.setTitle("Ooops, something went wrong");
-                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    // close the dialogue message
-                                    dialogInterface.dismiss();
-                                }
-                            });
-                            AlertDialog dialog = builder.create();
-                            dialog.show();
-                        }
-
-                    }
-                });
-
-
-
-
+            protected void sendMessage(View view) {
+                Intent intent = new Intent(CreateBuyingListing.this, MainActivity.class);
+                startActivity(intent);
             }
         });
-
-
-
-
-
     }
 
     @Override
