@@ -17,6 +17,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /* Created by Rachel Fisher on 5/26/15.
@@ -74,7 +75,7 @@ public class MyListings extends Activity implements  DBAsync
         //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMyListBuy);
 
-        ArrayList<String> list = new ArrayList<String>();
+        final ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: buyListings) {
             ParseObject book = listings.getParseObject("Book");
             try {
@@ -89,13 +90,13 @@ public class MyListings extends Activity implements  DBAsync
 
         }
 
-        String[] values = new String[list.size()];
-        for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j);
+        final List<String> values = new ArrayList<String>();
+        for(int j =0; j<list.size(); j++) {
+            values.add(list.get(j));
         }
 
 
-        ArrayAdapter<String> itemsAdapter =
+        final ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
 
@@ -111,11 +112,23 @@ public class MyListings extends Activity implements  DBAsync
 
                 ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, true);
 
-                int currentTab = tabHost.getCurrentTab();
-                //tabHost.clearAllTabs();
-                //tabSetup();
-                tabHost.setCurrentTab(currentTab);
+                /*dbm.getBuyListings(null,
+                        null,
+                        -1,
+                        null,
+                        email,
+                        -1);
 
+                dbm.getSellListings(null,
+                        null,
+                        -1,
+                        null,
+                        email,
+                        -1);*/
+
+
+                values.remove(position);
+                itemsAdapter.notifyDataSetChanged();
             }
 
         });
@@ -143,13 +156,13 @@ public class MyListings extends Activity implements  DBAsync
 
         }
 
-        String[] values = new String[list.size()];
-        for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j);
+        final List<String> values = new ArrayList<String>();
+        for(int j =0; j<list.size(); j++) {
+            values.add(list.get(j));
         }
 
 
-        ArrayAdapter<String> itemsAdapter =
+        final ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
 
@@ -165,11 +178,23 @@ public class MyListings extends Activity implements  DBAsync
 
                 ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, true);
 
-                int currentTab = tabHost.getCurrentTab();
-                //tabHost.clearAllTabs();
-                //tabSetup();
-                tabHost.setCurrentTab(currentTab);
+                /*dbm.getBuyListings(null,
+                        null,
+                        -1,
+                        null,
+                        email,
+                        -1);
 
+                dbm.getSellListings(null,
+                        null,
+                        -1,
+                        null,
+                        email,
+                        -1);*/
+
+
+                values.remove(position);
+                itemsAdapter.notifyDataSetChanged();
             }
 
         });
@@ -180,6 +205,7 @@ public class MyListings extends Activity implements  DBAsync
 
         tabHost = (TabHost) findViewById(R.id.tabHost);
         //set up the tabs
+        //tabHost.clearAllTabs();
         tabHost.setup();
 
         //tab for buy Listing
