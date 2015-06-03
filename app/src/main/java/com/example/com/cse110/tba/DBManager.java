@@ -309,7 +309,7 @@ public class DBManager
     public static void notifyUser(ParseObject listing )
     {
         HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("listing", listing);
+        params.put("listing", listing.getObjectId());
         params.put("email", ParseUser.getCurrentUser().getEmail());
 
         Log.d("hi josh", ParseUser.getCurrentUser().getEmail());
