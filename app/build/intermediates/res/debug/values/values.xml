@@ -92,6 +92,7 @@
     <drawable name="com_facebook_picker_default_separator_color">#33464c59</drawable>
     <!-- From: file:/C:/Users/Hansen/Documents/tba/app/src/main/res/values/ids.xml -->
     <eat-comment/>
+    <item name="createListingBookCondition" type="id"/>
     <item name="menu_search" type="id"/>
     <!-- From: file:/C:/Users/Hansen/Documents/tba/app/build/intermediates/exploded-aar/tba/ParseLoginUI/unspecified/res/values/values.xml -->
     <eat-comment/>
