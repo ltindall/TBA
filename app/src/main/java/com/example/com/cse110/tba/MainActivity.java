@@ -151,6 +151,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         // Inflate menu options
         menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+        menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
+        menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
         menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
         menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
 		return true;
@@ -172,6 +174,14 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 ParseLoginBuilder builder = new ParseLoginBuilder(this);
                 startActivityForResult(builder.build(), LOGIN_PAGE);
                 break;
+            case 3:  // Crete buy listing
+                Intent intent3 = new Intent(MainActivity.this , CreateBuyingListing.class);
+                startActivity(intent3);
+                return true;
+            case 4:  // Create sell listing
+                Intent intent4 = new Intent(MainActivity.this , CreateSellingListing.class);
+                startActivity(intent4);
+                return true;
         }
         return true;
     }
@@ -331,6 +341,10 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
     }
 
+
+    /*
+     * a method to set up the tabs and their contents. Links each tab with its corresponding listView
+     */
     private void tabSetup()
     {
 
@@ -351,7 +365,6 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         tabSpec.setIndicator("Buy");  // name displayed on tab
         tabHost.addTab(tabSpec);  // add tab to tabHost
 
-
         // tab for sell Listing
         tabSpec = tabHost.newTabSpec("selllistingmain");
         //set the tcontent of this tab
@@ -365,44 +378,43 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         tabSpec.setIndicator("Sell");  // set the displayed name of the tab
         tabHost.addTab(tabSpec);  // add the tab to tabhost
 
+        tabHost.setCurrentTabByTag("selllistingmain");
+    }
 
+    /*Mini class for pairing*/
+    private class Pair<String, ParseObject>
+    {
+        private String description;
+        private ParseObject bookObject;
+
+        //a constructor
+        public Pair(String s , ParseObject object)
+        {
+            this.description = s;
+            this.bookObject = object;
+        }
+
+        public String getString()
+        {
+           return description;
+        }
+
+        public  ParseObject getParseObj()
+        {
+            return bookObject;
+        }
+
+        public void setDescription(String s)
+        {
+            this.description = s;
+        }
+
+        public void setBookObject(ParseObject object)
+        {
+            bookObject = object;
+        }
     }
 
 
 
-    /*
-     * This method will handle a Click event. When a ListView item is clicked, the click listener
-     * will view a detailed information of the Lsitng object clicked
-     */
-    /*private void registerOnClick()
-    {
-        // grab the ListView
-        ListView displayedListing = (ListView) findViewById(R.id.listViewMainBuy);
-
-        // create a click listener and display the details of the Lsiting object when clicked
-        displayedListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-                //make a ListingPopup object to show the clicked Listing
-                ListingPopup popup = new ListingPopup(MainActivity.this,   // Context
-                        (ParseObject) parent.getAdapter().getItem(position), //ParseObject to be displayed. How to get the ParseObject???????
-                        viewClicked);   // View where popup will be shown
-            }
-        });
-
-
-        displayedListing = (ListView) findViewById(R.id.listViewMainSell);
-
-        // create a click listener and display the details of the Lsiting object when clicked
-        displayedListing.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
-                //make a ListingPopup object to show the clicked Listing
-                ListingPopup popup = new ListingPopup(MainActivity.this,   // Context
-                        (ParseObject) parent.getAdapter().getItem(position), //ParseObject to be displayed. How to get the ParseObject???????
-                        viewClicked);   // View where popup will be shown
-            }
-        });
-
-    }*/
 }

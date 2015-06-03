@@ -49,6 +49,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.com.cse110.tba.MyListings"
+            android:label="My Listings" />
+        <activity
             android:name="com.example.com.cse110.tba.UserSettings"
             android:label="User Settings" />
         <activity
