@@ -68,7 +68,7 @@ public class UserSettings extends Activity implements  DBAsync
         }
 
         DBManager dbm = new DBManager(this);
-        dbm.addBookListing(false, "The Balls",  "", 8, 6, 1, 2015, 9000, "here you go Batman", true);
+        //dbm.addBookListing(false, "The Balls",  "", 8, 6, 1, 2015, 9000, "here you go Batman", true);
     }
 
     public void submit(View v)
@@ -77,13 +77,17 @@ public class UserSettings extends Activity implements  DBAsync
         EditText zip = (EditText)findViewById(R.id.zip_code);
         EditText call = (EditText)findViewById(R.id.call_number);
         EditText text = (EditText)findViewById(R.id.text_number);
-        int passZip = Integer.parseInt(zip.getText().toString().trim());
+        int passZip = -1;
+        if(zip.getText().length() != 0) {
+            passZip = Integer.parseInt(zip.getText().toString().trim());
+        }
         String passCall = call.getText().toString().trim();
         String passText = text.getText().toString().trim();
         if(currentZip == passZip)
         {
             passZip = -1;
         }
+
         if(passCall.length() == 0)
         {
             passCall = null;
