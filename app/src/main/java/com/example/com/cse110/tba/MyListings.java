@@ -25,6 +25,7 @@ public class MyListings extends Activity implements  DBAsync
 {
     TabHost tabHost;
     public DBManager dbm;
+    ParseSorter pSort;
     ListView lister;
     String email;
 
@@ -73,6 +74,12 @@ public class MyListings extends Activity implements  DBAsync
 
         //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainBuy);
+
+        List<ParseObject> newListings;
+
+        //newListings = pSort.sortListings(buyListings, "Date", "BuyListing", 0);
+
+        pSort.sortListings(buyListings, "Date", "BuyListing", 0);
 
         ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: buyListings) {
@@ -131,6 +138,11 @@ public class MyListings extends Activity implements  DBAsync
 
         //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainSell);
+        List<ParseObject> newListings;
+
+        //newListings = pSort.sortListings(sellListings, "Date", "SellListing", 0);
+
+        pSort.sortListings(sellListings, "Date", "SellListing", 0);
 
         ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: sellListings) {

@@ -1,5 +1,7 @@
 package com.example.com.cse110.tba;
 
+import android.util.Log;
+
 import com.parse.ParseObject;
 
 import java.util.ArrayList;
@@ -11,6 +13,11 @@ import java.util.List;
  */
 public class ParseSorter
 {
+
+    public ParseSorter () {
+        Log.d("ParseSorter", "NEW PARSESORTER");
+    }
+
     public List<ParseObject> sortListings(List<ParseObject> unsorted, String sortField, String type,
                                           int direction)
     {
@@ -18,6 +25,8 @@ public class ParseSorter
 
         if(sortField.equals("Date"))
         {
+
+
             while(!unsorted.isEmpty()) //perform operation until all elements are moved to new List
             {
                 ParseObject rank = new ParseObject(type);
@@ -27,7 +36,16 @@ public class ParseSorter
                 for(ParseObject d: unsorted)
                 {
                     long date = d.getCreatedAt().getTime();
+
+                    if (rank.getCreatedAt() == null)
+                        Log.d("ParseSorter", "rank.getCreatedAt() == null");
+
+                    else
+                        Log.d("ParseSorter", "Everything is Okay");
+
                     long otherDate = rank.getCreatedAt().getTime();
+                    //long otherDate = 0;
+
                     if(date >= otherDate)
                     {
                         rank = d;
@@ -42,11 +60,11 @@ public class ParseSorter
         }
         while(!unsorted.isEmpty()) //perform operation until all elements are moved to new List
         {
-            /*ParseObject rank = new ParseObject(type);
+            ParseObject rank = new ParseObject(type);
             rank.put(sortField, 0);
             for(ParseObject d: unsorted)
             {
-                if((float)(d.get(sortField)) <= (float)(rank.get(sortField)))
+                if(d.getDouble(sortField) <= rank.getDouble(sortField))
                 {
                     rank.put(sortField, d);
                 }
@@ -54,9 +72,9 @@ public class ParseSorter
             }
             finalList.add(rank);
 
-            unsorted.remove(unsorted.indexOf(rank));*/
+            unsorted.remove(unsorted.indexOf(rank));
 
-            finalList =  mergeSort(unsorted, sortField);
+            //finalList =  mergeSort(unsorted, sortField);
 
         }
         if(direction == 1)

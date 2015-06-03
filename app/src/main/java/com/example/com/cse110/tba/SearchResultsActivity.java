@@ -198,8 +198,7 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
                 Log.d("SearchResultsActivity", "FOUND");
                 populateListView(sellListings);
             }
-            else
-                Log.d("SearchResultsActivity", "NOT FOUND");
+
             else {
                 noResults();
                 Log.d("SearchFunction", "NOT FOUND");

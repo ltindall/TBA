@@ -42,6 +42,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     private long currentSpinnerItem = 0;
     private boolean sellList = true;
     public DBManager dbm;
+    private ParseSorter pSort;
     ListView lister;
     TabHost tabHost;
     SearchView searchView;
@@ -51,10 +52,18 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         dbm = new DBManager(this);
+        pSort = new ParseSorter();
 		setContentView(R.layout.activity_main);
 
-        ParseLoginBuilder builder = new ParseLoginBuilder(this);
-        startActivityForResult(builder.build(), LOGIN_PAGE);
+        ParseUser current = ParseUser.getCurrentUser();
+        if(current == null)
+        {
+            ParseLoginBuilder builder = new ParseLoginBuilder(this);
+            startActivityForResult(builder.build(), LOGIN_PAGE);
+        }
+
+        /*ParseLoginBuilder builder = new ParseLoginBuilder(this);
+        startActivityForResult(builder.build(), LOGIN_PAGE);*/
 
         // create the action bar and add items to it such as the spinner
         ActionBar actionBar = getActionBar();
@@ -66,7 +75,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         //get initial buy/sell listing. this is the first time user will see listing before doing anything
           //use DBManager to get any latest buy listing.
-        DBManager dbm = new DBManager(this);    // create DBManager object with MainActivity as its caller
+        //DBManager dbm = new DBManager(this);    // create DBManager object with MainActivity as its caller
           //call getBuyListing passing null arguments so query will not do any search
         dbm.getBuyListings(null,
                 null,
@@ -155,6 +164,12 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
                 intent.setAction(Intent.ACTION_SEARCH);
                 intent.putExtra("query", query);
+                if (tabHost.getCurrentTab() == 0)
+                    sellList = false;
+
+                else
+                    sellList = true;
+
                 intent.putExtra("sellList", sellList);
                 intent.putExtra("currentSpinnerItem", currentSpinnerItem);
                 startActivity(intent);
@@ -278,6 +293,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     {
         //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainBuy);
+        List<ParseObject> newListings;
+
+        //newListings = pSort.sortListings(buyListings, "Date", "BuyListing", 0);
 
         ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: buyListings) {
@@ -345,6 +363,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainSell);
+        List<ParseObject> newListings;
+
+        //newListings = pSort.sortListings(sellListings, "Date", "SellListing", 0);
 
         ArrayList<String> list = new ArrayList<String>();
         if (sellListings == null)
