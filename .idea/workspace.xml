@@ -17,24 +17,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.com.cse110.tba" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0db136e-6510-4cc6-a797-bd7625e22b6f" name="Default" comment="My listings populate listings still not working">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/ListingPopup.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/com/cse110/tba/ListingPopup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/com/cse110/tba/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/com/cse110/tba/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/facebook_android_sdk_3_23_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/facebook_android_sdk_3_23_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/graphview_4_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/graphview_4_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/listing_popup.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listing_popup.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_22_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_22_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_22_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_22_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tba.iml" afterPath="$PROJECT_DIR$/tba.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="d0db136e-6510-4cc6-a797-bd7625e22b6f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tba.iws" />
@@ -2502,7 +2485,11 @@
       <created>1433208048992</created>
       <updated>1433208048992</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added the rest of the fields to pop up">
+      <created>1433307206087</created>
+      <updated>1433307206087</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2598,7 +2585,8 @@
     <MESSAGE value="Managed to make tabs buttons and Listings displayed together" />
     <MESSAGE value="My Listings exists but doesn't work" />
     <MESSAGE value="My listings populate listings still not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="My listings populate listings still not working" />
+    <MESSAGE value="Added the rest of the fields to pop up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the rest of the fields to pop up" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
