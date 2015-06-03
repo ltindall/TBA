@@ -2,11 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/popup_border"
+    android:background="#ff000000"
     android:gravity="center_horizontal">
 <!--#46008B-->
     <TextView
         android:id="@+id/popup_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_author"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"/>
@@ -18,7 +24,37 @@
         android:gravity="center"/>
 
     <TextView
+        android:id="@+id/popup_year"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_edition"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
         android:id="@+id/popup_price"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_condition"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_comment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_hardcover"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"/>
