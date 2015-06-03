@@ -50,9 +50,23 @@ public class MyListings extends Activity implements  DBAsync
         email = current.getEmail();
         Log.d("user", email);
 
+        //get all buy listings made by this user
+        dbm.getBuyListings(null,
+                null,
+                -1,
+                null,
+                email,
+                -1);
+
+        //get all sell listings made by this user
+        dbm.getSellListings(null,
+                null,
+                -1,
+                null,
+                email,
+                -1);
+
         tabSetup();
-
-
     }
 
     private ListView populateBuyListView( List<ParseObject> buyListings){
@@ -171,59 +185,36 @@ public class MyListings extends Activity implements  DBAsync
 
     private void tabSetup()
     {
-        //get all buy listings made by this user
-        dbm.getBuyListings(null,
-                null,
-                -1,
-                null,
-                email,
-                -1);
-
 
         tabHost = (TabHost) findViewById(R.id.tabHost);
         //set up the tabs
         tabHost.setup();
 
         //tab for buy Listing
-        TabHost.TabSpec tabSpec1 = tabHost.newTabSpec("buylistingsmylistings");
+        TabHost.TabSpec tabSpec = tabHost.newTabSpec("buylistingsmylistings");
         //creating the content of this tab
-        tabSpec1.setContent(new TabHost.TabContentFactory() {
+        tabSpec.setContent(new TabHost.TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
                 ListView buyListView = (ListView) findViewById(R.id.listViewMainBuy);
                 return buyListView;
             }
         });
-        tabSpec1.setIndicator("Buy");  // name displayed on tab
-        tabHost.addTab(tabSpec1);  // add tab to tabHost
-
-        final FrameLayout tabContent = tabHost.getTabContentView();
-
-        //to make everything not displayed on startup
-        for (int index = 0; index < tabContent.getChildCount(); index++){
-            tabContent.getChildAt(index).setVisibility(View.GONE);
-        }
-
-        //get all sell listings made by this user
-        dbm.getSellListings(null,
-                null,
-                -1,
-                null,
-                email,
-                -1);
+        tabSpec.setIndicator("Buy");  // name displayed on tab
+        tabHost.addTab(tabSpec);  // add tab to tabHost
 
         // tab for sell Listing
-        TabHost.TabSpec tabSpec2 = tabHost.newTabSpec("selllistingmylistings");
+        tabSpec = tabHost.newTabSpec("selllistingsmylistings");
         //set the tcontent of this tab
-        tabSpec2.setContent(new TabHost.TabContentFactory() {
+        tabSpec.setContent(new TabHost.TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
                 ListView sellListView = (ListView) findViewById(R.id.listViewMainSell);
                 return sellListView;
             }
         });
-        tabSpec2.setIndicator("Sell");  // set the displayed name of the tab
-        tabHost.addTab(tabSpec2);  // add the tab to tabhost
+        tabSpec.setIndicator("Sell");  // set the displayed name of the tab
+        tabHost.addTab(tabSpec);  // add the tab to tabhost
 
         tabHost.setCurrentTabByTag("selllistingsmylistings");
     }

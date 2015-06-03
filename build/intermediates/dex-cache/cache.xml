@@ -16,18 +16,18 @@
         <dex dex="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-c9d4b4454271871ca71459ab989a5cd0f4cf8f34.jar" />
     </item>
     <item
+        jar="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/exploded-aar/tba/ParseLoginUI/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7da44bd5c832c644b0d551da3ea8847c5efb22f1">
+        <dex dex="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/pre-dexed/debug/classes-7ca4a2446798afab7c543c04a15aec0bbc774c4a.jar" />
+    </item>
+    <item
         jar="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/exploded-aar/com.jjoe64/graphview/4.0.1/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="37bf8de5b4f9e7e93006db783b9b3168e32e38e9">
         <dex dex="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/pre-dexed/debug/classes-5b32251bfb7c19f1383236c048030c547f21ae75.jar" />
-    </item>
-    <item
-        jar="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/exploded-aar/tba/ParseLoginUI/unspecified/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3cc9bb2a9f3fc2b39674d2e03171fb83fbc9ea73">
-        <dex dex="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/pre-dexed/debug/classes-7ca4a2446798afab7c543c04a15aec0bbc774c4a.jar" />
     </item>
     <item
         jar="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
@@ -44,18 +44,18 @@
         <dex dex="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/pre-dexed/debug/Parse-1.8.4-50eb409902fb8defc4787d13311fec7a202ca96f.jar" />
     </item>
     <item
-        jar="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/pre-dexed/debug/classes-14fa8dd99a5936829d8a8623aca13f76421c2365.jar" />
-    </item>
-    <item
         jar="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.23.1/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="c8414f03ff9e5b045f185921c9bc42914c906458">
         <dex dex="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/pre-dexed/debug/classes-a485d414c8f54abbc5c92a09a145f8aae8404244.jar" />
+    </item>
+    <item
+        jar="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/rachelfisher/AndroidStudioProjects/tba/app/build/intermediates/pre-dexed/debug/classes-14fa8dd99a5936829d8a8623aca13f76421c2365.jar" />
     </item>
     <item
         jar="/Users/rachelfisher/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
