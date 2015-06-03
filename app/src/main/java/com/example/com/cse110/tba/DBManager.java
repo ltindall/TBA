@@ -126,12 +126,12 @@ public class DBManager
             }
         }
 
+        ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("BuyListing");
+
         if(user != null)
         {
-            bookQuery.whereEqualTo("User", user);
+            listQuery.whereEqualTo("User", user);
         }
-
-        ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("BuyListing");
 
         if(limit != -1)
         {
@@ -176,12 +176,13 @@ public class DBManager
             }
         }
 
+        ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("SellListing");
+
+
         if(user != null)
         {
-            bookQuery.whereEqualTo("User", user);
+            listQuery.whereEqualTo("User", user);
         }
-
-        ParseQuery<ParseObject> listQuery = ParseQuery.getQuery("SellListing");
 
         if(limit != -1)
         {
