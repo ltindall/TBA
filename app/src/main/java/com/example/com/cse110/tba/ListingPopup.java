@@ -52,12 +52,43 @@ public class ListingPopup
         TextView title = (TextView)popUpView.findViewById(R.id.popup_title);
         title.setText("Title: " + listing.getParseObject("Book").getString("Title"));
 
+        TextView author = (TextView)popUpView.findViewById(R.id.popup_author);
+        author.setText("Author: " + listing.getParseObject("Book").getString("Author"));
+
         TextView isbn = (TextView)popUpView.findViewById(R.id.popup_isbn);
         isbn.setText("ISBN: " + listing.getParseObject("Book").getInt("ISBN"));
+
+        TextView year = (TextView)popUpView.findViewById(R.id.popup_year);
+        year.setText("Year: " + listing.getParseObject("Book").getInt("Year"));
+
+        TextView edition = (TextView)popUpView.findViewById(R.id.popup_edition);
+        edition.setText("Edition: " + listing.getParseObject("Book").getInt("Edition"));
 
         TextView price = (TextView)popUpView.findViewById(R.id.popup_price);
         price.setText("Price: " + listing.getDouble("Price"));
 
+        if(listing.getInt("Condition") == 0){
+            TextView condition = (TextView)popUpView.findViewById(R.id.popup_condition);
+            condition.setText("Condition: Old");
+        }
+
+        else{
+            TextView condition = (TextView)popUpView.findViewById(R.id.popup_condition);
+            condition.setText("Condition: New");
+        }
+
+        TextView comment = (TextView)popUpView.findViewById(R.id.popup_comment);
+        comment.setText("Comment: " + listing.getString("Comment"));
+
+        if(listing.getString("Hardcover") == "true") {
+            TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover);
+            hardcover.setText("Hardcover: Yes");
+        }
+
+        else{
+            TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover);
+            hardcover.setText("Hardcover: No");
+        }
 
         Button exit = (Button)popUpView.findViewById(R.id.popup_button);
         exit.setOnClickListener(new View.OnClickListener() {

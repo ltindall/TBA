@@ -12,13 +12,49 @@
         android:gravity="center"/>
 
     <TextView
+        android:id="@+id/popup_author"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
         android:id="@+id/popup_isbn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"/>
 
     <TextView
+        android:id="@+id/popup_year"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_edition"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
         android:id="@+id/popup_price"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_condition"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_comment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/popup_hardcover"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"/>
