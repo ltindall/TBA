@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Book Title"
-        android:id="@+id/createListingBookTitle"
+        android:id="@+id/createSellListingBookTitle"
         android:inputType="textCapWords"
         />
 
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Author"
-        android:id="@+id/createListingBookAuthor"
+        android:id="@+id/createSellListingBookAuthor"
         android:inputType="textCapWords"
         />
 
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="10 or 13 ISBN Number"
-        android:id="@+id/createListingISBNNumber"
+        android:id="@+id/createSellListingISBNNumber"
         android:inputType="phone"
         />
 
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Year"
-        android:id="@+id/createListingBookYear"
+        android:id="@+id/createSellListingBookYear"
         android:inputType="phone"
         />
 
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Edition Number"
-        android:id="@+id/createListingBookEdition"
+        android:id="@+id/createSellListingBookEdition"
         android:inputType="phone"
         />
 
@@ -65,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Offering price"
-        android:id="@+id/createListingBookPrice"
+        android:id="@+id/createSellListingBookPrice"
         android:inputType="number|numberDecimal"
         />
 
@@ -89,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Comment"
-        android:id="@+id/createListingBookComment"
+        android:id="@+id/createSellListingBookComment"
         />
 
     <CheckBox
@@ -105,7 +105,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/createListingButton"
+        android:id="@+id/createSellListingButton"
         android:text="Create"
         />
 

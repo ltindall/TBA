@@ -11,8 +11,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
-public class CreateBuyingListing extends Activity {
+import java.util.List;
+
+
+public class CreateBuyingListing extends Activity implements DBAsync {
 
     // book information
     protected EditText wBookTitle;
@@ -29,10 +34,15 @@ public class CreateBuyingListing extends Activity {
     protected CheckBox wUsedBook;
     protected CheckBox wHardCover;
 
+    boolean checkNew = false;
+    boolean checkUsed = false;
+    boolean isHardCover = false;
+
+
     // button information
     protected Button wCreateBuyingListingButton;
 
-    private DBManager manager;
+    private DBManager manager= new DBManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +59,39 @@ public class CreateBuyingListing extends Activity {
 
         wPrice = (EditText)findViewById(R.id.createListingBookPrice);
         wComment = (EditText)findViewById(R.id.createListingBookComment);
-        //This CheckBox crashes. Don't know why. -Hansen-.
+
         wNewBook = (CheckBox)findViewById(R.id.bookConditionNew);
         wUsedBook = (CheckBox)findViewById(R.id.bookConditionUsed);
         wHardCover = (CheckBox)findViewById(R.id.createListingIsHardCover);
 
+
+
+        wNewBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((CheckBox) view).isChecked()) {
+                    checkNew = true;
+                }
+            }
+        });
+
+        wUsedBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((CheckBox) view).isChecked()) {
+                    checkUsed = true;
+                }
+            }
+        });
+
+        wHardCover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (((CheckBox) view).isChecked()) {
+                    isHardCover = true;
+                }
+            }
+        });
 
         // create listener for the create button
         wCreateBuyingListingButton.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +102,7 @@ public class CreateBuyingListing extends Activity {
                 String bookAuthor = wBookAuthor.getText().toString().trim();
 
                 String stringBookISBN = wBookISBN.getText().toString().trim();
-                int bookISBN = Integer.parseInt(stringBookISBN);
+                long bookISBN = Long.parseLong(stringBookISBN);
 
                 String stringBookYear = wBookYear.getText().toString().trim();
                 int bookYear = Integer.parseInt(stringBookYear);
@@ -75,11 +113,7 @@ public class CreateBuyingListing extends Activity {
                 String stringBookPrice = wBookYear.getText().toString().trim();
                 float bookPrice = Float.parseFloat(stringBookPrice);
 
-                String bookCondition = wCondition.getText().toString();
                 String bookComment = wComment.getText().toString();
-
-                boolean checkNew = wNewBook.isChecked();
-                boolean checkUsed = wUsedBook.isChecked();
 
                 int newBookOrNot = 0;
                 if (checkNew) {
@@ -90,16 +124,14 @@ public class CreateBuyingListing extends Activity {
                     newBookOrNot = 0;
                 }
 
-                boolean hardCoverChecked = wHardCover.isChecked();
-
                 // save it on parse as new Book object
                 // save it on parse as new Listing object
 
                 manager.addBookListing(true, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
-                        bookYear, bookEdition, bookComment, hardCoverChecked);
+                        bookYear, bookEdition, bookComment, isHardCover);
 
                 // Make a toast to signal that it's ok
-                Toast.makeText(CreateBuyingListing.this, "Sucees Creating Listing", Toast.LENGTH_LONG).show();
+                Toast.makeText(CreateBuyingListing.this, "Success Creating Listing", Toast.LENGTH_LONG).show();
 
                 // save it
             }
@@ -131,5 +163,31 @@ public class CreateBuyingListing extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onBuyListingsLoad(List<ParseObject> buyListings) {
+
+    }
+
+    @Override
+    public void onSellListingsLoad(List<ParseObject> sellListings) {
+
+    }
+
+    @Override
+    public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
+
+    }
+
+    @Override
+    public void onSellHistoryLoad(List<ParseObject> sellHistory) {
+
+    }
+
+    @Override
+    public void onUserLoad(List<ParseUser> userList) {
+
     }
 }
