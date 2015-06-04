@@ -44,10 +44,6 @@ public class ListingAdapter extends ArrayAdapter<ParseObject> {
                     .findViewById(R.id.bookListingBookISBN);
             holder.bookPriceListingAdapter = (TextView) convertView
                     .findViewById(R.id.bookListingBookPrice);
-            holder.bookConditionListingAdapter = (TextView) convertView
-                    .findViewById(R.id.bookListingBookCondition);
-            holder.bookUserListingAdapter = (TextView) convertView
-                    .findViewById(R.id.bookListingBookOwner);
 
             convertView.setTag(holder);
         }
@@ -77,17 +73,9 @@ public class ListingAdapter extends ArrayAdapter<ParseObject> {
         String bookISBN = bookObject.getString("ISBN");
         holder.bookISBNListingAdapter.setText(bookISBN);
 
-        // book Condition
-        String bookCondition = listingObject.getString("ISBN");
-        holder.bookConditionListingAdapter.setText(bookCondition);
-
         // book Price
-        String bookPrice = listingObject.getString("Condition");
+        String bookPrice = listingObject.getString("Price");
         holder.bookPriceListingAdapter.setText(bookPrice);
-
-        // book User
-        String bookUser = listingObject.getString("User");
-        holder.bookUserListingAdapter.setText(bookUser);
 
         return convertView;
     }
