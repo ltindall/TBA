@@ -5,11 +5,6 @@
     android:layout_height="match_parent">
 
     <TableRow>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Book Title: "
-            android:layout_column="0" />
 
         <EditText
             android:layout_width="match_parent"
@@ -18,14 +13,7 @@
             android:id="@+id/bookListingBookTitle"
             android:layout_column="2"
             android:inputType="text" />
-    </TableRow>
 
-    <TableRow>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ISBN Number: "
-            android:layout_column="0" />
 
         <EditText
             android:layout_width="match_parent"
@@ -33,29 +21,6 @@
             android:text="Book ISBN"
             android:id="@+id/bookListingBookISBN"
             android:layout_column="2" />
-    </TableRow>
-
-    <TableRow>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Condition: "
-            android:layout_column="0" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Book Condition"
-            android:id="@+id/bookListingBookCondition"
-            android:layout_column="2" />
-    </TableRow>
-
-    <TableRow>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Price: "
-            android:layout_column="0" />
 
         <EditText
             android:layout_width="match_parent"
@@ -65,20 +30,6 @@
             android:layout_column="2" />
     </TableRow>
 
-    <TableRow>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="User: "
-            android:layout_column="0" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="User"
-            android:id="@+id/bookListingBookOwner"
-            android:layout_column="2" />
-    </TableRow>
 
 
 
