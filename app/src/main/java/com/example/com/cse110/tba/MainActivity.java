@@ -289,16 +289,16 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
 
     //This functions fills the ListView with given Listing objects
-    private ListView populateBuyListView(final List<ParseObject> buyListings)
+    private ListView populateBuyListView(List<ParseObject> buyListings)
     {
         //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainBuy);
-        List<ParseObject> newListings;
+        final List<ParseObject> newListings;
 
-        //newListings = pSort.sortListings(buyListings, "Date", "BuyListing", 0);
+        newListings = pSort.sortListings(buyListings, "Date", "BuyListing", 0);
 
         ArrayList<String> list = new ArrayList<String>();
-        for(ParseObject listings: buyListings) {
+        for(ParseObject listings: newListings) {
             ParseObject book = listings.getParseObject("Book");
             try {
                 book.fetch();
@@ -331,7 +331,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), newListings.get(position), view, false);
 
                 Log.d("MainActivity", "setOnItemClickListener");
 
@@ -364,14 +364,14 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainSell);
-        List<ParseObject> newListings;
+        final List<ParseObject> newListings;
 
-        //newListings = pSort.sortListings(sellListings, "Date", "SellListing", 0);
+        newListings = pSort.sortListings(sellListings, "Date", "SellListing", 0);
 
         ArrayList<String> list = new ArrayList<String>();
         if (sellListings == null)
             Log.d("MainActivity", "sellListings is null");
-        for(ParseObject listings: sellListings) {
+        for(ParseObject listings: newListings) {
             ParseObject book = listings.getParseObject("Book");
             try {
                 book.fetch();
@@ -404,7 +404,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), newListings.get(position), view, false);
 
                 // ListView Clicked item index
                 /*int itemPosition     = position;

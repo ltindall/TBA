@@ -43,12 +43,13 @@ public class ParseSorter
                     else
                         Log.d("ParseSorter", "Everything is Okay");
 
-                    long otherDate = rank.getCreatedAt().getTime();
+                    long otherDate = dummyDate.getTime();
                     //long otherDate = 0;
 
                     if(date >= otherDate)
                     {
                         rank = d;
+                        dummyDate.setTime(d.getCreatedAt().getTime());
                     }
 
                 }
