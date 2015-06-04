@@ -289,7 +289,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
 
     //This functions fills the ListView with given Listing objects
-    private ListView populateBuyListView( List<ParseObject> buyListings)
+    private ListView populateBuyListView(final List<ParseObject> buyListings)
     {
         //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainBuy);
@@ -359,7 +359,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     }
 
 
-    private void populateSellListView( List<ParseObject> sellListings)
+    private void populateSellListView( final List<ParseObject> sellListings)
     {
 
         //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
@@ -404,7 +404,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false);
 
                 // ListView Clicked item index
                 /*int itemPosition     = position;
