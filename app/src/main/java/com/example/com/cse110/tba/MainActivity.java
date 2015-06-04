@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
-                R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
+                R.array.search_spinner, R.layout.simple_spinner_dropdown_item_tba);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
 
         //get initial buy/sell listing. this is the first time user will see listing before doing anything
