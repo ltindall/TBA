@@ -151,7 +151,7 @@ int drawable ic_search 0x7f020038
 int drawable popup_border 0x7f020039
 int id BuyListing 0x7f080022
 int id SellListing 0x7f080024
-int id action_settings 0x7f08006b
+int id action_settings 0x7f08006c
 int id app_logo 0x7f080040
 int id bookConditionNew 0x7f080014
 int id bookConditionUsed 0x7f080015
@@ -163,8 +163,8 @@ int id bookListingBookTitle 0x7f080055
 int id bottom 0x7f080005
 int id box_count 0x7f080002
 int id button 0x7f080003
-int id button_send 0x7f080069
-int id call_number 0x7f080067
+int id button_send 0x7f08006a
+int id call_number 0x7f080068
 int id center 0x7f080008
 int id com_facebook_body_frame 0x7f080038
 int id com_facebook_button_xout 0x7f08003a
@@ -216,7 +216,7 @@ int id inline 0x7f080006
 int id large 0x7f08000b
 int id left 0x7f080009
 int id list 0x7f080054
-int id listView 0x7f080065
+int id listView 0x7f080066
 int id listViewMainBuy 0x7f080023
 int id listViewMainSell 0x7f080025
 int id login_help_email_input 0x7f080049
@@ -233,9 +233,10 @@ int id parse_login_help 0x7f080047
 int id parse_signup_button 0x7f080046
 int id picker_subtitle 0x7f080035
 int id popup_author 0x7f08005b
-int id popup_button 0x7f080064
+int id popup_button 0x7f080065
 int id popup_comment 0x7f080061
 int id popup_condition 0x7f080060
+int id popup_contact 0x7f080064
 int id popup_edition 0x7f08005e
 int id popup_hardcover 0x7f080062
 int id popup_history 0x7f080063
@@ -244,7 +245,7 @@ int id popup_price 0x7f08005f
 int id popup_title 0x7f08005a
 int id popup_year 0x7f08005d
 int id right 0x7f08000a
-int id search 0x7f08006a
+int id search 0x7f08006b
 int id signup_confirm_password_input 0x7f08004f
 int id signup_email_input 0x7f080050
 int id signup_name_input 0x7f080051
@@ -253,10 +254,10 @@ int id signup_username_input 0x7f08004d
 int id small 0x7f08000d
 int id standard 0x7f080004
 int id tabHost 0x7f080021
-int id text_number 0x7f080068
+int id text_number 0x7f080069
 int id top 0x7f080007
 int id twitter_login 0x7f08004c
-int id zip_code 0x7f080066
+int id zip_code 0x7f080067
 int layout activity_create_buying_listing 0x7f030000
 int layout activity_create_selling_listing 0x7f030001
 int layout activity_main 0x7f030002

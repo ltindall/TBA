@@ -14,7 +14,7 @@
     <string name="search_title">Search</string>
 
     <string-array name="search_spinner">
-        <item>Book Title</item>
+        <item> Book Title </item>
         <item>Author</item>
         <item>ISBN</item>
         <item>Order</item>

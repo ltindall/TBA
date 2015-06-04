@@ -69,7 +69,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
-                R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
+                R.array.search_spinner, R.layout.simple_spinner_dropdown_item_tba);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
         // actionBar end
 
@@ -126,7 +126,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         sampleBook.put("ISBN", 7616);
         sampleListing.put("Price", 9002);
         sampleListing.put("Book", sampleBook);
-        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v);
+        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false);
     }
 
 	@Override
@@ -331,19 +331,20 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false);
 
                 Log.d("MainActivity", "setOnItemClickListener");
 
                 // ListView Clicked item index
-                int itemPosition = position;
+                /*int itemPosition = position;
 
                 // ListView Clicked item value
                 String itemValue = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getApplicationContext(),
+                /*Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 
@@ -403,17 +404,18 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view);
 
                 // ListView Clicked item index
-                int itemPosition     = position;
+                /*int itemPosition     = position;
 
                 // ListView Clicked item value
                 String  itemValue    = (String) lister.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getApplicationContext(),
+                /*Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
 
             }
 
