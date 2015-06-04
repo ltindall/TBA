@@ -25,6 +25,11 @@ public class MyListings extends Activity implements  DBAsync
     public DBManager dbm;
     ListView lister;
     String email;
+    List<String> buyValues;
+    List<String> sellValues;
+    ArrayAdapter<String> buyItemsAdapter;
+    ArrayAdapter<String> sellItemsAdapter;
+
 
     @Override
     public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
@@ -87,18 +92,18 @@ public class MyListings extends Activity implements  DBAsync
 
         }
 
-        final List<String> values = new ArrayList<String>();
+        buyValues = new ArrayList<String>();
         for(int j =0; j<list.size(); j++) {
-            values.add(list.get(j));
+            buyValues.add(list.get(j));
         }
 
 
-        final ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        buyItemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, buyValues);
 
 
         //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
-        lister.setAdapter(itemsAdapter);
+        lister.setAdapter(buyItemsAdapter);
 
         // ListView Item Click Listener
         lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -107,12 +112,14 @@ public class MyListings extends Activity implements  DBAsync
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, true, values, position);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, true, buyValues, position);
 
-                itemsAdapter.notifyDataSetChanged();
+                buyItemsAdapter.notifyDataSetChanged();
             }
 
         });
+
+
         return lister;
     }
 
@@ -137,18 +144,18 @@ public class MyListings extends Activity implements  DBAsync
 
         }
 
-        final List<String> values = new ArrayList<String>();
+        sellValues = new ArrayList<String>();
         for(int j =0; j<list.size(); j++) {
-            values.add(list.get(j));
+            sellValues.add(list.get(j));
         }
 
 
-        final ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        sellItemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, sellValues);
 
 
         //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
-        lister.setAdapter(itemsAdapter);
+        lister.setAdapter(sellItemsAdapter);
 
         // ListView Item Click Listener
         lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -157,9 +164,9 @@ public class MyListings extends Activity implements  DBAsync
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, true, values, position);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, true, sellValues, position);
 
-                itemsAdapter.notifyDataSetChanged();
+                sellItemsAdapter.notifyDataSetChanged();
             }
 
         });

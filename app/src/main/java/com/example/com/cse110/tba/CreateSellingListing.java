@@ -166,8 +166,11 @@ public class CreateSellingListing extends Activity implements DBAsync {
                 manager.addBookListing(false, bookTitle, bookAuthor, bookISBN, bookPrice, newBookOrNot,
                         bookYear, bookEdition, bookComment, isHardCover);
 
-                MainActivity.sellValues.add(bookTitle +" - "+bookAuthor+" - $"+bookPrice);
-                MainActivity.sellItemsAdapter.notifyDataSetChanged();
+
+                //MainActivity.sellValues.add(0, bookTitle +" - "+bookAuthor+" - $"+bookPrice);
+                //MainActivity.sellItemsAdapter.notifyDataSetChanged();
+
+                manager.getSellListings(null, null, -1, "Title", null, 20);
 
                 // save it on parse as new Book object
                 // save it on parse as new Listing object

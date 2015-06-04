@@ -57,8 +57,11 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         dbm = new DBManager(this);
 		setContentView(R.layout.activity_main);
 
-        ParseLoginBuilder builder = new ParseLoginBuilder(this);
-        startActivityForResult(builder.build(), LOGIN_PAGE);
+        ParseUser user = ParseUser.getCurrentUser();
+        if (user == null) {
+            ParseLoginBuilder builder = new ParseLoginBuilder(this);
+            startActivityForResult(builder.build(), LOGIN_PAGE);
+        }
 
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
@@ -75,8 +78,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 -1,
                 "Title",  // sort the listing by title
                 null,
-                50);       // limit to 50 listings
-        dbm.getSellListings(null, null, -1, "Title", null, 50);
+                20);       // limit to 20 listings
+        dbm.getSellListings(null, null, -1, "Title", null, 20);
 
         tabSetup();
 	}
@@ -318,16 +321,16 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                                     int position, long id) {
                 ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false, buyValues, position);
 
-                buyItemsAdapter.notifyDataSetChanged();
 
-                // Show Alert
-                /*Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();*/
 
             }
 
         });
+
+
+
+        //buyItemsAdapter.notifyDataSetChanged();
+
         return lister;
     }
 
@@ -374,11 +377,11 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                                     int position, long id) {
                 ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false, sellValues, position);
 
-                sellItemsAdapter.notifyDataSetChanged();
-
             }
 
         });
+
+        //buyItemsAdapter.notifyDataSetChanged();
 
     }
 
