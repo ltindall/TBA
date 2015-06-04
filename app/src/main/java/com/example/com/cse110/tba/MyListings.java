@@ -9,8 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -28,6 +26,11 @@ public class MyListings extends Activity implements  DBAsync
     ParseSorter pSort;
     ListView lister;
     String email;
+    List<String> buyValues;
+    List<String> sellValues;
+    ArrayAdapter<String> buyItemsAdapter;
+    ArrayAdapter<String> sellItemsAdapter;
+
 
     @Override
     public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
@@ -96,18 +99,18 @@ public class MyListings extends Activity implements  DBAsync
 
         }
 
-        String[] values = new String[list.size()];
-        for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j);
+        buyValues = new ArrayList<String>();
+        for(int j =0; j<list.size(); j++) {
+            buyValues.add(list.get(j));
         }
 
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        buyItemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, buyValues);
 
 
         //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
-        lister.setAdapter(itemsAdapter);
+        lister.setAdapter(buyItemsAdapter);
 
         // ListView Item Click Listener
         lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,16 +119,14 @@ public class MyListings extends Activity implements  DBAsync
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, true);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, true, buyValues, position);
 
-                int currentTab = tabHost.getCurrentTab();
-                //tabHost.clearAllTabs();
-                //tabSetup();
-                tabHost.setCurrentTab(currentTab);
-
+                buyItemsAdapter.notifyDataSetChanged();
             }
 
         });
+
+
         return lister;
     }
 
@@ -156,18 +157,18 @@ public class MyListings extends Activity implements  DBAsync
 
         }
 
-        String[] values = new String[list.size()];
-        for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j);
+        sellValues = new ArrayList<String>();
+        for(int j =0; j<list.size(); j++) {
+            sellValues.add(list.get(j));
         }
 
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        sellItemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, sellValues);
 
 
         //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
-        lister.setAdapter(itemsAdapter);
+        lister.setAdapter(sellItemsAdapter);
 
         // ListView Item Click Listener
         lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -176,13 +177,9 @@ public class MyListings extends Activity implements  DBAsync
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, true);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, true, sellValues, position);
 
-                int currentTab = tabHost.getCurrentTab();
-                //tabHost.clearAllTabs();
-                //tabSetup();
-                tabHost.setCurrentTab(currentTab);
-
+                sellItemsAdapter.notifyDataSetChanged();
             }
 
         });
@@ -193,6 +190,7 @@ public class MyListings extends Activity implements  DBAsync
 
         tabHost = (TabHost) findViewById(R.id.tabHost);
         //set up the tabs
+        //tabHost.clearAllTabs();
         tabHost.setup();
 
         //tab for buy Listing

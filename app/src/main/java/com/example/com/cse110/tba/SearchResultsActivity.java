@@ -279,9 +279,9 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
 
         }
 
-        String[] values = new String[list.size()];
-        for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j).toString();
+        final List<String> values = new ArrayList<String>();
+        for(int j =0; j<list.size(); j++) {
+            values.add(list.get(j));
         }
 
 //        String[] values = new String[] { "josdjfoasjdfjasdfopjasfd",
@@ -310,7 +310,7 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false, values, position);
 
 
 
