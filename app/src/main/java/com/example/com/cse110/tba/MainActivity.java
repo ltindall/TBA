@@ -41,38 +41,53 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     public static final int LOGIN_PAGE = 0;
     private long currentSpinnerItem = 0;
     private boolean sellList = true;
-    public DBManager dbm; 
+    public DBManager dbm;
+    private ParseSorter pSort;
     ListView lister;
     TabHost tabHost;
     SearchView searchView;
+    public static ArrayAdapter<String> buyItemsAdapter;
+    public static List<String> buyValues;
+    public static ArrayAdapter<String> sellItemsAdapter;
+    public static List<String> sellValues;
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         dbm = new DBManager(this);
+        pSort = new ParseSorter();
 		setContentView(R.layout.activity_main);
 
-        ParseLoginBuilder builder = new ParseLoginBuilder(this);
-        startActivityForResult(builder.build(), LOGIN_PAGE);
+        ParseUser current = ParseUser.getCurrentUser();
+        if(current == null)
+        {
+            ParseLoginBuilder builder = new ParseLoginBuilder(this);
+            startActivityForResult(builder.build(), LOGIN_PAGE);
+        }
 
+        /*ParseLoginBuilder builder = new ParseLoginBuilder(this);
+        startActivityForResult(builder.build(), LOGIN_PAGE);*/
+
+        // create the action bar and add items to it such as the spinner
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.search_spinner, R.layout.simple_spinner_dropdown_item_tba);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
+        // actionBar end
 
         //get initial buy/sell listing. this is the first time user will see listing before doing anything
           //use DBManager to get any latest buy listing.
-        DBManager dbm = new DBManager(this);    // create DBManager object with MainActivity as its caller
+        //DBManager dbm = new DBManager(this);    // create DBManager object with MainActivity as its caller
           //call getBuyListing passing null arguments so query will not do any search
         dbm.getBuyListings(null,
                 null,
                 -1,
                 "Title",  // sort the listing by title
                 null,
-                10);       // limit to 10 listings
-        dbm.getSellListings(null, null, -1, "Title", null, 10);
+                20);       // limit to 20 listings
+        dbm.getSellListings(null, null, -1, "Title", null, 20);
 
         tabSetup();
 	}
@@ -89,6 +104,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 ParseInstallation installation = ParseInstallation.getCurrentInstallation();
                 installation.put("user", ParseUser.getCurrentUser().get("email"));
                 installation.saveInBackground();
+                Log.d("MainActivity", "Install ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
+                Log.d("MainActivity", "Object ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
                 Log.d("MainActivity", "User: " + ParseUser.getCurrentUser().getUsername() + " successfully authenticated");
             }
             else if(resultCode == Activity.RESULT_CANCELED)
@@ -106,24 +123,24 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         //manager.setUserSettings(92092,null,null);
     }
 
-    public void launchPopup(View v)
+    /*public void launchPopup(View v)
     {
-        Log.d("MainActivity", "Button pressed");
+        /*
         ParseObject sampleListing = new ParseObject("BuyListing");
         ParseObject sampleBook = new ParseObject("CustomBook");
         sampleBook.put("Title", "Antigone");
         sampleBook.put("ISBN", 7616);
         sampleListing.put("Price", 9002);
         sampleListing.put("Book", sampleBook);
-        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false);
-    }
+        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false, values, position);
+    }*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 
-        // Initialize search stuff
+        // Initialize: Search Stuff
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView =
@@ -149,16 +166,23 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             }
 
             public boolean onQueryTextSubmit(String query) {
+                Log.d("MainActivity", "onQueryTextSubmit");
                 Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
                 intent.setAction(Intent.ACTION_SEARCH);
                 intent.putExtra("query", query);
+                if (tabHost.getCurrentTab() == 0)
+                    sellList = false;
+
+                else
+                    sellList = true;
+
                 intent.putExtra("sellList", sellList);
                 intent.putExtra("currentSpinnerItem", currentSpinnerItem);
                 startActivity(intent);
                 //listAdapter.getFilter().filter(query);
                 return true;
             }
-        });
+        }); // Search Stuff end
 
         ParseUser current = ParseUser.getCurrentUser();
         String email = current.getEmail();
@@ -177,6 +201,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 		return true;
 	}
 
+    /*
+        Filters the Options Menu based on if the User is logged in
+     */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
@@ -189,12 +216,11 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         ParseUser current = ParseUser.getCurrentUser();
         String email = current.getEmail();
         Log.d("MainActivity.java", "Current User: " + email);
-        if (email == null){
+        if (email == null) {
             menu.add(Menu.NONE, 1, Menu.NONE, "Login");
-        }
-        else {
+        } else {
             // Inflate menu options
-            menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+            menu.add(Menu.NONE, 0, Menu.NONE, "User Settings");
             menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
             menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
             menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
@@ -211,24 +237,24 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             case 0:
                 Intent intent = new Intent(MainActivity.this, UserSettings.class);
                 startActivity(intent);
-                return true;
+                break;
             case 2:
                 Intent intent2 = new Intent(MainActivity.this, MyListings.class);
                 startActivity(intent2);
-                return true;
+                break;
             case 1:
                 ParseUser.logOut();
                 ParseLoginBuilder builder = new ParseLoginBuilder(this);
                 startActivityForResult(builder.build(), LOGIN_PAGE);
                 break;
-            case 3:  // Crete buy listing
+            case 3:  // Create buy listing
                 Intent intent3 = new Intent(MainActivity.this , CreateBuyingListing.class);
                 startActivity(intent3);
-                return true;
+                break;
             case 4:  // Create sell listing
                 Intent intent4 = new Intent(MainActivity.this , CreateSellingListing.class);
                 startActivity(intent4);
-                return true;
+                break;
         }
         return true;
     }
@@ -272,13 +298,16 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
 
     //This functions fills the ListView with given Listing objects
-    private ListView populateBuyListView( final List<ParseObject> buyListings)
+    private ListView populateBuyListView(List<ParseObject> buyListings)
     {
         //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainBuy);
+        final List<ParseObject> newListings;
+
+        newListings = pSort.sortListings(buyListings, "Date", "BuyListing", 0);
 
         ArrayList<String> list = new ArrayList<String>();
-        for(ParseObject listings: buyListings) {
+        for(ParseObject listings: newListings) {
             ParseObject book = listings.getParseObject("Book");
             try {
                 book.fetch();
@@ -292,18 +321,19 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         }
 
-        String[] values = new String[list.size()];
-        for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j).toString();
+        //I see that this is pointless but I don't feel like fixing it. GG.
+        buyValues = new ArrayList<String>();
+        for(int j =0; j<list.size(); j++) {
+            buyValues.add(list.get(j));
         }
 
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        buyItemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, buyValues);
 
 
         //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
-        lister.setAdapter(itemsAdapter);
+        lister.setAdapter(buyItemsAdapter);
 
         // ListView Item Click Listener
         lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -311,22 +341,25 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false);
-                // ListView Clicked item index
-                /*int itemPosition = position;
+                ListingPopup popup = new ListingPopup(getApplicationContext(), newListings.get(position), view, false, buyValues, position);
 
-                // ListView Clicked item value
-                String itemValue = (String) lister.getItemAtPosition(position);
 
-                // Show Alert
-                /*Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();*/
 
             }
 
         });
+
+
+
+        //buyItemsAdapter.notifyDataSetChanged();
+
         return lister;
+        // make a list view and configure it with the created adapter
+        // create a ListView data structure to contain the adapter
+        /*ListView displayedListing = (ListView) findViewById(R.id.listViewMainPage);
+        //set the adapter into the ListView
+
+        displayedListing.setAdapter(itemsAdapter);*/
     }
 
 
@@ -335,9 +368,14 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMainSell);
+        final List<ParseObject> newListings;
+
+        newListings = pSort.sortListings(sellListings, "Date", "SellListing", 0);
 
         ArrayList<String> list = new ArrayList<String>();
-        for(ParseObject listings: sellListings) {
+        if (sellListings == null)
+            Log.d("MainActivity", "sellListings is null");
+        for(ParseObject listings: newListings) {
             ParseObject book = listings.getParseObject("Book");
             try {
                 book.fetch();
@@ -351,18 +389,18 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         }
 
-        String[] values = new String[list.size()];
-        for(int j =0; j<values.length; j++) {
-            values[j] = list.get(j).toString();
+        sellValues = new ArrayList<String>();
+        for(int j =0; j<list.size(); j++) {
+            sellValues.add(list.get(j));
         }
 
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        sellItemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, sellValues);
 
 
         //Log.d("SearchResultsActivity", "ENTERED LIST VIEW");
-        lister.setAdapter(itemsAdapter);
+        lister.setAdapter(sellItemsAdapter);
 
         // ListView Item Click Listener
         lister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -370,22 +408,13 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false);
-
-                // ListView Clicked item index
-                /*int itemPosition     = position;
-
-                // ListView Clicked item value
-                String  itemValue    = (String) lister.getItemAtPosition(position);
-
-                // Show Alert
-                /*Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();*/
+                ListingPopup popup = new ListingPopup(getApplicationContext(), newListings.get(position), view, false, sellValues, position);
 
             }
 
         });
+
+        //buyItemsAdapter.notifyDataSetChanged();
 
     }
 
@@ -462,7 +491,4 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             bookObject = object;
         }
     }
-
-
-
 }

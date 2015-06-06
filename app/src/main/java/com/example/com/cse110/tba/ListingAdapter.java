@@ -1,6 +1,7 @@
 package com.example.com.cse110.tba;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 
 import java.util.List;
@@ -55,11 +57,17 @@ public class ListingAdapter extends ArrayAdapter<ParseObject> {
         ParseObject listingObject = mListing.get(position);
 
         // get the book first
-        ParseObject bookObject = (ParseObject)listingObject.get("Book");
+        ParseObject bookObject = null;
+        try {
+            bookObject = listingObject.getParseObject("Book").fetchIfNeeded();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         // book Title
         String bookTitle = bookObject.getString("Title");
         holder.bookTitleListingAdapter.setText(bookTitle);
+
 
         // book ISBN
         String bookISBN = bookObject.getString("ISBN");

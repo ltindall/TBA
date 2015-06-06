@@ -12,7 +12,7 @@ dependencies {
     //
     // Since the dependency below is "provided" instead of "compile", your project's build.gradle
     // does not have to refer to the same Parse SDK instance that's in the ParseLoginUI/libs folder.
-    compile files('libs/Parse-1.8.4.jar')
+    compile files('libs/Parse-1.9.1.jar')
     compile files('libs/ParseFacebookUtils-1.8.4.jar')
 }
 
