@@ -41,7 +41,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     public static final int LOGIN_PAGE = 0;
     private long currentSpinnerItem = 0;
     private boolean sellList = true;
-    public DBManager dbm;
+    public DBManager dbm; 
     ListView lister;
     TabHost tabHost;
     SearchView searchView;
