@@ -336,7 +336,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, false, buyValues, position);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), newListings.get(position), view, false, buyValues, position);
 
 
 
@@ -403,7 +403,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, false, sellValues, position);
+                ListingPopup popup = new ListingPopup(getApplicationContext(), newListings.get(position), view, false, sellValues, position);
 
             }
 
