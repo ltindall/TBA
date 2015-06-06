@@ -104,6 +104,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 ParseInstallation installation = ParseInstallation.getCurrentInstallation();
                 installation.put("user", ParseUser.getCurrentUser().get("email"));
                 installation.saveInBackground();
+                Log.d("MainActivity", "Install ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
+                Log.d("MainActivity", "Object ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
                 Log.d("MainActivity", "User: " + ParseUser.getCurrentUser().getUsername() + " successfully authenticated");
             }
             else if(resultCode == Activity.RESULT_CANCELED)
