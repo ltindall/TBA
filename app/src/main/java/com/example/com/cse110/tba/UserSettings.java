@@ -1,14 +1,22 @@
 package com.example.com.cse110.tba;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.ui.ParseLoginBuilder;
 
 import java.util.List;
 
@@ -66,9 +74,6 @@ public class UserSettings extends Activity implements  DBAsync
         {
             text.setText(current.getString("Text"));
         }
-
-        DBManager dbm = new DBManager(this);
-        //dbm.addBookListing(false, "The Balls",  "", 8, 6, 1, 2015, 9000, "here you go Batman", true);
     }
 
     public void submit(View v)
@@ -101,14 +106,52 @@ public class UserSettings extends Activity implements  DBAsync
 
         Toast.makeText(getApplicationContext(), "User Settings Updated",
                 Toast.LENGTH_SHORT).show();
+        
+    }
 
-        /*ParseObject sampleListing = new ParseObject("SellListing");
-        ParseObject sampleBook = new ParseObject("CustomBook");
-        sampleBook.put("Title", "Antigone");
-        sampleBook.put("ISBN", 7616);
-        sampleListing.put("Price", 9002);
-        sampleListing.put("Book", sampleBook);
-        ListingPopup popup = new ListingPopup(getApplicationContext(), sampleListing, v, false);*/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        // Inflate menu options
+        menu.add(Menu.NONE, 0, Menu.NONE, "Market Listings");
+        menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
+        menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
+        menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
+        menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case 0:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            case 1:
+                ParseUser.logOut();
+                ParseLoginBuilder builder = new ParseLoginBuilder(this);
+                startActivityForResult(builder.build(), MainActivity.LOGIN_PAGE);
+                break;
+            case 2:
+                Intent intent2 = new Intent(this, MyListings.class);
+                startActivity(intent2);
+                break;
+            case 3:  // Create buy listing
+                Intent intent3 = new Intent(this , CreateBuyingListing.class);
+                startActivity(intent3);
+                break;
+            case 4:  // Create sell listing
+                Intent intent4 = new Intent(this , CreateSellingListing.class);
+                startActivity(intent4);
+                break;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return true;
     }
 
     @Override

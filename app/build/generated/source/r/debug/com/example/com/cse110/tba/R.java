@@ -621,14 +621,15 @@ containing a value of this type.
         public static final int com_parse_ui_username_input_hint=0x7f0a0050;
         public static final int com_parse_ui_username_taken_toast=0x7f0a0051;
         public static final int hello_world=0x7f0a0052;
-        public static final int search_hint=0x7f0a0053;
-        public static final int search_title=0x7f0a0054;
-        public static final int text_hint=0x7f0a0055;
-        public static final int title_activity_create_buying_listing=0x7f0a0056;
-        public static final int title_activity_create_seeling_listing=0x7f0a0057;
-        public static final int title_activity_create_selling_listing=0x7f0a0058;
-        public static final int user_settings_submit=0x7f0a0059;
-        public static final int zip_hint=0x7f0a005a;
+        public static final int market_title=0x7f0a0053;
+        public static final int search_hint=0x7f0a0054;
+        public static final int search_title=0x7f0a0055;
+        public static final int text_hint=0x7f0a0056;
+        public static final int title_activity_create_buying_listing=0x7f0a0057;
+        public static final int title_activity_create_seeling_listing=0x7f0a0058;
+        public static final int title_activity_create_selling_listing=0x7f0a0059;
+        public static final int user_settings_submit=0x7f0a005a;
+        public static final int zip_hint=0x7f0a005b;
     }
     public static final class style {
         /** 

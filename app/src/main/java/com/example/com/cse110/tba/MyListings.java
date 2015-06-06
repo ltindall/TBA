@@ -2,8 +2,12 @@ package com.example.com.cse110.tba;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +17,7 @@ import android.widget.TabHost;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.ui.ParseLoginBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +28,7 @@ public class MyListings extends Activity implements  DBAsync
 {
     TabHost tabHost;
     public DBManager dbm;
+    ParseSorter pSort;
     ListView lister;
     String email;
     List<String> buyValues;
@@ -77,7 +83,13 @@ public class MyListings extends Activity implements  DBAsync
         //setContentView(R.layout.activity_main);--> do not set the content of activity so tabs won't be overwritten
         lister = (ListView)findViewById(R.id.listViewMyListBuy);
 
-        final ArrayList<String> list = new ArrayList<String>();
+        final List<ParseObject> newListings;
+
+        //newListings = pSort.sortListings(buyListings, "Date", "BuyListing", 0);
+
+        //pSort.sortListings(buyListings, "Date", "BuyListing", 0);
+
+        ArrayList<String> list = new ArrayList<String>();
         for(ParseObject listings: buyListings) {
             ParseObject book = listings.getParseObject("Book");
             try {
@@ -127,6 +139,12 @@ public class MyListings extends Activity implements  DBAsync
 
 
         //setContentView(R.layout.activity_main);  --> do not set the content of activity so tabs won't be overwritten
+        lister = (ListView)findViewById(R.id.listViewMainSell);
+        final List<ParseObject> newListings;
+
+        //newListings = pSort.sortListings(sellListings, "Date", "SellListing", 0);
+
+        //pSort.sortListings(sellListings, "Date", "SellListing", 0);
         lister = (ListView)findViewById(R.id.listViewMyListSell);
 
         ArrayList<String> list = new ArrayList<String>();
@@ -207,6 +225,51 @@ public class MyListings extends Activity implements  DBAsync
         tabHost.addTab(tabSpec);  // add the tab to tabhost
 
         tabHost.setCurrentTabByTag("selllistingsmylistings");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        // Inflate menu options
+        menu.add(Menu.NONE, 0, Menu.NONE, "Market Listings");
+        menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
+        menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
+        menu.add(Menu.NONE, 2, Menu.NONE, "User Settings");
+        menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case 0:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            case 1:
+                ParseUser.logOut();
+                ParseLoginBuilder builder = new ParseLoginBuilder(this);
+                startActivityForResult(builder.build(), MainActivity.LOGIN_PAGE);
+                break;
+            case 2:
+                Intent intent2 = new Intent(this, UserSettings.class);
+                startActivity(intent2);
+                break;
+            case 3:  // Create buy listing
+                Intent intent3 = new Intent(this , CreateBuyingListing.class);
+                startActivity(intent3);
+                break;
+            case 4:  // Create sell listing
+                Intent intent4 = new Intent(this , CreateSellingListing.class);
+                startActivity(intent4);
+                break;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return true;
     }
 
     @Override
