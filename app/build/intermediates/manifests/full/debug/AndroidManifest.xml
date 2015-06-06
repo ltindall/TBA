@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.com.cse110.tba"
-    android:versionCode="1"
+    android:versionCode="10"
     android:versionName="1.0" >
 
     <uses-sdk
@@ -20,7 +20,7 @@
         android:name="com.example.com.cse110.tba.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.example.com.cse110.tba.permission.C2D_MESSAGE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
@@ -83,6 +83,14 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.com.cse110.tba.CreateBuyingListing"
+            android:label="@string/title_activity_create_buying_listing" >
+        </activity>
+        <activity
+            android:name="com.example.com.cse110.tba.CreateSellingListing"
+            android:label="@string/title_activity_create_selling_listing" >
+        </activity>
 
         <service android:name="com.parse.PushService" />
 
@@ -105,22 +113,14 @@
         </receiver>
         <receiver
             android:name="com.parse.ParsePushBroadcastReceiver"
-            android:exported="false" >
+            android:exported="false"
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
                 <action android:name="com.parse.push.intent.DELETE" />
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name="com.example.com.cse110.tba.CreateBuyingListing"
-            android:label="@string/title_activity_create_buying_listing" >
-        </activity>
-        <activity
-            android:name="com.example.com.cse110.tba.CreateSellingListing"
-            android:label="@string/title_activity_create_selling_listing" >
-        </activity>
     </application>
 
 </manifest>

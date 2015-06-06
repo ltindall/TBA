@@ -2,34 +2,6 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Joshua Lynch\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-0b1388f0403cd324bc1968d4a51f55e32e0a0163.jar" />
-    </item>
-    <item
-        jar="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\exploded-aar\TBAFinal\ParseLoginUI\unspecified\libs\Parse-1.8.4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0fcb6bbc9cf6d2643a90c812539aa82ed16ea315">
-        <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\Parse-1.8.4-7b627eecbbcf1cffc9e423b934d7973963cac4f6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\exploded-aar\com.jjoe64\graphview\4.0.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="37bf8de5b4f9e7e93006db783b9b3168e32e38e9">
-        <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\classes-b1d8cb6a5e0df441d011f115c3547db5aad1b76a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\libs\ParseCrashReporting-1.9.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2bfbcce5ae61bdd10676df8e89710693c1256024">
-        <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\ParseCrashReporting-1.9.1-a322e2a4afe77ba9b66ebbe265f66a18c0110815.jar" />
-    </item>
-    <item
         jar="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.23.1\classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -44,11 +16,32 @@
         <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\classes-b389ee832f7b646f2142c6fba04659d10f3a836a.jar" />
     </item>
     <item
+        jar="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\exploded-aar\TBAFinal\ParseLoginUI\unspecified\libs\Parse-1.9.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1b065010f3c9d441ede9078aca8eabcd1c81e647">
+        <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\Parse-1.9.1-729cbce46f7eb0e40617e5095e467ccc78e1a6dd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Joshua Lynch\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-0b1388f0403cd324bc1968d4a51f55e32e0a0163.jar" />
+    </item>
+    <item
         jar="C:\Users\Joshua Lynch\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
         <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-1c402a30a1bde36f445de39127c079bc71800e4d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\exploded-aar\com.jjoe64\graphview\4.0.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="37bf8de5b4f9e7e93006db783b9b3168e32e38e9">
+        <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\classes-b1d8cb6a5e0df441d011f115c3547db5aad1b76a.jar" />
     </item>
     <item
         jar="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
@@ -70,6 +63,13 @@
         revision="21.1.2"
         sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
         <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-8a0f9a761355216c461cfcd4cbb45cc29d99e747.jar" />
+    </item>
+    <item
+        jar="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\libs\ParseCrashReporting-1.9.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2bfbcce5ae61bdd10676df8e89710693c1256024">
+        <dex dex="C:\Users\Joshua Lynch\AndroidStudio Workspace\TBAFinal\app\build\intermediates\pre-dexed\debug\ParseCrashReporting-1.9.1-a322e2a4afe77ba9b66ebbe265f66a18c0110815.jar" />
     </item>
 
 </items>

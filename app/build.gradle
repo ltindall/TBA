@@ -8,6 +8,8 @@ android {
         applicationId "com.example.com.cse110.tba"
         minSdkVersion 11
         targetSdkVersion 17
+        versionCode 10
+        versionName "1.0"
     }
 
     buildTypes {

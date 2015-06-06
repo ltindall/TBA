@@ -7,8 +7,11 @@ package com.example.com.cse110.tba;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
+import com.parse.ParseObject;
 import com.parse.ParsePush;
 import com.parse.ParseUser;
+import com.parse.PushService;
 import com.parse.SaveCallback;
 
 import android.app.Application;
@@ -26,6 +29,21 @@ public class App extends Application {
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         ParseACL.setDefaultACL(defaultACL, false);
+        if(ParseInstallation.getCurrentInstallation().getInstallationId().equals(""))
+        {
+            Log.d("App", "Install is blank");
+            (ParseInstallation.create("ParseInstallation")).saveInBackground(new SaveCallback() {
+                public void done(ParseException e) {
+                    if (e == null) {
+                        Log.d("App", "Install ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
+                        Log.d("App", "Object ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
+                    } else {
+                        Log.d("App", "Install replacement failed");
+                    }
+                }
+            });
+        }
+
 
         ParsePush.subscribeInBackground("", new SaveCallback() {
             @Override
@@ -37,5 +55,6 @@ public class App extends Application {
                 }
             }
         });
+        PushService.setDefaultPushCallback(this, MainActivity.class);
     }
 }
