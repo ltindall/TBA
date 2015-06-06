@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,6 +23,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
+import com.parse.ui.ParseLoginBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,7 @@ import java.util.List;
  */
 public class SearchResultsActivity extends Activity implements DBAsync, ActionBar.OnNavigationListener{
     public DBManager dbm;
+    public static final int LOGIN_PAGE = 0;
     private long currentSpinnerItem; // global variable that determines which filter to search by:
                                      //     book, author, isbn, order
     private boolean sellOrBuy; // global bool to determine whether the search query is originating
@@ -52,8 +55,9 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
-                R.array.search_spinner, android.R.layout.simple_spinner_dropdown_item);
+                R.array.search_spinner, R.layout.simple_spinner_dropdown_item_tba);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         Log.d("SearchResultsActivity", "onCreate entered");
         handleIntent(getIntent());
@@ -92,8 +96,40 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
         });
 
         // Inflate menu options
-        menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+        menu.add(Menu.NONE, 0, Menu.NONE, "User Settings");
+        menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
+        menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
+        menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
         menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        switch(item.getItemId()){
+            case 0:
+                Intent intent = new Intent(SearchResultsActivity.this, UserSettings.class);
+                startActivity(intent);
+                break;
+            case 2:
+                Intent intent2 = new Intent(SearchResultsActivity.this, MyListings.class);
+                startActivity(intent2);
+                break;
+            case 1:
+                ParseUser.logOut();
+                ParseLoginBuilder builder = new ParseLoginBuilder(this);
+                startActivityForResult(builder.build(), LOGIN_PAGE);
+                break;
+            case 3:  // Create buy listing
+                Intent intent3 = new Intent(SearchResultsActivity.this , CreateBuyingListing.class);
+                startActivity(intent3);
+                break;
+            case 4:  // Create sell listing
+                Intent intent4 = new Intent(SearchResultsActivity.this , CreateSellingListing.class);
+                startActivity(intent4);
+                break;
+        }
         return true;
     }
 
