@@ -123,7 +123,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
     /*public void launchPopup(View v)
     {
-        Log.d("MainActivity", "Button pressed");
+        /*
         ParseObject sampleListing = new ParseObject("BuyListing");
         ParseObject sampleBook = new ParseObject("CustomBook");
         sampleBook.put("Title", "Antigone");
@@ -199,6 +199,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 		return true;
 	}
 
+    /*
+        Filters the Options Menu based on if the User is logged in
+     */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
@@ -215,7 +218,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             menu.add(Menu.NONE, 1, Menu.NONE, "Login");
         } else {
             // Inflate menu options
-            menu.add(Menu.NONE, 0, Menu.NONE, "Account Settings");
+            menu.add(Menu.NONE, 0, Menu.NONE, "User Settings");
             menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
             menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
             menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
@@ -232,11 +235,11 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             case 0:
                 Intent intent = new Intent(MainActivity.this, UserSettings.class);
                 startActivity(intent);
-                return true;
+                break;
             case 2:
                 Intent intent2 = new Intent(MainActivity.this, MyListings.class);
                 startActivity(intent2);
-                return true;
+                break;
             case 1:
                 ParseUser.logOut();
                 ParseLoginBuilder builder = new ParseLoginBuilder(this);
@@ -245,11 +248,11 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             case 3:  // Create buy listing
                 Intent intent3 = new Intent(MainActivity.this , CreateBuyingListing.class);
                 startActivity(intent3);
-                return true;
+                break;
             case 4:  // Create sell listing
                 Intent intent4 = new Intent(MainActivity.this , CreateSellingListing.class);
                 startActivity(intent4);
-                return true;
+                break;
         }
         return true;
     }
