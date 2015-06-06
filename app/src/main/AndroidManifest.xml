@@ -51,14 +51,33 @@
         </activity>
         <activity
             android:name=".MyListings"
-            android:label="My Listings" />
+            android:label="My Listings"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity
             android:name=".UserSettings"
-            android:label="User Settings" />
+            android:label="User Settings"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
 
         <activity
             android:name=".MarketHistory"
-            android:label="Market History" />
+            android:label="Market History"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
 
         <!-- Login activity that displays login screen and handles signup/password resets -->
         <activity
@@ -80,7 +99,13 @@
                 android:name="com.parse.ui.ParseLoginActivity.PARSE_SIGNUP_MIN_PASSWORD_LENGTH"
                 android:value="5" />
         </activity>
-        <activity android:name=".SearchResultsActivity" >
+
+        <activity android:name=".SearchResultsActivity"
+                  android:launchMode="singleTop"
+                  android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -88,11 +113,21 @@
 
         <activity
             android:name=".CreateBuyingListing"
-            android:label="@string/title_activity_create_buying_listing" >
+            android:label="@string/title_activity_create_buying_listing"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".CreateSellingListing"
-            android:label="@string/title_activity_create_selling_listing" >
+            android:label="@string/title_activity_create_selling_listing"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
 
         <service android:name="com.parse.PushService" />

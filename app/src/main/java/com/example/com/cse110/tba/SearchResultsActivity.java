@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,8 +59,6 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
                 R.array.search_spinner, R.layout.simple_spinner_dropdown_item_tba);
         actionBar.setListNavigationCallbacks(mSpinnerAdapter, this);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-        Log.d("SearchResultsActivity", "onCreate entered");
         handleIntent(getIntent());
     }
 
@@ -129,8 +128,11 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
                 Intent intent4 = new Intent(SearchResultsActivity.this , CreateSellingListing.class);
                 startActivity(intent4);
                 break;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -153,7 +155,6 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
             String query = intent.getStringExtra("query");
             sellOrBuy = intent.getBooleanExtra("sellList", true);
             long searchBy = intent.getLongExtra("currentSpinnerItem", 0);
-            Log.d("SearchResultsActivity", "searchBy setting = " + Long.toString(searchBy));
 
             // branch for searching sell listings
             if (sellOrBuy) {
@@ -210,8 +211,11 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
                 Log.d("SearchResultsActivity", "FOUND");
                 populateListView(buyListings);
             }
-            else
+            else {
+                noResults();
                 Log.d("SearchResultsActivity", "NOT FOUND");
+             }
+
         }
 
         else {
@@ -410,7 +414,6 @@ public class SearchResultsActivity extends Activity implements DBAsync, ActionBa
     @Override
     public boolean onNavigationItemSelected(int i, long l) {
         currentSpinnerItem = l;
-        Log.d("MainActivity", "currentSpinnerItem = " + Long.toString(currentSpinnerItem));
         return true;
     }
 }
