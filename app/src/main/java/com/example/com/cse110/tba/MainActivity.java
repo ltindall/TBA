@@ -205,7 +205,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
             menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
             menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
-            menu.add(Menu.NONE, 5, Menu.NONE, "Refresh List");
+            //menu.add(Menu.NONE, 5, Menu.NONE, "Refresh List");
             menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
         }
 		return true;
@@ -235,7 +235,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
             menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
             menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
-            menu.add(Menu.NONE, 5, Menu.NONE, "Refresh List");
+            //menu.add(Menu.NONE, 5, Menu.NONE, "Refresh List");
             menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
         }
 
@@ -270,7 +270,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 startActivity(intent4);
                 break;
             case 5:
-                refresh();
+                //refresh();
                 break;
         }
         return true;
@@ -476,7 +476,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     }
 
     /* this function will be called every time user is redirected to this page.*/
-    @Override
+    /*@Override
     protected void onResume()
     {
         super.onResume();
@@ -528,5 +528,5 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 -1);
         if(sellItemsAdapter != null)
             sellItemsAdapter.notifyDataSetChanged();
-    }
+    }*/
 }

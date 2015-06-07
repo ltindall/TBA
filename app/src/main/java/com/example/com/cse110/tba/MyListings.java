@@ -237,7 +237,7 @@ public class MyListings extends Activity implements  DBAsync
         menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
         menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
         menu.add(Menu.NONE, 2, Menu.NONE, "User Settings");
-        menu.add(Menu.NONE, 5, Menu.NONE, "Refresh List");
+        //menu.add(Menu.NONE, 5, Menu.NONE, "Refresh List");
         menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
         return true;
     }
@@ -265,7 +265,7 @@ public class MyListings extends Activity implements  DBAsync
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             case 5:
-                refresh();
+                //refresh();
                 break;
         }
         return true;
@@ -288,7 +288,7 @@ public class MyListings extends Activity implements  DBAsync
     }
 
     /* this function will be called every time user is redirected to this page.*/
-    @Override
+    /*@Override
     protected void onResume()
     {
         super.onResume();
@@ -340,7 +340,7 @@ public class MyListings extends Activity implements  DBAsync
                 -1);
         if(sellItemsAdapter == null)
             sellItemsAdapter.notifyDataSetChanged();
-    }
+    }*/
 }
 
 
