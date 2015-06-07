@@ -3,6 +3,7 @@ package com.example.com.cse110.tba;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -196,23 +197,26 @@ public class CreateSellingListing extends Activity implements DBAsync {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_create_selling_listing, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        // Inflate menu options
+        menu.add(Menu.NONE, 0, Menu.NONE, "Market Listings");
+
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case 0:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
         }
-
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override

@@ -62,7 +62,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 		setContentView(R.layout.activity_main);
 
         ParseUser current = ParseUser.getCurrentUser();
-        if(current == null)
+        String email = current.getEmail();
+        if(current == null || email == null)
         {
             ParseLoginBuilder builder = new ParseLoginBuilder(this);
             startActivityForResult(builder.build(), LOGIN_PAGE);

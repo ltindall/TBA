@@ -38,7 +38,6 @@ public class MyListings extends Activity implements  DBAsync
     boolean creatingBuyListing = true;
 
 
-
     @Override
     public void onBuyHistoryLoad(List<ParseObject> buyHistory) {
 
@@ -250,11 +249,6 @@ public class MyListings extends Activity implements  DBAsync
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
-            case 1:
-                ParseUser.logOut();
-                ParseLoginBuilder builder = new ParseLoginBuilder(this);
-                startActivityForResult(builder.build(), MainActivity.LOGIN_PAGE);
-                break;
             case 2:
                 Intent intent2 = new Intent(this, UserSettings.class);
                 startActivity(intent2);
