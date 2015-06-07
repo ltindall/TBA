@@ -44,6 +44,10 @@ public class UserSettings extends Activity implements  DBAsync
         //load the xml layout, must be called before programatic use of buttons
         setContentView(R.layout.user_settings);
 
+
+        //the user text field
+        EditText user = (EditText)findViewById(R.id.user_name);
+
         //the zip code text field
         EditText zip = (EditText)findViewById(R.id.zip_code);
 
@@ -52,6 +56,9 @@ public class UserSettings extends Activity implements  DBAsync
 
         //the 'text' number text field
         EditText text = (EditText)findViewById(R.id.text_number);
+
+        //the email text field
+        EditText email = (EditText)findViewById(R.id.email);
 
         //get current parse user and their current zip code
         ParseUser current = ParseUser.getCurrentUser();
@@ -63,6 +70,16 @@ public class UserSettings extends Activity implements  DBAsync
             zip.setText(Integer.toString(current.getInt("Zipcode")));
         }
 
+        //if they have a name, prepopulate the text box
+        if(current.getString("name") != null)
+        {
+            user.setText(current.getString("name"));
+        }
+        //if they have a email, prepopulate the text box
+        if(current.getString("email") != null)
+        {
+            email.setText(current.getString("email"));
+        }
         //if they have a call number, prepopulate the field
         if(current.getString("Call") != null)
         {
@@ -82,17 +99,29 @@ public class UserSettings extends Activity implements  DBAsync
         EditText zip = (EditText)findViewById(R.id.zip_code);
         EditText call = (EditText)findViewById(R.id.call_number);
         EditText text = (EditText)findViewById(R.id.text_number);
+        EditText user = (EditText)findViewById(R.id.user_name);
+        EditText email = (EditText)findViewById(R.id.email);
+
         int passZip = -1;
         if(zip.getText().length() != 0) {
             passZip = Integer.parseInt(zip.getText().toString().trim());
         }
         String passCall = call.getText().toString().trim();
         String passText = text.getText().toString().trim();
+        String passUser = user.getText().toString().trim();
+        String passEmail = email.getText().toString().trim();
+
         if(currentZip == passZip)
         {
             passZip = -1;
         }
 
+        if(passEmail.length() == 0){
+            passEmail = null;
+        }
+        if(passUser.length() == 0){
+            passUser = null;
+        }
         if(passCall.length() == 0)
         {
             passCall = null;
@@ -102,7 +131,7 @@ public class UserSettings extends Activity implements  DBAsync
             passText = null;
         }
 
-        manager.setUserSettings(passZip,passCall,passText);
+        manager.setUserSettings(passZip,passCall,passText,passUser,passEmail);
 
         Toast.makeText(getApplicationContext(), "User Settings Updated",
                 Toast.LENGTH_SHORT).show();
