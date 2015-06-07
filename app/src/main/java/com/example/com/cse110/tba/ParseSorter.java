@@ -36,13 +36,6 @@ public class ParseSorter
                 for(ParseObject d: unsorted)
                 {
                     long date = d.getCreatedAt().getTime();
-
-                    if (rank.getCreatedAt() == null)
-                        Log.d("ParseSorter", "rank.getCreatedAt() == null");
-
-                    else
-                        Log.d("ParseSorter", "Everything is Okay");
-
                     long otherDate = dummyDate.getTime();
                     //long otherDate = 0;
 
