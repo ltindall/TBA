@@ -1,10 +1,16 @@
 package com.example.com.cse110.tba;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
+import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.SpinnerAdapter;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
@@ -13,14 +19,14 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.Series;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.ui.ParseLoginBuilder;
 
 import java.util.List;
 
 /**
  * Created by Joshua Lynch on 5/19/2015.
  */
-public class MarketHistory extends Activity implements DBAsync
-{
+public class MarketHistory extends Activity implements DBAsync, ActionBar.OnNavigationListener {
     private int listingType;
     private int ISBN;
     private String Title;
@@ -75,6 +81,22 @@ public class MarketHistory extends Activity implements DBAsync
         layout.addView(gView);
 
         updateData();
+
+        // action bar to display the search bar and the spinner
+        ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        switch(item.getItemId()){
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void updateData()
@@ -137,8 +159,15 @@ public class MarketHistory extends Activity implements DBAsync
         }
     }
 
+
+
     @Override
     public void onUserLoad(List<ParseUser> userList) {
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(int i, long l) {
+        return false;
     }
 }

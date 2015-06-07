@@ -11,5 +11,6 @@
         android:icon="@drawable/ic_search"
         android:showAsAction="collapseActionView|ifRoom"
         android:actionViewClass="android.widget.SearchView" />
+
 </menu>
 <!-- From: file:/C:/Users/Joshua%20Lynch/AndroidStudio%20Workspace/TBAFinal/app/src/main/res/menu/main.xml -->
