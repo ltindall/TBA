@@ -93,7 +93,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 
         tabSetup();
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        installation.put("user", ParseUser.getCurrentUser().get("email"));
+        if( ParseUser.getCurrentUser().get("email") != null ) {
+            installation.put("user", ParseUser.getCurrentUser().get("email"));
+        }
         installation.saveInBackground();
 	}
 
