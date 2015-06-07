@@ -195,7 +195,7 @@ public class ListingPopup
                 @Override
                 public void onClick(View view) {
                     //remove the listing
-                    listingValues.remove(position);
+                    //listingValues.remove(position);
                     listing.deleteInBackground();
                     Toast.makeText(context,
                             "Item Deleted", Toast.LENGTH_LONG)
