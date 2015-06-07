@@ -88,7 +88,7 @@ public class ListingPopup
             TextView comment = (TextView) popUpView.findViewById(R.id.popup_comment);
             comment.setText("Comment: " + listing.getString("Comment"));
 
-            if (listing.getString("Hardcover") == "true") {
+            if (listing.getBoolean("HardCover")) {
                 TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover);
                 hardcover.setText("Hardcover: Yes");
             } else {
@@ -151,7 +151,7 @@ public class ListingPopup
             TextView comment = (TextView) popUpView.findViewById(R.id.popup_comment1);
             comment.setText("Comment: " + listing.getString("Comment"));
 
-            if (listing.getString("Hardcover") == "true") {
+            if (listing.getBoolean("HardCover")) {
                 TextView hardcover = (TextView) popUpView.findViewById(R.id.popup_hardcover1);
                 hardcover.setText("Hardcover: Yes");
             } else {
@@ -166,6 +166,18 @@ public class ListingPopup
                     popup.dismiss();
                 }
             });
+
+            Button sold = (Button) popUpView.findViewById(R.id.popup_soldButton);
+            sold.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listing.put("isHistory", true);
+                    popup.dismiss();
+                    //Log.d("History: ", "this is history: " + listing.get("isHistory"));
+                }
+            });
+
+            Log.d("History: ", "this is history: " + listing.get("isHistory"));
 
             Button delete = (Button) popUpView.findViewById(R.id.popup_delete1);
             delete.setOnClickListener(new View.OnClickListener() {
