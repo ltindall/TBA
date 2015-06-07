@@ -4,6 +4,7 @@ package com.example.com.cse110.tba;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -264,6 +265,9 @@ public class MyListings extends Activity implements  DBAsync
                 Intent intent4 = new Intent(this , CreateSellingListing.class);
                 startActivity(intent4);
                 break;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
         }
         return true;
     }
