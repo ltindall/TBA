@@ -90,6 +90,9 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         dbm.getSellListings(null, null, -1, "Title", null, 20);
 
         tabSetup();
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        installation.put("user", ParseUser.getCurrentUser().get("email"));
+        installation.saveInBackground();
 	}
 
 
@@ -187,6 +190,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         ParseUser current = ParseUser.getCurrentUser();
         String email = current.getEmail();
         Log.d("MainActivity.java", "Current User: " + email);
+        Log.d("MainActivity", "InstallID: " + ParseInstallation.getCurrentInstallation().get("user"));
         if (email == null){
             menu.add(Menu.NONE, 1, Menu.NONE, "Login");
         }

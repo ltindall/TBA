@@ -63,6 +63,7 @@ public class DBManager
             params.put("type", "BuyListing");
             params.put("isbn", isbn);
             params.put("price", price);
+            params.put("email", currentUser.getEmail());
 
             //run cloud code to detect matching listing and contact its user
             ParseCloud.callFunctionInBackground("detectMatches", params);
@@ -95,6 +96,8 @@ public class DBManager
             params.put("type", "SellListing");
             params.put("isbn", isbn);
             params.put("price", price);
+            params.put("email", currentUser.getEmail());
+
 
             //run cloud code to detect matching listing and contact its user
             ParseCloud.callFunctionInBackground("detectMatches", params);
