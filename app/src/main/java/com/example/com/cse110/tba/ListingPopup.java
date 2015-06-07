@@ -181,6 +181,8 @@ public class ListingPopup
                 @Override
                 public void onClick(View view) {
                     listing.put("isHistory", true);
+                    listingValues.remove(position);
+                    listing.saveInBackground();
                     popup.dismiss();
                     //Log.d("History: ", "this is history: " + listing.get("isHistory"));
                 }

@@ -372,7 +372,7 @@ containing a value of this type.
         public static final int BuyListing1=0x7f090064;
         public static final int SellListing=0x7f090024;
         public static final int SellListing1=0x7f090066;
-        public static final int action_settings=0x7f09007c;
+        public static final int action_settings=0x7f09007d;
         public static final int app_logo=0x7f090040;
         public static final int bookConditionNew=0x7f090014;
         public static final int bookConditionUsed=0x7f090015;
@@ -382,8 +382,8 @@ containing a value of this type.
         public static final int bottom=0x7f090005;
         public static final int box_count=0x7f090002;
         public static final int button=0x7f090003;
-        public static final int button_send=0x7f09007a;
-        public static final int call_number=0x7f090078;
+        public static final int button_send=0x7f09007b;
+        public static final int call_number=0x7f090079;
         public static final int center=0x7f090008;
         public static final int com_facebook_body_frame=0x7f090038;
         public static final int com_facebook_button_xout=0x7f09003a;
@@ -429,10 +429,10 @@ containing a value of this type.
         public static final int createSellListingButton=0x7f090020;
         public static final int createSellListingISBNNumber=0x7f09001b;
         public static final int create_account=0x7f090052;
-        public static final int email=0x7f090076;
+        public static final int email=0x7f090077;
         public static final int facebook_login=0x7f09004b;
         public static final int graph1=0x7f090053;
-        public static final int imageView=0x7f090074;
+        public static final int imageView=0x7f090075;
         public static final int inline=0x7f090006;
         public static final int large=0x7f09000b;
         public static final int left=0x7f090009;
@@ -457,7 +457,7 @@ containing a value of this type.
         public static final int popup_author=0x7f090059;
         public static final int popup_author1=0x7f090069;
         public static final int popup_button=0x7f090063;
-        public static final int popup_button1=0x7f090073;
+        public static final int popup_button1=0x7f090074;
         public static final int popup_comment=0x7f09005f;
         public static final int popup_comment1=0x7f09006f;
         public static final int popup_condition=0x7f09005e;
@@ -474,12 +474,13 @@ containing a value of this type.
         public static final int popup_isbn1=0x7f09006a;
         public static final int popup_price=0x7f09005d;
         public static final int popup_price1=0x7f09006d;
+        public static final int popup_soldButton=0x7f090073;
         public static final int popup_title=0x7f090058;
         public static final int popup_title1=0x7f090068;
         public static final int popup_year=0x7f09005b;
         public static final int popup_year1=0x7f09006b;
         public static final int right=0x7f09000a;
-        public static final int search=0x7f09007b;
+        public static final int search=0x7f09007c;
         public static final int signup_confirm_password_input=0x7f09004f;
         public static final int signup_email_input=0x7f090050;
         public static final int signup_name_input=0x7f090051;
@@ -488,11 +489,11 @@ containing a value of this type.
         public static final int small=0x7f09000d;
         public static final int standard=0x7f090004;
         public static final int tabHost=0x7f090021;
-        public static final int text_number=0x7f090079;
+        public static final int text_number=0x7f09007a;
         public static final int top=0x7f090007;
         public static final int twitter_login=0x7f09004c;
-        public static final int user_name=0x7f090075;
-        public static final int zip_code=0x7f090077;
+        public static final int user_name=0x7f090076;
+        public static final int zip_code=0x7f090078;
     }
     public static final class layout {
         public static final int activity_create_buying_listing=0x7f040000;
