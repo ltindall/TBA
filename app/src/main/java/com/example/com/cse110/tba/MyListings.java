@@ -237,7 +237,6 @@ public class MyListings extends Activity implements  DBAsync
         menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
         menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
         menu.add(Menu.NONE, 2, Menu.NONE, "User Settings");
-        menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
         return true;
     }
 
@@ -248,11 +247,6 @@ public class MyListings extends Activity implements  DBAsync
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
-            case 1:
-                ParseUser.logOut();
-                ParseLoginBuilder builder = new ParseLoginBuilder(this);
-                startActivityForResult(builder.build(), MainActivity.LOGIN_PAGE);
-                break;
             case 2:
                 Intent intent2 = new Intent(this, UserSettings.class);
                 startActivity(intent2);
