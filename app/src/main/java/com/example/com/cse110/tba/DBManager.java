@@ -63,6 +63,7 @@ public class DBManager
             params.put("type", "BuyListing");
             params.put("isbn", isbn);
             params.put("price", price);
+            params.put("email", currentUser.getEmail());
 
             //run cloud code to detect matching listing and contact its user
             ParseCloud.callFunctionInBackground("detectMatches", params);
@@ -95,6 +96,8 @@ public class DBManager
             params.put("type", "SellListing");
             params.put("isbn", isbn);
             params.put("price", price);
+            params.put("email", currentUser.getEmail());
+
 
             //run cloud code to detect matching listing and contact its user
             ParseCloud.callFunctionInBackground("detectMatches", params);
@@ -217,7 +220,7 @@ public class DBManager
         });
     }
 
-    public void setUserSettings(int zipCode, String call, String text)
+    public void setUserSettings(int zipCode, String call, String text, String user, String email)
     {
         int validParamCount = 0;
         ParseUser current = ParseUser.getCurrentUser();
@@ -250,6 +253,18 @@ public class DBManager
             ++validParamCount;
             current.put("Text", text);
         }
+        if(email != null)
+        {
+            ++validParamCount;
+            current.put("email", email);
+            current.put("username", email);
+        }
+        if(user != null)
+        {
+            ++validParamCount;
+            current.put("name", user);
+        }
+
         if(validParamCount > 0)
         {
             current.saveInBackground();
@@ -309,13 +324,21 @@ public class DBManager
     public static void notifyUser(ParseObject listing )
     {
         HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("listing", listing);
+        ParseObject book = listing.getParseObject("Book");
+        try {
+            book.fetch();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        params.put("book", book );
+        params.put("listing", listing );
         params.put("email", ParseUser.getCurrentUser().getEmail());
 
         Log.d("hi josh", ParseUser.getCurrentUser().getEmail());
 
         //run cloud code to detect matching listing and contact its user
         ParseCloud.callFunctionInBackground("notifyUser", params);
+        
 
     }
 

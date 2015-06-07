@@ -104,6 +104,15 @@ public class ListingPopup
                 }
             });
 
+            Button contact = (Button) popUpView.findViewById(R.id.popup_contact);
+            contact.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("notify user button", "is working");
+                    DBManager.notifyUser(listing);
+                }
+            });
+
 
             Button history = (Button) popUpView.findViewById(R.id.popup_history);
             history.setOnClickListener(new View.OnClickListener() {
