@@ -113,6 +113,9 @@ public class MarketHistory extends Activity implements DBAsync, ActionBar.OnNavi
 
     private void setGraphData(Series s)
     {
+        gView.onDataChanged(true, true);
+        Log.d("MarketHistory", "Graph redrawn");
+        Log.d("MarketHistory", "Data size: " + s.isEmpty());
         gView.removeAllSeries();
         gView.addSeries(s);
     }
