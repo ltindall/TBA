@@ -57,6 +57,10 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+
+        Log.d("MainActivity", "installation ID == " + ParseInstallation.getCurrentInstallation().getInstallationId());
+
         dbm = new DBManager(this);
         pSort = new ParseSorter();
 		setContentView(R.layout.activity_main);

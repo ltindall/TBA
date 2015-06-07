@@ -334,7 +334,8 @@ public class DBManager
         params.put("listing", listing );
         params.put("email", ParseUser.getCurrentUser().getEmail());
 
-        Log.d("hi josh", ParseUser.getCurrentUser().getEmail());
+
+        Log.d("hi josh", ParseUser.getCurrentUser().getEmail() + ", " + book.get("Title"));
 
         //run cloud code to detect matching listing and contact its user
         ParseCloud.callFunctionInBackground("notifyUser", params);
