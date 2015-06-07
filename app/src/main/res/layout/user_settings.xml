@@ -1,28 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/zip_code"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/zip_hint"
-        android:inputType="number" />
+    <TableRow>
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView"
+            android:src="@mipmap/user"/>
 
-    <EditText
-        android:id="@+id/call_number"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/call_hint"
-        android:inputType="phone" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter Name Here"
+            android:id="@+id/user_name"/>
 
-    <EditText
-        android:id="@+id/text_number"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/text_hint"
-        android:inputType="phone" />
+    </TableRow>
+
+    <TableRow>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/email"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email Here"
+            android:id="@+id/email"
+            android:editable="false"/>
+
+    </TableRow>
+
+    <TableRow>
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView"
+            android:src="@mipmap/zip"/>
+
+        <EditText
+            android:id="@+id/zip_code"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/zip_hint"
+            android:inputType="number" />
+    </TableRow>
+
+    <TableRow>
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView"
+            android:src="@mipmap/call_phone"/>
+
+            <EditText
+            android:id="@+id/call_number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/call_hint"
+            android:inputType="phone" />
+    </TableRow>
+
+    <TableRow>
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView"
+            android:src="@mipmap/text"/>
+
+        <EditText
+            android:id="@+id/text_number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/text_hint"
+            android:inputType="phone" />
+    </TableRow>
+
 
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/button_send"
@@ -31,4 +87,4 @@
         android:text="@string/user_settings_submit"
         android:onClick="submit" />
 
-</LinearLayout>
+</TableLayout>
