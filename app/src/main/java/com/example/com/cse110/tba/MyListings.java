@@ -35,6 +35,7 @@ public class MyListings extends Activity implements  DBAsync
     List<String> sellValues;
     ArrayAdapter<String> buyItemsAdapter;
     ArrayAdapter<String> sellItemsAdapter;
+    boolean creatingBuyListing = true;
 
 
     @Override
@@ -126,12 +127,12 @@ public class MyListings extends Activity implements  DBAsync
 
                 ListingPopup popup = new ListingPopup(getApplicationContext(), buyListings.get(position), view, true, buyValues, position);
 
-                buyItemsAdapter.notifyDataSetChanged();
+
             }
 
         });
 
-
+        buyItemsAdapter.notifyDataSetChanged();
         return lister;
     }
 
@@ -183,11 +184,10 @@ public class MyListings extends Activity implements  DBAsync
                                     int position, long id) {
 
                 ListingPopup popup = new ListingPopup(getApplicationContext(), sellListings.get(position), view, true, sellValues, position);
-
-                sellItemsAdapter.notifyDataSetChanged();
             }
 
         });
+        sellItemsAdapter.notifyDataSetChanged();
     }
 
     private void tabSetup()
@@ -237,6 +237,7 @@ public class MyListings extends Activity implements  DBAsync
         menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
         menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
         menu.add(Menu.NONE, 2, Menu.NONE, "User Settings");
+        menu.add(Menu.NONE, 5, Menu.NONE, "Refresh List");
         menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
         return true;
     }
@@ -248,11 +249,6 @@ public class MyListings extends Activity implements  DBAsync
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
-            case 1:
-                ParseUser.logOut();
-                ParseLoginBuilder builder = new ParseLoginBuilder(this);
-                startActivityForResult(builder.build(), MainActivity.LOGIN_PAGE);
-                break;
             case 2:
                 Intent intent2 = new Intent(this, UserSettings.class);
                 startActivity(intent2);
@@ -268,6 +264,9 @@ public class MyListings extends Activity implements  DBAsync
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
+            case 5:
+                refresh();
+                break;
         }
         return true;
     }
@@ -287,4 +286,62 @@ public class MyListings extends Activity implements  DBAsync
     public void onUserLoad(List<ParseUser> userList) {
 
     }
+
+    /* this function will be called every time user is redirected to this page.*/
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        if(creatingBuyListing)
+        {
+
+            //get all buy listings made by this user
+            dbm.getBuyListings(null,
+                    null,
+                    -1,
+                    null,
+                    email,
+                    -1);
+            if(buyItemsAdapter != null)
+                buyItemsAdapter.notifyDataSetChanged();
+            Log.d("BuyRefresh","Program Buy crash??");
+        }
+        else
+        {
+            //get all sell listings made by this user
+            dbm.getSellListings(null,
+                    null,
+                    -1,
+                    null,
+                    email,
+                    -1);
+            if(sellItemsAdapter == null)
+                sellItemsAdapter.notifyDataSetChanged();
+            Log.d("SellRefresh","Program Sell crash????");
+        }
+    }
+
+    protected void refresh()
+    {
+        dbm.getBuyListings(null,
+                null,
+                -1,
+                null,
+                email,
+                -1);
+        if(buyItemsAdapter != null)
+            buyItemsAdapter.notifyDataSetChanged();
+
+        dbm.getSellListings(null,
+                null,
+                -1,
+                null,
+                email,
+                -1);
+        if(sellItemsAdapter == null)
+            sellItemsAdapter.notifyDataSetChanged();
+    }
 }
+
+
+

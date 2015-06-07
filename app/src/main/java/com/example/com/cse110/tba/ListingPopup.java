@@ -16,6 +16,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Toast;
 
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -54,7 +55,13 @@ public class ListingPopup
         View popUpView;
 
         if (!isMyListing) {
-            popUpView = inflater.inflate(R.layout.listing_popup, null, false);
+
+            String email = ParseUser.getCurrentUser().getEmail();
+
+            if (email != null)
+                 popUpView = inflater.inflate(R.layout.listing_popup, null, false);
+            else
+                 popUpView = inflater.inflate(R.layout.anon_popup, null, false);
 
             popup = new PopupWindow(popUpView, 400, 580, true);
             popup.setContentView(popUpView);
@@ -104,15 +111,16 @@ public class ListingPopup
                 }
             });
 
-            Button contact = (Button) popUpView.findViewById(R.id.popup_contact);
-            contact.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d("notify user button", "is working");
-                    DBManager.notifyUser(listing);
-                }
-            });
-
+            if (email != null) {
+                Button contact = (Button) popUpView.findViewById(R.id.popup_contact);
+                contact.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.d("notify user button", "is working");
+                        DBManager.notifyUser(listing);
+                    }
+                });
+            }
 
             Button history = (Button) popUpView.findViewById(R.id.popup_history);
             history.setOnClickListener(new View.OnClickListener() {
