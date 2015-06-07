@@ -51,6 +51,8 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
     public static ArrayAdapter<String> sellItemsAdapter;
     public static List<String> sellValues;
 
+    private boolean creatingBuyListing = true;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -200,6 +202,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
             menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
             menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
+            menu.add(Menu.NONE, 5, Menu.NONE, "Refresh List");
             menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
         }
 		return true;
@@ -216,6 +219,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         menu.removeItem(2);
         menu.removeItem(3);
         menu.removeItem(4);
+        menu.removeItem(5);
 
         ParseUser current = ParseUser.getCurrentUser();
         String email = current.getEmail();
@@ -228,6 +232,7 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
             menu.add(Menu.NONE, 3, Menu.NONE, "Create Buy Listing");
             menu.add(Menu.NONE, 4, Menu.NONE, "Create Sell Listing");
             menu.add(Menu.NONE, 2, Menu.NONE, "My Listings");
+            menu.add(Menu.NONE, 5, Menu.NONE, "Refresh List");
             menu.add(Menu.NONE, 1, Menu.NONE, "Logout");
         }
 
@@ -252,12 +257,17 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
                 startActivityForResult(builder.build(), LOGIN_PAGE);
                 break;
             case 3:  // Create buy listing
+                creatingBuyListing = true;
                 Intent intent3 = new Intent(MainActivity.this , CreateBuyingListing.class);
                 startActivity(intent3);
                 break;
             case 4:  // Create sell listing
+                creatingBuyListing = false;
                 Intent intent4 = new Intent(MainActivity.this , CreateSellingListing.class);
                 startActivity(intent4);
+                break;
+            case 5:
+                refresh();
                 break;
         }
         return true;
@@ -462,37 +472,58 @@ public class MainActivity extends Activity implements  DBAsync, ActionBar.OnNavi
         tabHost.setCurrentTabByTag("selllistingmain");
     }
 
-    /*Mini class for pairing*/
-    private class Pair<String, ParseObject>
+    /* this function will be called every time user is redirected to this page.*/
+    @Override
+    protected void onResume()
     {
-        private String description;
-        private ParseObject bookObject;
-
-        //a constructor
-        public Pair(String s , ParseObject object)
+        super.onResume();
+        if(creatingBuyListing)
         {
-            this.description = s;
-            this.bookObject = object;
-        }
 
-        public String getString()
-        {
-           return description;
+            //get all buy listings made by this user
+            dbm.getBuyListings(null,
+                    null,
+                    -1,
+                    null,
+                    "Title",
+                    -1);
+            if(buyItemsAdapter != null)
+                buyItemsAdapter.notifyDataSetChanged();
+            Log.d("BuyRefresh","Program Buy crash??");
         }
+        else
+        {
+            //get all sell listings made by this user
+            dbm.getSellListings(null,
+                    null,
+                    -1,
+                    null,
+                    "Title",
+                    -1);
+            if(sellItemsAdapter != null)
+                sellItemsAdapter.notifyDataSetChanged();
+            Log.d("SellRefresh","Program Sell crash????");
+        }
+    }
 
-        public  ParseObject getParseObj()
-        {
-            return bookObject;
-        }
+    protected void refresh()
+    {
+        dbm.getBuyListings(null,
+                null,
+                -1,
+                null,
+                "Title",
+                -1);
+        if(buyItemsAdapter != null)
+            buyItemsAdapter.notifyDataSetChanged();
 
-        public void setDescription(String s)
-        {
-            this.description = s;
-        }
-
-        public void setBookObject(ParseObject object)
-        {
-            bookObject = object;
-        }
+        dbm.getSellListings(null,
+                null,
+                -1,
+                null,
+                "Title",
+                -1);
+        if(sellItemsAdapter != null)
+            sellItemsAdapter.notifyDataSetChanged();
     }
 }
