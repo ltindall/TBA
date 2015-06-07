@@ -330,8 +330,8 @@ public class DBManager
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        params.put("book", book );
-        params.put("listing", listing );
+        params.put("book", book.getString("Title") );
+        params.put("targetUser", listing.getString("User") );
         params.put("email", ParseUser.getCurrentUser().getEmail());
 
         Log.d("hi josh", ParseUser.getCurrentUser().getEmail());

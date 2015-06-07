@@ -17,10 +17,12 @@ import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.Series;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -114,8 +116,11 @@ public class MarketHistory extends Activity implements DBAsync, ActionBar.OnNavi
     private void setGraphData(Series s)
     {
         gView.onDataChanged(true, true);
-        Log.d("MarketHistory", "Graph redrawn");
-        Log.d("MarketHistory", "Data size: " + s.isEmpty());
+        if(s.getHighestValueX() == s.getLowestValueX() && s.getHighestValueY() == s.getLowestValueY())
+        {
+            return;
+        }
+
         gView.removeAllSeries();
         gView.addSeries(s);
     }
